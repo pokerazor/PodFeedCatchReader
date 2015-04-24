@@ -17,6 +17,17 @@ public class PanelLogIn extends JPanel {
 	
 	private JTextField textFieldName;
 	private JTextField textFieldPassword;
+	
+	private JButton btnLogIn;
+	private JButton btnRegister;
+
+	public JButton getBtnLogIn() {
+		return btnLogIn;
+	}
+
+	public JButton getBtnRegister() {
+		return btnRegister;
+	}
 
 	/**
 	 * Create the panel.
@@ -69,15 +80,15 @@ public class PanelLogIn extends JPanel {
 		this.add(textFieldPassword, gbc_textFieldPassword);
 		textFieldPassword.setColumns(10);
 		
-		JButton btnlogIn = new JButton("Einloggen");
+		btnLogIn = new JButton("Einloggen");
 	
 		GridBagConstraints gbc_btnlogIn = new GridBagConstraints();
 		gbc_btnlogIn.insets = new Insets(0, 0, 5, 0);
 		gbc_btnlogIn.gridx = 1;
 		gbc_btnlogIn.gridy = 5;
-		this.add(btnlogIn, gbc_btnlogIn);
+		this.add(btnLogIn, gbc_btnlogIn);
 		
-		JButton btnRegister = new JButton("Registrieren");
+		btnRegister = new JButton("Registrieren");
 		GridBagConstraints gbc_btnRegister = new GridBagConstraints();
 		gbc_btnRegister.gridx = 1;
 		gbc_btnRegister.gridy = 6;
