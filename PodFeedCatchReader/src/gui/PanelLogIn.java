@@ -37,62 +37,34 @@ public class PanelLogIn extends JPanel {
 	}
 	
 	private void initialize(){
-		
-		GridBagLayout gbl_this = new GridBagLayout();
-		gbl_this.columnWidths = new int[]{80, 140, 0};
-		gbl_this.rowHeights = new int[]{36, 16, 28, 23, 28, 0, 0, 0};
-		gbl_this.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		gbl_this.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		this.setLayout(gbl_this);
+		setLayout(null);
 		
 		JLabel lblName = new JLabel("Name:");
-		GridBagConstraints gbc_lblName = new GridBagConstraints();
-		gbc_lblName.anchor = GridBagConstraints.NORTH;
-		gbc_lblName.insets = new Insets(0, 0, 5, 0);
-		gbc_lblName.gridx = 1;
-		gbc_lblName.gridy = 1;
-		this.add(lblName, gbc_lblName);
+		lblName.setBounds(145, 36, 40, 16);
+		this.add(lblName);
 		
 		textFieldName = new JTextField();
-		GridBagConstraints gbc_textFieldName = new GridBagConstraints();
-		gbc_textFieldName.anchor = GridBagConstraints.NORTHWEST;
-		gbc_textFieldName.insets = new Insets(0, 0, 5, 0);
-		gbc_textFieldName.gridx = 1;
-		gbc_textFieldName.gridy = 2;
-		this.add(textFieldName, gbc_textFieldName);
+		textFieldName.setBounds(98, 57, 134, 28);
+		this.add(textFieldName);
 		textFieldName.setColumns(10);
 		
 		JLabel lblPassword = new JLabel("Passwort:");
+		lblPassword.setBounds(135, 90, 60, 18);
 		lblPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		GridBagConstraints gbc_lblPassword = new GridBagConstraints();
-		gbc_lblPassword.fill = GridBagConstraints.VERTICAL;
-		gbc_lblPassword.insets = new Insets(0, 0, 5, 0);
-		gbc_lblPassword.gridx = 1;
-		gbc_lblPassword.gridy = 3;
-		this.add(lblPassword, gbc_lblPassword);
+		this.add(lblPassword);
 		
 		textFieldPassword = new JTextField();
-		GridBagConstraints gbc_textFieldPassword = new GridBagConstraints();
-		gbc_textFieldPassword.insets = new Insets(0, 0, 5, 0);
-		gbc_textFieldPassword.anchor = GridBagConstraints.NORTHWEST;
-		gbc_textFieldPassword.gridx = 1;
-		gbc_textFieldPassword.gridy = 4;
-		this.add(textFieldPassword, gbc_textFieldPassword);
+		textFieldPassword.setBounds(98, 113, 134, 28);
+		this.add(textFieldPassword);
 		textFieldPassword.setColumns(10);
 		
 		btnLogIn = new JButton("Einloggen");
-	
-		GridBagConstraints gbc_btnlogIn = new GridBagConstraints();
-		gbc_btnlogIn.insets = new Insets(0, 0, 5, 0);
-		gbc_btnlogIn.gridx = 1;
-		gbc_btnlogIn.gridy = 5;
-		this.add(btnLogIn, gbc_btnlogIn);
+		btnLogIn.setBounds(112, 146, 106, 29);
+		this.add(btnLogIn);
 		
 		btnRegister = new JButton("Registrieren");
-		GridBagConstraints gbc_btnRegister = new GridBagConstraints();
-		gbc_btnRegister.gridx = 1;
-		gbc_btnRegister.gridy = 6;
-		this.add(btnRegister, gbc_btnRegister);
+		btnRegister.setBounds(105, 180, 119, 29);
+		this.add(btnRegister);
 		
 	}
 

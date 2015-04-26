@@ -20,9 +20,13 @@ public class PanelMain extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelMain() {
+		initialize();
+	}
+	
+	private void initialize() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{300, 0};
-		gridBagLayout.rowHeights = new int[]{500, 0};
+		gridBagLayout.columnWidths = new int[]{330, 0};
+		gridBagLayout.rowHeights = new int[]{530, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
@@ -34,14 +38,14 @@ public class PanelMain extends JPanel {
 		gbc.gridy = 0;
 		add(tabbedPane, gbc);
 		
-		JPanel panelConsumeFeeds = new JPanel();
+		PanelConsumeFeeds panelConsumeFeeds = new PanelConsumeFeeds();
 		tabbedPane.addTab("Feeds", null, panelConsumeFeeds, null);
-		panelConsumeFeeds.setLayout(new CardLayout(0, 0));
 		
-		JPanel panelProduceFeeds = new JPanel();
-		tabbedPane.addTab("New tab", null, panelProduceFeeds, null);
+		PanelProduceFeeds panelProduceFeeds = new PanelProduceFeeds();
+		tabbedPane.addTab("Feed erstellen", null, panelProduceFeeds, null);
 		
-		JPanel panelOrganizeUsers = new JPanel();
-		tabbedPane.addTab("New tab", null, panelOrganizeUsers, null);
+		PanelOrganizeUsers panelOrganizeUsers = new PanelOrganizeUsers();
+		tabbedPane.addTab("Nutzerverwaltung", null, panelOrganizeUsers, null);
 	}
+	
 }
