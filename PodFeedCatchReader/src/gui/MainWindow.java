@@ -54,15 +54,22 @@ public class MainWindow{
 		panelCard.add(panelMain, MAINPANEL);
 		panelCard.add(panelLogIn, LOGINPANEL); 
 		
-		CardLayout cardLayout = (CardLayout) panelCard.getLayout();
-		cardLayout.show(panelCard, LOGINPANEL);
-		
+		switchCard(LOGINPANEL);
+	
 		panelLogIn.getBtnLogIn().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CardLayout cardLayout = (CardLayout) panelCard.getLayout();
-				cardLayout.show(panelCard, MAINPANEL);
+				switchCard(MAINPANEL);
 			}
 		});
+	}
+	
+	/**
+	 * Switch Cards of Window's CardLayout
+	 * @param panelName Name of Card. Use Constants which are defined as constants in MainWindow
+	 */
+	public void switchCard(String panelName){
+		CardLayout cardLayout = (CardLayout) panelCard.getLayout();
+		cardLayout.show(panelCard, panelName);
 	}
 	
 }

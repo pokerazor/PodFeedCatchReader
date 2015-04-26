@@ -6,6 +6,13 @@ import javax.swing.JButton;
 import javax.swing.JTextPane;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
+import javax.swing.JMenuBar;
+import java.awt.Button;
+import javax.swing.JList;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import java.awt.CardLayout;
 
 public class PanelMain extends JPanel {
 
@@ -26,6 +33,15 @@ public class PanelMain extends JPanel {
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		add(tabbedPane, gbc);
-
+		
+		JPanel panelConsumeFeeds = new JPanel();
+		tabbedPane.addTab("Feeds", null, panelConsumeFeeds, null);
+		panelConsumeFeeds.setLayout(new CardLayout(0, 0));
+		
+		JPanel panelProduceFeeds = new JPanel();
+		tabbedPane.addTab("New tab", null, panelProduceFeeds, null);
+		
+		JPanel panelOrganizeUsers = new JPanel();
+		tabbedPane.addTab("New tab", null, panelOrganizeUsers, null);
 	}
 }
