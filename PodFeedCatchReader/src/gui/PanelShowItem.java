@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
 
-public class PanelShowFeed extends JPanel {
+public class PanelShowItem extends JPanel {
 	
 	private JTextPane textPaneFeed;
 	private JButton btnBack;
@@ -20,7 +20,7 @@ public class PanelShowFeed extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PanelShowFeed() {
+	public PanelShowItem() {
 		initialize();
 	}
 	

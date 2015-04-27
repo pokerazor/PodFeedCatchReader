@@ -7,7 +7,7 @@ import javax.swing.JTextPane;
 import javax.swing.JButton;
 import javax.swing.JList;
 
-public class PanelCreateFeed extends JPanel {
+public class PanelCreateItem extends JPanel {
 	
 	private JLabel lblCreateFeed;
 	private JTextPane textPaneFeed;
@@ -40,7 +40,7 @@ public class PanelCreateFeed extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PanelCreateFeed() {
+	public PanelCreateItem() {
 		initialize();
 
 	}

@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 
-public class PanelShowSummaryFeeds extends JPanel {
+public class PanelShowSummaryItems extends JPanel {
 	
 	private JTextArea textArea;
 	private JButton btnShowFeed;
@@ -27,7 +27,7 @@ public class PanelShowSummaryFeeds extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PanelShowSummaryFeeds() {
+	public PanelShowSummaryItems() {
 		initialize();
 	}
 	

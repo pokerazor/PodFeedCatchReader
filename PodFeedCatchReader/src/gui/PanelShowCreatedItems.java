@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JList;
 import javax.swing.JButton;
 
-public class PanelShowCreatedFeeds extends JPanel {
+public class PanelShowCreatedItems extends JPanel {
 	
 	private JButton btnCreateFeed;
 	JList listFeeds;
@@ -20,7 +20,7 @@ public class PanelShowCreatedFeeds extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PanelShowCreatedFeeds() {
+	public PanelShowCreatedItems() {
 		initilaize();
 	}
 	
