@@ -6,15 +6,15 @@ import javax.swing.JButton;
 
 public class PanelShowCreatedItems extends JPanel {
 	
-	private JButton btnCreateFeed;
-	JList listFeeds;
+	private JButton btnCreateItem;
+	JList listItems;
 
-	public JList getListFeeds() {
-		return listFeeds;
+	public JList getListItems() {
+		return listItems;
 	}
 
-	public JButton getBtnCreateFeed() {
-		return btnCreateFeed;
+	public JButton getBtnCreateItem() {
+		return btnCreateItem;
 	}
 
 	/**
@@ -27,12 +27,12 @@ public class PanelShowCreatedItems extends JPanel {
 	private void initilaize() {
 		setLayout(null);
 		
-		btnCreateFeed = new JButton("Feed erstellen");
-		btnCreateFeed.setBounds(94, 306, 117, 29);
-		add(btnCreateFeed);
+		btnCreateItem = new JButton("Beitrag erstellen");
+		btnCreateItem.setBounds(77, 306, 145, 29);
+		add(btnCreateItem);
 		
-		listFeeds = new JList();
-		listFeeds.setBounds(6, 6, 288, 287);
-		add(listFeeds);
+		listItems = new JList();
+		listItems.setBounds(6, 6, 288, 287);
+		add(listItems);
 	}
 }

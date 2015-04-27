@@ -6,11 +6,11 @@ import javax.swing.JButton;
 
 public class PanelShowItem extends JPanel {
 	
-	private JTextPane textPaneFeed;
+	private JTextPane textPaneItems;
 	private JButton btnBack;
 
-	public JTextPane getTextPaneFeed() {
-		return textPaneFeed;
+	public JTextPane getTextPaneItems() {
+		return textPaneItems;
 	}
 
 	public JButton getBtnBack() {
@@ -27,10 +27,10 @@ public class PanelShowItem extends JPanel {
 	private void initialize(){
 		setLayout(null);
 		
-		textPaneFeed = new JTextPane();
-		textPaneFeed.setEditable(false);
-		textPaneFeed.setBounds(6, 6, 288, 431);
-		add(textPaneFeed);
+		textPaneItems = new JTextPane();
+		textPaneItems.setEditable(false);
+		textPaneItems.setBounds(6, 6, 288, 431);
+		add(textPaneItems);
 		
 		btnBack = new JButton("Zurück");
 		btnBack.setBounds(92, 449, 117, 29);

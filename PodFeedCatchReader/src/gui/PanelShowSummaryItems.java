@@ -7,7 +7,7 @@ import javax.swing.JButton;
 public class PanelShowSummaryItems extends JPanel {
 	
 	private JTextArea textArea;
-	private JButton btnShowFeed;
+	private JButton btnShowItem;
 	private JButton btnSubscribeChannel;
 	
 	
@@ -16,8 +16,8 @@ public class PanelShowSummaryItems extends JPanel {
 		return textArea;
 	}
 
-	public JButton getBtnShowFeed() {
-		return btnShowFeed;
+	public JButton getBtnShowItem() {
+		return btnShowItem;
 	}
 
 	public JButton getBtnSubscribeChannel() {
@@ -38,9 +38,9 @@ public class PanelShowSummaryItems extends JPanel {
 		textArea.setBounds(6, 6, 288, 309);
 		add(textArea);
 		
-		btnShowFeed = new JButton("Feed anzeigen");
-		btnShowFeed.setBounds(88, 327, 117, 29);
-		add(btnShowFeed);
+		btnShowItem = new JButton("Beitrag anzeigen");
+		btnShowItem.setBounds(77, 327, 146, 29);
+		add(btnShowItem);
 		
 		btnSubscribeChannel = new JButton("Channel abonnieren");
 		btnSubscribeChannel.setBounds(65, 368, 169, 29);

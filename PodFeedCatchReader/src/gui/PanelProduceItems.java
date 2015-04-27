@@ -28,7 +28,7 @@ public class PanelProduceItems extends PanelWithCardLayout {
 		
 		this.switchCard(SHOW_CREATED_FEEDS_PANEL);
 		
-		panelShowCreatedItems.getBtnCreateFeed().addActionListener(new ActionListenerSwitchCard(this, CREATE_FEED_PANEL));
+		panelShowCreatedItems.getBtnCreateItem().addActionListener(new ActionListenerSwitchCard(this, CREATE_FEED_PANEL));
 		panelCreateChannel.getBtnCancel().addActionListener(new ActionListenerSwitchCard(this, CREATE_FEED_PANEL));
 		panelCreateItem.getBtnCreateChannel().addActionListener(new ActionListenerSwitchCard(this, CREATE_CHANNEL_PANEL));
 		panelCreateItem.getBtnCancel().addActionListener(new ActionListenerSwitchCard(this, SHOW_CREATED_FEEDS_PANEL));

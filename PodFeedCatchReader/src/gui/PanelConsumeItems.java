@@ -28,7 +28,7 @@ public class PanelConsumeItems extends PanelWithCardLayout {
 		
 		this.switchCard(SHOW_SUMMARY_FEEDS_PANEL);
 		
-		panelShowSummaryItems.getBtnShowFeed().addActionListener(new ActionListenerSwitchCard(this, SHOW_FEED_PANEL));
+		panelShowSummaryItems.getBtnShowItem().addActionListener(new ActionListenerSwitchCard(this, SHOW_FEED_PANEL));
 		panelShowSummaryItems.getBtnSubscribeChannel().addActionListener(new ActionListenerSwitchCard(this, SUBSCRIBE_CHANNEL_PANEL));
 		panelShowItem.getBtnBack().addActionListener(new ActionListenerSwitchCard(this, SHOW_SUMMARY_FEEDS_PANEL));
 		panelSubscribeChannel.getBtnCancel().addActionListener(new ActionListenerSwitchCard(this, SHOW_SUMMARY_FEEDS_PANEL));
