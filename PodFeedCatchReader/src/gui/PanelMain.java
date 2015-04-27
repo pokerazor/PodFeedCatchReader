@@ -38,11 +38,11 @@ public class PanelMain extends JPanel {
 		gbc.gridy = 0;
 		add(tabbedPane, gbc);
 		
-		PanelConsumeFeeds panelConsumeFeeds = new PanelConsumeFeeds();
-		tabbedPane.addTab("Feeds", null, panelConsumeFeeds, null);
+		PanelConsumeItems panelConsumeItems = new PanelConsumeItems();
+		tabbedPane.addTab("Feeds", null, panelConsumeItems, null);
 		
-		PanelProduceFeeds panelProduceFeeds = new PanelProduceFeeds();
-		tabbedPane.addTab("Feed erstellen", null, panelProduceFeeds, null);
+		PanelProduceItems panelProduceItems = new PanelProduceItems();
+		tabbedPane.addTab("Feed erstellen", null, panelProduceItems, null);
 		
 		PanelOrganizeUsers panelOrganizeUsers = new PanelOrganizeUsers();
 		tabbedPane.addTab("Nutzerverwaltung", null, panelOrganizeUsers, null);

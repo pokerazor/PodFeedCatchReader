@@ -7,9 +7,9 @@ import javax.swing.JTextPane;
 import javax.swing.JButton;
 import javax.swing.JList;
 
-public class PanelCreateFeed extends JPanel {
+public class PanelCreateItem extends JPanel {
 	
-	private JLabel lblCreateFeed;
+	private JLabel lblCreateItem;
 	private JTextPane textPaneFeed;
 	
 	private JButton btnSend;
@@ -17,8 +17,8 @@ public class PanelCreateFeed extends JPanel {
 	private JList listChannels;
 	private JButton btnCreateChannel;
 	
-	public JLabel getLblCreateFeed() {
-		return lblCreateFeed;
+	public JLabel getLblCreateItem() {
+		return lblCreateItem;
 	}
 
 	public JTextPane getTextPanePane() {
@@ -40,7 +40,7 @@ public class PanelCreateFeed extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PanelCreateFeed() {
+	public PanelCreateItem() {
 		initialize();
 
 	}
@@ -48,10 +48,10 @@ public class PanelCreateFeed extends JPanel {
 	private void initialize() {
 		setLayout(null);
 		
-		lblCreateFeed = new JLabel("Feed erstellen");
-		lblCreateFeed.setFont(new Font("Lucida Grande", Font.BOLD, 14));
-		lblCreateFeed.setBounds(92, 6, 115, 16);
-		add(lblCreateFeed);
+		lblCreateItem = new JLabel("Beitrag erstellen");
+		lblCreateItem.setFont(new Font("Lucida Grande", Font.BOLD, 14));
+		lblCreateItem.setBounds(85, 6, 130, 16);
+		add(lblCreateItem);
 		
 		textPaneFeed = new JTextPane();
 		textPaneFeed.setBounds(10, 28, 284, 102);
