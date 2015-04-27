@@ -26,7 +26,7 @@ public class PanelMain extends JPanel {
 	private void initialize() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{330, 0};
-		gridBagLayout.rowHeights = new int[]{530, 0};
+		gridBagLayout.rowHeights = new int[]{550, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
