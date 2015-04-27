@@ -3,6 +3,7 @@ package gui;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
+import javax.swing.JTabbedPane;
 
 public class PanelShowSummaryItems extends JPanel {
 	

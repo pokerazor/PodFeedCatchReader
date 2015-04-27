@@ -45,7 +45,7 @@ public class MainWindow{
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 330, 530);
+		frame.setBounds(100, 100, 331, 580);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		frame.getContentPane().add(panelCard);
