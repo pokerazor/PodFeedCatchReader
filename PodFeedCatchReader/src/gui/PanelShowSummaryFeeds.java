@@ -3,17 +3,17 @@ package gui;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
+import javax.swing.JList;
 
 public class PanelShowSummaryFeeds extends JPanel {
-	
-	private JTextArea textArea;
 	private JButton btnShowFeed;
 	private JButton btnSubscribeChannel;
+	private JList listFeeds;
 	
 	
 
-	public JTextArea getTextArea() {
-		return textArea;
+	public JList getListFeeds() {
+		return listFeeds;
 	}
 
 	public JButton getBtnShowFeed() {
@@ -34,10 +34,6 @@ public class PanelShowSummaryFeeds extends JPanel {
 	private void initialize() {
 		setLayout(null);
 		
-		textArea = new JTextArea();
-		textArea.setBounds(6, 6, 288, 309);
-		add(textArea);
-		
 		btnShowFeed = new JButton("Feed anzeigen");
 		btnShowFeed.setBounds(88, 327, 117, 29);
 		add(btnShowFeed);
@@ -45,5 +41,9 @@ public class PanelShowSummaryFeeds extends JPanel {
 		btnSubscribeChannel = new JButton("Channel abonnieren");
 		btnSubscribeChannel.setBounds(65, 368, 169, 29);
 		add(btnSubscribeChannel);
+		
+		listFeeds = new JList();
+		listFeeds.setBounds(6, 6, 288, 315);
+		add(listFeeds);
 	}
 }
