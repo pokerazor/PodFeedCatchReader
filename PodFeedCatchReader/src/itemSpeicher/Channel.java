@@ -1,4 +1,4 @@
-package feedSpeicher;
+package itemSpeicher;
 
 import java.util.LinkedList;
 
@@ -6,11 +6,11 @@ public class Channel{
 	
 	private int id;
 	private String name;
-	private LinkedList<Feed> feeds;
+	private LinkedList<Item> items;
 	
 	public Channel(int id){
 		this.id = id;
-		feeds = new LinkedList<Feed>();
+		items = new LinkedList<Item>();
 	}
 
 	public String getName() {
@@ -21,16 +21,16 @@ public class Channel{
 		this.name = name;
 	}
 
-	public LinkedList<Feed> getFeeds() {
-		return feeds;
+	public LinkedList<Item> getFeeds() {
+		return items;
 	}
 
-	public void setFeeds(LinkedList<Feed> feeds) {
-		this.feeds.addAll(feeds);
+	public void setFeeds(LinkedList<Item> items) {
+		this.items.addAll(items);
 	}
 	
-	public void setFeed(Feed feed){
-		this.feeds.addFirst(feed);
+	public void setFeed(Item item){
+		this.items.addFirst(item);
 	}
 
 	public int getId() {

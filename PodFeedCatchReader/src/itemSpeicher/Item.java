@@ -1,20 +1,20 @@
-package feedSpeicher;
+package itemSpeicher;
 
-public class Feed{
+public class Item{
 	
 	private int id;
-	private FeedArt art;
+	private ItemArt art;
 	private String inhalt;
 	
-	public Feed(int id){
+	public Item(int id){
 		this.id = id;
 	}
 
-	public FeedArt getArt() {
+	public ItemArt getArt() {
 		return art;
 	}
 
-	public void setArt(FeedArt art) {
+	public void setArt(ItemArt art) {
 		this.art = art;
 	}
 

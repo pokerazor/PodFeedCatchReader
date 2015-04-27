@@ -1,7 +1,7 @@
 package textuelleFeeds;
 
-import feedSpeicher.FeedArt;
-import feedSpeicher.ProduzentenSchnittstelle;
+import itemSpeicher.ItemArt;
+import itemSpeicher.ProduzentenSchnittstelle;
 
 public class FeedErstellung implements FeedErstellenSchnittstelle{
 
@@ -12,7 +12,7 @@ public class FeedErstellung implements FeedErstellenSchnittstelle{
 	}
 
 	@Override
-	public void erstelleFeed(FeedArt art, String inhalt, int ChannelID) {
+	public void erstelleFeed(ItemArt art, String inhalt, int ChannelID) {
 		// TODO Auto-generated method stub
 		
 	}

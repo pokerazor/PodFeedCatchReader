@@ -1,4 +1,4 @@
-package feedSpeicher;
+package itemSpeicher;
 
 import java.util.LinkedList;
 
@@ -11,7 +11,7 @@ public class Produzent implements ProduzentenSchnittstelle{
 	}
 
 	@Override
-	public void erstelleFeed(FeedArt art, String inhalt, int ChannelID) {
+	public void erstelleItem(ItemArt art, String inhalt, int ChannelID) {
 		LinkedList<Channel> channels = verzeichnis.getChannels(); 
 		Channel c;
 		int counter = 0;
@@ -19,7 +19,7 @@ public class Produzent implements ProduzentenSchnittstelle{
 			++counter;
 		}
 		c = channels.get(counter);
-		Feed f = new Feed(c.getFeeds().size()+1);
+		Item f = new Item(c.getFeeds().size()+1);
 		f.setArt(art);
 		f.setInhalt(inhalt);
 		c.setFeed(f);

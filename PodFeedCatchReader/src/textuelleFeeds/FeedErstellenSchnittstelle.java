@@ -1,9 +1,9 @@
 package textuelleFeeds;
 
-import feedSpeicher.FeedArt;
+import itemSpeicher.ItemArt;
 
 public interface FeedErstellenSchnittstelle {
 	
-	public void erstelleFeed(FeedArt art, String inhalt, int ChannelID);
+	public void erstelleFeed(ItemArt art, String inhalt, int ChannelID);
 
 }

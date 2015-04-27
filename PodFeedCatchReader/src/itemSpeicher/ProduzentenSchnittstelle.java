@@ -1,7 +1,7 @@
-package feedSpeicher;
+package itemSpeicher;
 
 
 public interface ProduzentenSchnittstelle {
-	void erstelleFeed(FeedArt art, String inhalt, int ChannelID);
+	void erstelleItem(ItemArt art, String inhalt, int ChannelID);
 	void erstelleChannel(String name);
 }
