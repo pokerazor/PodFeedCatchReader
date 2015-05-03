@@ -4,6 +4,7 @@
 package konfiguration;
 
 import gui.LicenseKeyInput;
+import gui.MainWindow;
 
 import javax.swing.JDialog;
 
@@ -22,6 +23,7 @@ public class Konfiguration {
 	public static String LICENSE_KEY_BUSINESS="ACME Inc.";
 	
 	private Integer currentLicenseState = null;
+	private LicenseKeyInput requestWindow;
 
 	public Integer getLicenseState(){
 		if (currentLicenseState==null){
@@ -32,11 +34,17 @@ public class Konfiguration {
 
 	public void setCurrentLicenseState(Integer currentLicenseState) {
 		this.currentLicenseState = currentLicenseState;
+		System.out.println(currentLicenseState.intValue());
+		
+		if (currentLicenseState.intValue() != LICENSE_STATE_INVALID.intValue()) {
+			showMainWindows(this.currentLicenseState);
+		}
+		
 	}
 
 	private Integer requestLicenseState() {
-		LicenseKeyInput requestWindow=new LicenseKeyInput(this);
-		requestWindow.DisplayLicenseQuestion(this);
+		this.requestWindow=new LicenseKeyInput(this);
+		this.requestWindow.DisplayLicenseQuestion(this);
 		// TODO Auto-generated method stub
 		return LICENSE_STATE_PRIVATE;
 	}
@@ -45,12 +53,16 @@ public class Konfiguration {
 		if(text.equals(LICENSE_KEY_PRIVATE)){
 			return LICENSE_STATE_PRIVATE;
 		} else if(text.equals(LICENSE_KEY_EDUCATION)){
-			return LICENSE_STATE_PRIVATE;
+			return LICENSE_STATE_EDUCATION;
 		} else if(text.equals(LICENSE_KEY_BUSINESS)){
-			return LICENSE_STATE_PRIVATE;
+			return LICENSE_STATE_BUSINESS;
 		}
 		System.out.println(text);
 		return LICENSE_STATE_INVALID;
+	}
+	
+	public void showMainWindows(Integer currentLicenseState) {	
+		MainWindow window = new MainWindow(currentLicenseState);
 	}
 	
 }

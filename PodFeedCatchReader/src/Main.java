@@ -18,10 +18,6 @@ public class Main {
 					currentKonfig=new Konfiguration();
 					currentLicenseState=currentKonfig.getLicenseState();
 					System.out.println(currentLicenseState);
-					
-					if (currentLicenseState != null) {
-						MainWindow window = new MainWindow(currentLicenseState);
-					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

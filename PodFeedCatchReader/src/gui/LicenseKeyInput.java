@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 
 import konfiguration.Konfiguration;
 
-public class LicenseKeyInput extends JDialog {
+public class LicenseKeyInput extends JDialog implements ActionListener {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtLicensekey;
@@ -49,12 +49,7 @@ public class LicenseKeyInput extends JDialog {
 			{
 				final JButton okButton = new JButton("OK");
 				okButton.setActionCommand("OK");
-				okButton.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						owner.setCurrentLicenseState(owner.checkLicenseKey(txtLicensekey.getText()));	
-					}
-				});
+				okButton.addActionListener(this);
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
@@ -64,6 +59,11 @@ public class LicenseKeyInput extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		owner.setCurrentLicenseState(owner.checkLicenseKey(txtLicensekey.getText()));	
+		this.dispose();
 	}
 
 }
