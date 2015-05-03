@@ -15,29 +15,27 @@ import java.awt.CardLayout;
 public class MainWindow{
 
 	private JFrame frame;
-	private final PanelMain panelMain = new PanelMain();
-	private final PanelLogIn panelLogIn = new PanelLogIn();
-	private PanelWithCardLayout panelCard = new PanelWithCardLayout();
+	private Integer currentLicenseState;
+	
+	private PanelMain panelMain;
+	private PanelLogIn panelLogIn;
+	private PanelWithCardLayout panelCard;
 	
 	public final static String LOGIN_PANEL = "Panel with the Log-In things";
 	public final static String MAIN_PANEL = "Panel with the Main things";
 	public final static String CARD_PANEL = "Panel with the Card things";
 	
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		
-	}
-
 	/**
 	 * Create the application.
 	 * @wbp.parser.entryPoint
 	 */
-	public MainWindow() {
+	public MainWindow(int currentLicenceState) {
+		this.currentLicenseState = currentLicenceState;
+		
 		initialize();
 		frame.setVisible(true);
+		
+		
 	}
 
 	/**
@@ -47,6 +45,10 @@ public class MainWindow{
 		frame = new JFrame();
 		frame.setBounds(100, 100, 331, 580);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		panelMain = new PanelMain(currentLicenseState);
+		panelLogIn = new PanelLogIn();
+		panelCard = new PanelWithCardLayout();
 		
 		frame.getContentPane().add(panelCard);
 		

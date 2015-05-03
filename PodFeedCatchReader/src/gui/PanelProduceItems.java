@@ -6,6 +6,8 @@ public class PanelProduceItems extends PanelWithCardLayout {
 	private PanelShowCreatedItems panelShowCreatedItems;
 	private PanelCreateChannel panelCreateChannel;
 	
+	private Integer currentLicenseState;
+	
 	public static final String CREATE_FEED_PANEL = "Panel Create Feed";
 	public static final String SHOW_CREATED_FEEDS_PANEL = "Panel with the created Feeds";
 	public static final String CREATE_CHANNEL_PANEL = "Panel Create Channel";
@@ -13,7 +15,8 @@ public class PanelProduceItems extends PanelWithCardLayout {
 	/**
 	 * Create the panel.
 	 */
-	public PanelProduceItems() {
+	public PanelProduceItems(Integer currentLicenseState) {
+		this.currentLicenseState = currentLicenseState;
 		initilalize();
 	}
 	

@@ -30,6 +30,10 @@ public class Konfiguration {
 		return currentLicenseState; 
 	}
 
+	public void setCurrentLicenseState(Integer currentLicenseState) {
+		this.currentLicenseState = currentLicenseState;
+	}
+
 	private Integer requestLicenseState() {
 		LicenseKeyInput requestWindow=new LicenseKeyInput(this);
 		requestWindow.DisplayLicenseQuestion(this);

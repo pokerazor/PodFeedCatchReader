@@ -5,6 +5,7 @@ public class PanelConsumeItems extends PanelWithCardLayout {
 	private PanelShowItem panelShowItem;
 	private PanelSubscribeChannel panelSubscribeChannel;
 	private PanelShowSummaryItems panelShowSummaryItems;
+	private Integer currentLicenseState;
 	
 	public static final String SHOW_FEED_PANEL = "Panel Show Feed";
 	public static final String SUBSCRIBE_CHANNEL_PANEL = "Panel Subscribe Channel";
@@ -13,7 +14,8 @@ public class PanelConsumeItems extends PanelWithCardLayout {
 	/**
 	 * Create the panel.
 	 */
-	public PanelConsumeItems() {
+	public PanelConsumeItems(Integer currentLicenseState) {
+		this.currentLicenseState = currentLicenseState;
 		initialize();
 	}
 	

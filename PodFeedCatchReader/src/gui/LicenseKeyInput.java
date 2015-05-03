@@ -52,8 +52,7 @@ public class LicenseKeyInput extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						owner.checkLicenseKey( txtLicensekey.getText());
-						
+						owner.setCurrentLicenseState(owner.checkLicenseKey(txtLicensekey.getText()));	
 					}
 				});
 				buttonPane.add(okButton);
