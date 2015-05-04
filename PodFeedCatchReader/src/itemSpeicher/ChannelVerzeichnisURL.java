@@ -6,7 +6,7 @@ public class ChannelVerzeichnisURL{
 	
 	private LinkedList<ChannelURL> liste;
 	
-	ChannelVerzeichnisURL(){
+	public ChannelVerzeichnisURL(){
 		liste = new LinkedList<ChannelURL>();
 	}
 

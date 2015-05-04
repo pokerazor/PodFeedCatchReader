@@ -4,13 +4,18 @@
 package konfiguration;
 
 import itemSpeicher.ChannelVerzeichnis;
+import itemSpeicher.ChannelVerzeichnisURL;
 import itemSpeicher.Konsument;
+import itemSpeicher.KonsumentenSchnittstelle;
 import itemSpeicher.Produzent;
 import itemSpeicher.ProduzentenSchnittstelle;
 import gui.LicenseKeyInput;
 import gui.MainWindow;
 
 import javax.swing.JDialog;
+
+import nutzerVerwaltung.GruppenListe;
+import nutzerVerwaltung.NutzerListe;
 
 /**
  * @author Hanno - Felix Wagner
@@ -71,9 +76,14 @@ public class Konfiguration {
 	
 	public void showMainWindows(Integer currentLicenseState) {
 		ChannelVerzeichnis channelVerzeichnis = new ChannelVerzeichnis();
-		ProduzentenSchnittstelle produzentenSchnittstelle = new Produzent(channelVerzeichnis);
-		KonsumentenSchnittstelle konsumentenSchnittstelle = new Konsument();
-		MainWindow window = new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
+		GruppenListe gruppenListe = new GruppenListe();
+		ChannelVerzeichnisURL channelVerzeichnisURL = new ChannelVerzeichnisURL();
+		NutzerListe nutzerListe = new NutzerListe();
+		
+		System.out.println(currentLicenseState.intValue());
+		ProduzentenSchnittstelle produzentenSchnittstelle = new Produzent(channelVerzeichnis, gruppenListe);
+		KonsumentenSchnittstelle konsumentenSchnittstelle = new Konsument(channelVerzeichnis, channelVerzeichnisURL, nutzerListe);
+		new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
 	}
 	
 }

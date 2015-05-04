@@ -8,7 +8,7 @@ public class Konsument implements KonsumentenSchnittstellePrivat, KonsumentenSch
 	ChannelVerzeichnisURL verzeichnisURL;
 	NutzerListe nutzer;
 	
-	Konsument(ChannelVerzeichnis verzeichnis, ChannelVerzeichnisURL verzeichnisURL, NutzerListe nutzer){
+	public Konsument(ChannelVerzeichnis verzeichnis, ChannelVerzeichnisURL verzeichnisURL, NutzerListe nutzer){
 		this.verzeichnis = verzeichnis;
 		this.verzeichnisURL = verzeichnisURL;
 		this.nutzer = nutzer;

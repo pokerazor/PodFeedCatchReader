@@ -20,8 +20,6 @@ public class PanelSubscribeChannel extends PanelAbstract {
 	private JTextField txtUrl;
 	private JButton btnSubscribe;
 	private JButton btnCancel;
-	
-	private Integer currentLicenseState;
 
 	public JTextField getTxtUrl() {
 		return txtUrl;
