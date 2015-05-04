@@ -2,5 +2,5 @@ package itemSpeicher;
 
 public interface KonsumentenSchnittstelle {
 
-	boolean kommentieren(String kommentar);
+	boolean kommentieren(int ChannelID, int ItemID, String kommentar);
 }

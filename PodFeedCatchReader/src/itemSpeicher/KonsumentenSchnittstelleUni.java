@@ -2,8 +2,9 @@ package itemSpeicher;
 
 public interface KonsumentenSchnittstelleUni extends KonsumentenSchnittstelle{
 	
-	void ItemKonsumieren(int ChannelID, int ItemID);
-	boolean ChannelAbonnierenURL(int ChannelID);
-	boolean ChannelAbonnierenVerzeichnis(int ChannelID);
+	String ItemKonsumieren(int ChannelID, int ItemID);
+	String ItemKonsumierenURL(String URL, int ItemID);
+	boolean ChannelAbonnierenURL(int nutzerID, String ChannelURL);
+	boolean ChannelAbonnierenVerzeichnis(int nutzerID, int ChannelID);
 
 }

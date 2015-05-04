@@ -2,12 +2,18 @@ package itemSpeicher;
 
 import java.util.LinkedList;
 
+import nutzerVerwaltung.Gruppe;
+import nutzerVerwaltung.GruppenListe;
+import nutzerVerwaltung.Nutzer;
+
 public class Produzent implements ProduzentenSchnittstelleUni, ProduzentenSchnittstelleFirma{
 	
 	ChannelVerzeichnis verzeichnis;
+	GruppenListe gruppen;
 	
-	Produzent(ChannelVerzeichnis verzeichnis){
+	Produzent(ChannelVerzeichnis verzeichnis, GruppenListe gruppen){
 		this.verzeichnis = verzeichnis;
+		this.gruppen = gruppen;
 	}
 
 	@Override
@@ -40,8 +46,42 @@ public class Produzent implements ProduzentenSchnittstelleUni, ProduzentenSchnit
 
 	@Override
 	public boolean abonniereChannelFuerGruppe(int ChannelID, int gruppeID) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean channelExistiert = false;
+		boolean gruppeExistiert = false;
+		Channel c = null;
+		Gruppe g = null;
+		
+		for(int i = 0; i < verzeichnis.getChannels().size(); ++i){
+			if(verzeichnis.getChannels().get(i).getId() == ChannelID){
+				c = verzeichnis.getChannels().get(i);
+			}
+		}
+		
+		if(channelExistiert == true){
+			for(int i = 0; i < gruppen.getGruppen().size(); ++i){
+				if(gruppen.getGruppen().get(i).getGruppenID() == gruppeID){
+					g = gruppen.getGruppen().get(i);
+					gruppeExistiert = true;
+				}
+			}
+			
+			if(gruppeExistiert == false){
+				return false;
+			}else{
+
+				for(int i = 0; i < g.getNutzer().size(); ++i){
+					g.getNutzer().get(i).setChannel(c);
+				}
+				
+				return true;
+			}
+			
+			
+		}else{
+			return false;
+		}
+		
+		
 	}
 
 }

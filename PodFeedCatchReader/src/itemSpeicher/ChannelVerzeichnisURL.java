@@ -4,13 +4,13 @@ import java.util.LinkedList;
 
 public class ChannelVerzeichnisURL{
 	
-	private LinkedList<Channel> liste;
+	private LinkedList<ChannelURL> liste;
 	
 	ChannelVerzeichnisURL(){
-		liste = new LinkedList<Channel>();
+		liste = new LinkedList<ChannelURL>();
 	}
 
-	public LinkedList<Channel> getChannels() {
+	public LinkedList<ChannelURL> getChannels() {
 		return liste;
 	}
 }
