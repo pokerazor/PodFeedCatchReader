@@ -14,10 +14,7 @@ public class Main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Integer currentLicenseState;
 					currentKonfig=new Konfiguration();
-					currentLicenseState=currentKonfig.getLicenseState();
-					System.out.println(currentLicenseState);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

@@ -62,8 +62,9 @@ public class LicenseKeyInput extends JDialog implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		owner.setCurrentLicenseState(owner.checkLicenseKey(txtLicensekey.getText()));	
-		this.dispose();
+		if (owner.setCurrentLicenseState(owner.checkLicenseKey(txtLicensekey.getText())) == true) {
+			this.dispose();
+		}
 	}
 
 }

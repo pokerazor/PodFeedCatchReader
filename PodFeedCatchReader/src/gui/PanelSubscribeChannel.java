@@ -5,10 +5,14 @@ import javax.swing.JList;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+import konfiguration.Konfiguration;
+
 public class PanelSubscribeChannel extends JPanel {
 	private JTextField txtUrl;
 	private JButton btnSubscribe;
 	private JButton btnCancel;
+	
+	private Integer currentLicenseState;
 
 	public JTextField getTxtUrl() {
 		return txtUrl;
@@ -25,16 +29,19 @@ public class PanelSubscribeChannel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PanelSubscribeChannel() {
+	public PanelSubscribeChannel(Integer currentLicenseState) {
+		this.currentLicenseState = currentLicenseState;
 		initiliaze();
 	}
 	
 	private void initiliaze() {
 		setLayout(null);
 		
-		JList list = new JList();
-		list.setBounds(6, 6, 288, 301);
-		add(list);
+		if (this.currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_EDUCATION.intValue()) {
+			JList list = new JList();
+			list.setBounds(6, 6, 288, 301);
+			add(list);
+		}
 		
 		txtUrl = new JTextField();
 		txtUrl.setText("URL");
