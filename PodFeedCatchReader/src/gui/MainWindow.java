@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import nutzerVerwaltung.LoginSchnittstelle;
+import nutzerVerwaltung.ZugriffsSchnittstelle;
+
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,6 +31,8 @@ public class MainWindow{
 	private PanelWithCardLayout panelCard;
 	private ProduzentenSchnittstelle produzentenSchnittstelle;
 	private KonsumentenSchnittstelle konsumentenSchnittstelle;
+	private LoginSchnittstelle loginSchnittstelle;
+	private ZugriffsSchnittstelle zugriffsSchnittstelle;
 	
 	public final static String LOGIN_PANEL = "Panel with the Log-In things";
 	public final static String MAIN_PANEL = "Panel with the Main things";
@@ -38,10 +43,14 @@ public class MainWindow{
 	 * Create the application.
 	 * @wbp.parser.entryPoint
 	 */
-	public MainWindow(int currentLicenceState, ProduzentenSchnittstelle produzentenSchnittstelle, KonsumentenSchnittstelle konsumentenSchnittstelle) {
+	public MainWindow(int currentLicenceState, ProduzentenSchnittstelle produzentenSchnittstelle, 
+			KonsumentenSchnittstelle konsumentenSchnittstelle, LoginSchnittstelle loginSchnittstelle, 
+			ZugriffsSchnittstelle zugriffsSchnittstelle) {
 		this.currentLicenseState = currentLicenceState;
 		this.konsumentenSchnittstelle = konsumentenSchnittstelle;
 		this.produzentenSchnittstelle = produzentenSchnittstelle;
+		this.loginSchnittstelle = loginSchnittstelle;
+		this.konsumentenSchnittstelle = konsumentenSchnittstelle;
 		initialize();
 		frame.setVisible(true);
 		
@@ -72,12 +81,21 @@ public class MainWindow{
 		panelCard.add(panelLogIn, LOGIN_PANEL); 
 		
 		panelCard.switchCard(LOGIN_PANEL);
-	
+		
+		panelLogIn.getBtnRegister().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
+		
 		panelLogIn.getBtnLogIn().addActionListener(new ActionListenerSwitchCard(panelCard, MAIN_PANEL));
 		btnNewWindow.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
+				new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle, loginSchnittstelle, zugriffsSchnittstelle);
 			}
 		});
 	}

@@ -10,8 +10,8 @@ import javax.swing.JPanel;
 public class PanelWithCardLayout extends PanelAbstract {
 	
 	public PanelWithCardLayout(Integer currentLicenseState, ProduzentenSchnittstelle produzentenSchnittstelle, KonsumentenSchnittstelle konsumentenSchnittstelle){
-		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
-		this.setLayout(new CardLayout(0, 0));
+		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle, true);
+		
 	}
 	
 

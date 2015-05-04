@@ -1,5 +1,7 @@
 package gui;
 
+import java.awt.CardLayout;
+
 import itemSpeicher.KonsumentenSchnittstelle;
 import itemSpeicher.ProduzentenSchnittstelle;
 
@@ -17,7 +19,17 @@ public abstract class PanelAbstract extends JPanel {
 		this.currentLicenseState = currentLicenseState;
 		this.produzentenSchnitstelle = produzentenSchnittstelle;
 		this.konsumentenSchnittstelle = konsumentenSchnittstelle;
-		this.initialize();
+		initialize();
+	}
+	
+	public PanelAbstract(Integer currentLicenseState, ProduzentenSchnittstelle produzentenSchnittstelle, KonsumentenSchnittstelle konsumentenSchnittstelle, boolean isCardLayout) {
+		this.currentLicenseState = currentLicenseState;
+		this.produzentenSchnitstelle = produzentenSchnittstelle;
+		this.konsumentenSchnittstelle = konsumentenSchnittstelle;
+		if (isCardLayout == true) {
+			setLayout(new CardLayout(0, 0));
+		}
+		initialize();
 	}
 	
 	protected abstract void initialize();
