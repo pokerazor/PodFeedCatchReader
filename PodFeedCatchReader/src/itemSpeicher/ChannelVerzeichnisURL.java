@@ -6,7 +6,7 @@ public class ChannelVerzeichnisURL{
 	
 	private LinkedList<ChannelURL> liste;
 	
-	ChannelVerzeichnisURL(){
+	public ChannelVerzeichnisURL(){
 		liste = new LinkedList<ChannelURL>();
 		for(int i = 1; i < 10; ++i){
 			ChannelURL c = new ChannelURL("http://channel"+ i + ".de");

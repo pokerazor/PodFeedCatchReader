@@ -11,7 +11,7 @@ public class Produzent implements ProduzentenSchnittstelleUni, ProduzentenSchnit
 	ChannelVerzeichnis verzeichnis;
 	GruppenListe gruppen;
 	
-	Produzent(ChannelVerzeichnis verzeichnis, GruppenListe gruppen){
+	public Produzent(ChannelVerzeichnis verzeichnis, GruppenListe gruppen){
 		this.verzeichnis = verzeichnis;
 		this.gruppen = gruppen;
 	}
