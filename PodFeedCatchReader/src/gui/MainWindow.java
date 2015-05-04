@@ -33,7 +33,7 @@ public class MainWindow{
 	 * Create the application.
 	 * @wbp.parser.entryPoint
 	 */
-	public MainWindow(int currentLicenceState) {
+	public MainWindow(int currentLicenceState, ProduzentenSchnittstelle produzentenSchnittstelle, KonsumentenSchnittstelle konsumentenSchnittstelle) {
 		this.currentLicenseState = currentLicenceState;
 		
 		initialize();
@@ -71,7 +71,7 @@ public class MainWindow{
 		btnNewWindow.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Konfiguration();
+				new MainWindow(currentLicenseState);
 			}
 		});
 	}

@@ -6,7 +6,7 @@ public class Produzent implements ProduzentenSchnittstelleUni, ProduzentenSchnit
 	
 	ChannelVerzeichnis verzeichnis;
 	
-	Produzent(ChannelVerzeichnis verzeichnis){
+	public Produzent(ChannelVerzeichnis verzeichnis){
 		this.verzeichnis = verzeichnis;
 	}
 

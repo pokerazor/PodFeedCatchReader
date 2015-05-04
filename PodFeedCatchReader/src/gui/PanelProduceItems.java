@@ -1,5 +1,10 @@
 package gui;
 
+import itemSpeicher.ProduzentenSchnittstelleUni;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class PanelProduceItems extends PanelWithCardLayout {
 	
 	private PanelCreateItem panelCreateItem;
@@ -7,6 +12,7 @@ public class PanelProduceItems extends PanelWithCardLayout {
 	private PanelCreateChannel panelCreateChannel;
 	
 	private Integer currentLicenseState;
+	private ProduzentenSchnittstelleUni produzentenSchnittstelleUni;
 	
 	public static final String CREATE_FEED_PANEL = "Panel Create Feed";
 	public static final String SHOW_CREATED_FEEDS_PANEL = "Panel with the created Feeds";
@@ -17,6 +23,7 @@ public class PanelProduceItems extends PanelWithCardLayout {
 	 */
 	public PanelProduceItems(Integer currentLicenseState) {
 		this.currentLicenseState = currentLicenseState;
+		
 		initilalize();
 	}
 	
@@ -35,6 +42,14 @@ public class PanelProduceItems extends PanelWithCardLayout {
 		panelCreateChannel.getBtnCancel().addActionListener(new ActionListenerSwitchCard(this, CREATE_FEED_PANEL));
 		panelCreateItem.getBtnCreateChannel().addActionListener(new ActionListenerSwitchCard(this, CREATE_CHANNEL_PANEL));
 		panelCreateItem.getBtnCancel().addActionListener(new ActionListenerSwitchCard(this, SHOW_CREATED_FEEDS_PANEL));
+		
+		panelCreateItem.getBtnSend().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 
 	}
 	
