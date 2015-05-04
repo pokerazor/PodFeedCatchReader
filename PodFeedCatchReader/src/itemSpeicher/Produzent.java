@@ -28,9 +28,7 @@ public class Produzent implements ProduzentenSchnittstelleUni, ProduzentenSchnit
 		if(c.getId() != ChannelID){
 			return false;
 		}
-		Item f = new Item(c.getFeeds().size()+1);
-		f.setArt(art);
-		f.setInhalt(inhalt);
+		Item f = new Item(c.getFeeds().size()+1, art, inhalt);
 		c.setFeed(f);
 		return true;
 	}

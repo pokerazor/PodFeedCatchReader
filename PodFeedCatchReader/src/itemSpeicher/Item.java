@@ -9,8 +9,10 @@ public class Item{
 	private String inhalt;
 	private LinkedList<String> kommentare;
 	
-	public Item(int id){
+	public Item(int id, ItemArt art, String inhalt){
 		this.id = id;
+		this.art = art;
+		this.inhalt = inhalt;
 		kommentare = new LinkedList<String>();
 	}
 
@@ -18,16 +20,8 @@ public class Item{
 		return art;
 	}
 
-	public void setArt(ItemArt art) {
-		this.art = art;
-	}
-
 	public String getInhalt() {
 		return inhalt;
-	}
-
-	public void setInhalt(String inhalt) {
-		this.inhalt = inhalt;
 	}
 
 	public int getId() {
