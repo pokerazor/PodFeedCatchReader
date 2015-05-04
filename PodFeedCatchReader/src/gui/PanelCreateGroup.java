@@ -1,12 +1,23 @@
 package gui;
 
+import itemSpeicher.KonsumentenSchnittstelle;
+import itemSpeicher.ProduzentenSchnittstelle;
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class PanelCreateGroup extends JPanel {
+public class PanelCreateGroup extends PanelAbstract {
+	public PanelCreateGroup(Integer currentLicenseState,
+			ProduzentenSchnittstelle produzentenSchnittstelle,
+			KonsumentenSchnittstelle konsumentenSchnittstelle) {
+		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
+	}
+
 	private JTextField textField;
 	
 	private JButton btnSaveGroup;
@@ -23,15 +34,8 @@ public class PanelCreateGroup extends JPanel {
 	public JButton getBtnCancel() {
 		return btnCancel;
 	}
-
-	/**
-	 * Create the panel.
-	 */
-	public PanelCreateGroup() {
-		initialize();
-	}
 	
-	private void initialize() {
+	protected void initialize() {
 		setLayout(null);
 		
 		JLabel lblCreateGroup = new JLabel("Neue Gruppe erstellen");

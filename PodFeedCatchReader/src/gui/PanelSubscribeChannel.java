@@ -1,5 +1,8 @@
 package gui;
 
+import itemSpeicher.KonsumentenSchnittstelle;
+import itemSpeicher.ProduzentenSchnittstelle;
+
 import javax.swing.JPanel;
 import javax.swing.JList;
 import javax.swing.JTextField;
@@ -7,7 +10,13 @@ import javax.swing.JButton;
 
 import konfiguration.Konfiguration;
 
-public class PanelSubscribeChannel extends JPanel {
+public class PanelSubscribeChannel extends PanelAbstract {
+	public PanelSubscribeChannel(Integer currentLicenseState,
+			ProduzentenSchnittstelle produzentenSchnittstelle,
+			KonsumentenSchnittstelle konsumentenSchnittstelle) {
+		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
+	}
+
 	private JTextField txtUrl;
 	private JButton btnSubscribe;
 	private JButton btnCancel;
@@ -25,16 +34,8 @@ public class PanelSubscribeChannel extends JPanel {
 	public JButton getBtnCancel() {
 		return btnCancel;
 	}
-
-	/**
-	 * Create the panel.
-	 */
-	public PanelSubscribeChannel(Integer currentLicenseState) {
-		this.currentLicenseState = currentLicenseState;
-		initiliaze();
-	}
 	
-	private void initiliaze() {
+	protected void initialize() {
 		setLayout(null);
 		
 		if (this.currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_EDUCATION.intValue()) {

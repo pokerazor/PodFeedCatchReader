@@ -1,5 +1,8 @@
 package gui;
 
+import itemSpeicher.KonsumentenSchnittstelle;
+import itemSpeicher.ProduzentenSchnittstelle;
+
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JButton;
@@ -22,18 +25,14 @@ import java.awt.CardLayout;
 
 import konfiguration.Konfiguration;
 
-public class PanelMain extends JPanel {
-	private Integer currentLicenseState;
-
-	/**
-	 * Create the panel.
-	 */
-	public PanelMain(Integer currentLicenseState) {
-		this.currentLicenseState = currentLicenseState;
-		initialize();
+public class PanelMain extends PanelAbstract {
+	public PanelMain(Integer currentLicenseState,
+			ProduzentenSchnittstelle produzentenSchnittstelle,
+			KonsumentenSchnittstelle konsumentenSchnittstelle) {
+		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
 	}
 	
-	private void initialize() {
+	protected void initialize() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{330, 0};
 		gridBagLayout.rowHeights = new int[]{550, 0};
@@ -48,19 +47,19 @@ public class PanelMain extends JPanel {
 		gbc.gridy = 0;
 		add(tabbedPane, gbc);
 		
-		PanelConsumeItems panelConsumeItems = new PanelConsumeItems(currentLicenseState);
+		PanelConsumeItems panelConsumeItems = new PanelConsumeItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle);
 		tabbedPane.addTab("Feeds", null, panelConsumeItems, null);
 		
 		if (currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_BUSINESS.intValue() || currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_EDUCATION.intValue()) {
-			PanelProduceItems panelProduceItems = new PanelProduceItems(currentLicenseState);
+			PanelProduceItems panelProduceItems = new PanelProduceItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle);
 			tabbedPane.addTab("Feed erstellen", null, panelProduceItems, null);
 		}
 		
 		if (currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_BUSINESS.intValue()) {
-			PanelOrganizeUsers panelOrganizeUsers = new PanelOrganizeUsers(currentLicenseState);
-			tabbedPane.addTab("Nutzerverwaltung", null, panelOrganizeUsers, null);
+			PanelUserAdministration panelUserAdministration = new PanelUserAdministration(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle);
+			tabbedPane.addTab("Nutzerverwaltung", null, panelUserAdministration, null);
 			
-			PanelGroupAdministration panelGroupAdministration =  new PanelGroupAdministration();
+			PanelGroupAdministration panelGroupAdministration =  new PanelGroupAdministration(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle);
 			tabbedPane.addTab("Channelzuweisung", null, panelGroupAdministration, null);
 		}
 	}

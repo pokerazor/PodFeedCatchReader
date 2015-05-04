@@ -1,14 +1,26 @@
 package gui;
 
+import itemSpeicher.KonsumentenSchnittstelle;
+import itemSpeicher.ProduzentenSchnittstelle;
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.JTextPane;
 import javax.swing.JButton;
 import javax.swing.JList;
 
-public class PanelCreateItem extends JPanel {
+public class PanelCreateItem extends PanelAbstract {
 	
+	public PanelCreateItem(Integer currentLicenseState,
+			ProduzentenSchnittstelle produzentenSchnittstelle,
+			KonsumentenSchnittstelle konsumentenSchnittstelle) {
+		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
+	}
+
+
 	private JLabel lblCreateItem;
 	private JTextPane textPaneFeed;
 	
@@ -37,15 +49,8 @@ public class PanelCreateItem extends JPanel {
 		return btnCreateChannel;
 	}
 
-	/**
-	 * Create the panel.
-	 */
-	public PanelCreateItem() {
-		initialize();
-
-	}
 	
-	private void initialize() {
+	protected void initialize() {
 		setLayout(null);
 		
 		lblCreateItem = new JLabel("Beitrag erstellen");

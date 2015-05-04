@@ -1,13 +1,25 @@
 package gui;
 
+import itemSpeicher.KonsumentenSchnittstelle;
+import itemSpeicher.ProduzentenSchnittstelle;
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class PanelCreateChannel extends JPanel {
+public class PanelCreateChannel extends PanelAbstract {
+	public PanelCreateChannel(Integer currentLicenseState,
+			ProduzentenSchnittstelle produzentenSchnittstelle,
+			KonsumentenSchnittstelle konsumentenSchnittstelle) {
+		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
+	}
+
+
 	private JTextField textField;
 	
 	private JButton btnSave;
@@ -29,16 +41,8 @@ public class PanelCreateChannel extends JPanel {
 		return btnCancel;
 	}
 
-
-
-	/**
-	 * Create the panel.
-	 */
-	public PanelCreateChannel() {
-		initialize();
-	}
 	
-	private void initialize() {
+	protected void initialize() {
 		setLayout(null);
 		
 		JLabel lblHeading = new JLabel("Channel erstellen");

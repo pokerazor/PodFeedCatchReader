@@ -1,14 +1,19 @@
 package gui;
 
+import itemSpeicher.KonsumentenSchnittstelle;
+import itemSpeicher.ProduzentenSchnittstelle;
+
 import java.awt.CardLayout;
 
 import javax.swing.JPanel;
 
-public class PanelWithCardLayout extends JPanel {
+public class PanelWithCardLayout extends PanelAbstract {
 	
-	public PanelWithCardLayout(){
+	public PanelWithCardLayout(Integer currentLicenseState, ProduzentenSchnittstelle produzentenSchnittstelle, KonsumentenSchnittstelle konsumentenSchnittstelle){
+		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
 		this.setLayout(new CardLayout(0, 0));
 	}
+	
 
 	/**
 	 * Switch Cards of Window's CardLayout
@@ -17,6 +22,12 @@ public class PanelWithCardLayout extends JPanel {
 	public void switchCard(String panelName){
 		CardLayout cardLayout = (CardLayout) this.getLayout();
 		cardLayout.show(this, panelName);
+	}
+
+
+	@Override
+	protected void initialize() {
+		
 	}
 
 }

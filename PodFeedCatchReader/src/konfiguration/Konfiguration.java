@@ -3,6 +3,10 @@
  */
 package konfiguration;
 
+import itemSpeicher.ChannelVerzeichnis;
+import itemSpeicher.Konsument;
+import itemSpeicher.Produzent;
+import itemSpeicher.ProduzentenSchnittstelle;
 import gui.LicenseKeyInput;
 import gui.MainWindow;
 
@@ -65,8 +69,11 @@ public class Konfiguration {
 		return LICENSE_STATE_INVALID;
 	}
 	
-	public void showMainWindows(Integer currentLicenseState) {	
-		MainWindow window = new MainWindow(currentLicenseState);
+	public void showMainWindows(Integer currentLicenseState) {
+		ChannelVerzeichnis channelVerzeichnis = new ChannelVerzeichnis();
+		ProduzentenSchnittstelle produzentenSchnittstelle = new Produzent(channelVerzeichnis);
+		KonsumentenSchnittstelle konsumentenSchnittstelle = new Konsument();
+		MainWindow window = new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
 	}
 	
 }

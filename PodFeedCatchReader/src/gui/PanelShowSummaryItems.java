@@ -1,12 +1,22 @@
 package gui;
 
+import itemSpeicher.KonsumentenSchnittstelle;
+import itemSpeicher.ProduzentenSchnittstelle;
+
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JTabbedPane;
 
-public class PanelShowSummaryItems extends JPanel {
+public class PanelShowSummaryItems extends PanelAbstract {
 	
+	public PanelShowSummaryItems(Integer currentLicenseState,
+			ProduzentenSchnittstelle produzentenSchnittstelle,
+			KonsumentenSchnittstelle konsumentenSchnittstelle) {
+		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
+		// TODO Auto-generated constructor stub
+	}
+
 	private JTextArea textArea;
 	private JButton btnShowItem;
 	private JButton btnSubscribeChannel;
@@ -24,15 +34,8 @@ public class PanelShowSummaryItems extends JPanel {
 	public JButton getBtnSubscribeChannel() {
 		return btnSubscribeChannel;
 	}
-
-	/**
-	 * Create the panel.
-	 */
-	public PanelShowSummaryItems() {
-		initialize();
-	}
 	
-	private void initialize() {
+	protected void initialize() {
 		setLayout(null);
 		
 		textArea = new JTextArea();

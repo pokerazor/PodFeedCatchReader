@@ -1,5 +1,7 @@
 package gui;
 
+import itemSpeicher.KonsumentenSchnittstelle;
+import itemSpeicher.ProduzentenSchnittstelle;
 import itemSpeicher.ProduzentenSchnittstelleUni;
 
 import java.awt.event.ActionEvent;
@@ -7,6 +9,12 @@ import java.awt.event.ActionListener;
 
 public class PanelProduceItems extends PanelWithCardLayout {
 	
+	public PanelProduceItems(Integer currentLicenseState,
+			ProduzentenSchnittstelle produzentenSchnittstelle,
+			KonsumentenSchnittstelle konsumentenSchnittstelle) {
+		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
+	}
+
 	private PanelCreateItem panelCreateItem;
 	private PanelShowCreatedItems panelShowCreatedItems;
 	private PanelCreateChannel panelCreateChannel;
@@ -21,16 +29,12 @@ public class PanelProduceItems extends PanelWithCardLayout {
 	/**
 	 * Create the panel.
 	 */
-	public PanelProduceItems(Integer currentLicenseState) {
-		this.currentLicenseState = currentLicenseState;
-		
-		initilalize();
-	}
 	
-	private void initilalize() {
-		panelCreateItem = new PanelCreateItem();
-		panelShowCreatedItems = new PanelShowCreatedItems();
-		panelCreateChannel = new PanelCreateChannel();
+	
+	protected void initialize() {
+		panelCreateItem = new PanelCreateItem(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle);
+		panelShowCreatedItems = new PanelShowCreatedItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle);
+		panelCreateChannel = new PanelCreateChannel(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle);
 		
 		this.add(panelCreateItem, CREATE_FEED_PANEL);
 		this.add(panelShowCreatedItems, SHOW_CREATED_FEEDS_PANEL); 

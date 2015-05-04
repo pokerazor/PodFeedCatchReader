@@ -1,17 +1,29 @@
 package gui;
 
+import itemSpeicher.KonsumentenSchnittstelle;
+import itemSpeicher.ProduzentenSchnittstelle;
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
 import java.awt.Font;
 import java.awt.Panel;
 import java.awt.List;
+
 import javax.swing.JList;
 import javax.swing.JButton;
+
 import java.awt.Button;
 
-public class PanelAssignChannelToGroup extends JPanel {
+public class PanelAssignChannelToGroup extends PanelAbstract {
 	
+	public PanelAssignChannelToGroup(Integer currentLicenseState,
+			ProduzentenSchnittstelle produzentenSchnittstelle,
+			KonsumentenSchnittstelle konsumentenSchnittstelle) {
+		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
+	}
+
 	private JButton btnSave;
 	private JButton btnCancel;
 	private JButton btnNewChannel;
@@ -32,15 +44,8 @@ public class PanelAssignChannelToGroup extends JPanel {
 	public JButton getBtnNewGroup() {
 		return btnNewGroup;
 	}
-
-	/**
-	 * Create the panel.
-	 */
-	public PanelAssignChannelToGroup() {
-		initiliaze();
-	}
 	
-	private void initiliaze() {
+	protected void initialize() {
 		setLayout(null);
 		
 		JLabel lblHeading = new JLabel("Channel zu Gruppe zuweisen");

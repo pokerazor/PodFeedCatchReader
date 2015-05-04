@@ -1,11 +1,20 @@
 package gui;
 
+import itemSpeicher.KonsumentenSchnittstelle;
+import itemSpeicher.ProduzentenSchnittstelle;
+
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
 
-public class PanelShowItem extends JPanel {
+public class PanelShowItem extends PanelAbstract {
 	
+	public PanelShowItem(Integer currentLicenseState,
+			ProduzentenSchnittstelle produzentenSchnittstelle,
+			KonsumentenSchnittstelle konsumentenSchnittstelle) {
+		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
+	}
+
 	private JTextPane textPaneItems;
 	private JButton btnBack;
 
@@ -16,15 +25,8 @@ public class PanelShowItem extends JPanel {
 	public JButton getBtnBack() {
 		return btnBack;
 	}
-
-	/**
-	 * Create the panel.
-	 */
-	public PanelShowItem() {
-		initialize();
-	}
 	
-	private void initialize(){
+	protected void initialize(){
 		setLayout(null);
 		
 		textPaneItems = new JTextPane();

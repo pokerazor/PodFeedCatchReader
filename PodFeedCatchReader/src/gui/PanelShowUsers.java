@@ -1,14 +1,23 @@
 package gui;
 
+import itemSpeicher.KonsumentenSchnittstelle;
+import itemSpeicher.ProduzentenSchnittstelle;
+
 import javax.swing.JPanel;
 
-public class PanelShowUsers extends JPanel {
+public class PanelShowUsers extends PanelAbstract {
 
-	/**
-	 * Create the panel.
-	 */
-	public PanelShowUsers() {
-
+	public PanelShowUsers(Integer currentLicenseState,
+			ProduzentenSchnittstelle produzentenSchnittstelle,
+			KonsumentenSchnittstelle konsumentenSchnittstelle) {
+		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
 	}
+
+	@Override
+	protected void initialize() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

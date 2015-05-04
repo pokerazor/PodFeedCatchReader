@@ -1,5 +1,8 @@
 package gui;
 
+import itemSpeicher.KonsumentenSchnittstelle;
+import itemSpeicher.ProduzentenSchnittstelle;
+
 import java.awt.EventQueue;
 
 import javax.swing.JButton;
@@ -23,6 +26,8 @@ public class MainWindow{
 	private PanelMain panelMain;
 	private PanelLogIn panelLogIn;
 	private PanelWithCardLayout panelCard;
+	private ProduzentenSchnittstelle produzentenSchnittstelle;
+	private KonsumentenSchnittstelle konsumentenSchnittstelle;
 	
 	public final static String LOGIN_PANEL = "Panel with the Log-In things";
 	public final static String MAIN_PANEL = "Panel with the Main things";
@@ -35,7 +40,8 @@ public class MainWindow{
 	 */
 	public MainWindow(int currentLicenceState, ProduzentenSchnittstelle produzentenSchnittstelle, KonsumentenSchnittstelle konsumentenSchnittstelle) {
 		this.currentLicenseState = currentLicenceState;
-		
+		this.konsumentenSchnittstelle = konsumentenSchnittstelle;
+		this.produzentenSchnittstelle = produzentenSchnittstelle;
 		initialize();
 		frame.setVisible(true);
 		
@@ -50,9 +56,9 @@ public class MainWindow{
 		frame.setBounds(100, 100, 331, 613);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		panelMain = new PanelMain(currentLicenseState);
-		panelLogIn = new PanelLogIn();
-		panelCard = new PanelWithCardLayout();
+		panelMain = new PanelMain(this.currentLicenseState, this.produzentenSchnittstelle, this.konsumentenSchnittstelle);
+		panelLogIn = new PanelLogIn(this.currentLicenseState, this.produzentenSchnittstelle, this.konsumentenSchnittstelle);
+		panelCard = new PanelWithCardLayout(this.currentLicenseState, this.produzentenSchnittstelle, this.konsumentenSchnittstelle);
 		
 		frame.getContentPane().add(panelCard);
 		
@@ -71,7 +77,7 @@ public class MainWindow{
 		btnNewWindow.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new MainWindow(currentLicenseState);
+				new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
 			}
 		});
 	}

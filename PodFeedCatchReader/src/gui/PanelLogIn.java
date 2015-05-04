@@ -1,5 +1,8 @@
 package gui;
 
+import itemSpeicher.KonsumentenSchnittstelle;
+import itemSpeicher.ProduzentenSchnittstelle;
+
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -10,11 +13,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class PanelLogIn extends JPanel {
+public class PanelLogIn extends PanelAbstract {
 	
+	public PanelLogIn(Integer currentLicenseState,
+			ProduzentenSchnittstelle produzentenSchnittstelle,
+			KonsumentenSchnittstelle konsumentenSchnittstelle) {
+		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
+	}
+
 	private JTextField textFieldName;
 	private JTextField textFieldPassword;
 	
@@ -28,15 +38,8 @@ public class PanelLogIn extends JPanel {
 	public JButton getBtnRegister() {
 		return btnRegister;
 	}
-
-	/**
-	 * Create the panel.
-	 */
-	public PanelLogIn() {
-		this.initialize();
-	}
 	
-	private void initialize(){
+	protected void initialize(){
 		setLayout(null);
 		
 		JLabel lblName = new JLabel("Name:");

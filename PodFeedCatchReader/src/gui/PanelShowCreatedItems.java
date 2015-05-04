@@ -1,11 +1,21 @@
 package gui;
 
+import itemSpeicher.KonsumentenSchnittstelle;
+import itemSpeicher.ProduzentenSchnittstelle;
+
 import javax.swing.JPanel;
 import javax.swing.JList;
 import javax.swing.JButton;
 
-public class PanelShowCreatedItems extends JPanel {
+public class PanelShowCreatedItems extends PanelAbstract {
 	
+	public PanelShowCreatedItems(Integer currentLicenseState,
+			ProduzentenSchnittstelle produzentenSchnittstelle,
+			KonsumentenSchnittstelle konsumentenSchnittstelle) {
+		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
+		// TODO Auto-generated constructor stub
+	}
+
 	private JButton btnCreateItem;
 	JList listItems;
 
@@ -16,15 +26,8 @@ public class PanelShowCreatedItems extends JPanel {
 	public JButton getBtnCreateItem() {
 		return btnCreateItem;
 	}
-
-	/**
-	 * Create the panel.
-	 */
-	public PanelShowCreatedItems() {
-		initilaize();
-	}
 	
-	private void initilaize() {
+	protected void initialize() {
 		setLayout(null);
 		
 		btnCreateItem = new JButton("Beitrag erstellen");

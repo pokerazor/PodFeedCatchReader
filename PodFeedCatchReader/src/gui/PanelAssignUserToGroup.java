@@ -1,14 +1,25 @@
 package gui;
 
+import itemSpeicher.KonsumentenSchnittstelle;
+import itemSpeicher.ProduzentenSchnittstelle;
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+
 import java.awt.Font;
 import java.awt.Color;
+
 import javax.swing.JList;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
-public class PanelAssignUserToGroup extends JPanel {
+public class PanelAssignUserToGroup extends PanelAbstract {
+
+	public PanelAssignUserToGroup(Integer currentLicenseState,
+			ProduzentenSchnittstelle produzentenSchnittstelle,
+			KonsumentenSchnittstelle konsumentenSchnittstelle) {
+		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
+	}
 
 	private JButton btnCreateGroup;
 	private JButton btnSaveAssignment;
@@ -21,14 +32,8 @@ public class PanelAssignUserToGroup extends JPanel {
 		return btnSaveAssignment;
 	}
 
-	/**
-	 * Create the panel.
-	 */
-	public PanelAssignUserToGroup() {
-		initialize();
-	}
 	
-	private void initialize() {
+	protected void initialize() {
 		setForeground(Color.LIGHT_GRAY);
 		setLayout(null);
 		
