@@ -1,9 +1,8 @@
 package itemSpeicher;
 
-public interface KonsumentenSchnittstellePrivat {
+public interface KonsumentenSchnittstellePrivat extends KonsumentenSchnittstelle{
 	
 	void ItemKonsumierenText(int ChannelID, int ItemID);
-	boolean kommentieren(String kommentar);
 	boolean ChannelAbonnierenURL(int ChannelID);
 
 }

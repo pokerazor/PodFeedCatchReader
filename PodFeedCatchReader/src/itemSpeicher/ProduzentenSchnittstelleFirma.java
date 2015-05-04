@@ -1,8 +1,6 @@
 package itemSpeicher;
 
 
-public interface ProduzentenSchnittstelleFirma {
-	boolean erstelleItem(ItemArt art, String inhalt, int ChannelID);
-	boolean erstelleChannel(String name);
+public interface ProduzentenSchnittstelleFirma extends ProduzentenSchnittstelle{
 	boolean abonniereChannelFuerGruppe(int ChannelID, int gruppeID);
 }

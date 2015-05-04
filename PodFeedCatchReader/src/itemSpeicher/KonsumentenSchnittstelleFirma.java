@@ -1,8 +1,7 @@
 package itemSpeicher;
 
-public interface KonsumentenSchnittstelleFirma extends ProduzentenSchnittstelleFirma{
+public interface KonsumentenSchnittstelleFirma extends KonsumentenSchnittstelle{
 	
 	void ItemKonsumierenTextAudio(int ChannelID, int ItemID);
-	boolean kommentieren(String kommentar);
 
 }
