@@ -59,6 +59,9 @@ public class PanelMain extends JPanel {
 		if (currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_BUSINESS.intValue()) {
 			PanelOrganizeUsers panelOrganizeUsers = new PanelOrganizeUsers(currentLicenseState);
 			tabbedPane.addTab("Nutzerverwaltung", null, panelOrganizeUsers, null);
+			
+			PanelGroupAdministration panelGroupAdministration =  new PanelGroupAdministration();
+			tabbedPane.addTab("Channelzuweisung", null, panelGroupAdministration, null);
 		}
 	}
 	

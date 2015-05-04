@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 
 public class PanelOrganizeUsers extends PanelWithCardLayout {
 	
-	private PanelAssignGroup panelAssignGroup = new PanelAssignGroup();
+	private PanelAssignUserToGroup panelAssignUserToGroup = new PanelAssignUserToGroup();
 	private PanelCreateGroup panelCreateGroup = new PanelCreateGroup();
 	
 	private Integer currentLicenseState;
@@ -21,12 +21,12 @@ public class PanelOrganizeUsers extends PanelWithCardLayout {
 	}
 	
 	private void initialize() {
-		this.add(panelAssignGroup, ASSIGN_GROUP_PANEL);
+		this.add(panelAssignUserToGroup, ASSIGN_GROUP_PANEL);
 		this.add(panelCreateGroup, CREATE_GROUP_PANEL);
 		
 		this.switchCard(ASSIGN_GROUP_PANEL);
 		
-		panelAssignGroup.getBtnCreateGroup().addActionListener(new ActionListenerSwitchCard(this, CREATE_GROUP_PANEL));
+		panelAssignUserToGroup.getBtnCreateGroup().addActionListener(new ActionListenerSwitchCard(this, CREATE_GROUP_PANEL));
 		panelCreateGroup.getBtnCancel().addActionListener(new ActionListenerSwitchCard(this, ASSIGN_GROUP_PANEL));
 	}
 

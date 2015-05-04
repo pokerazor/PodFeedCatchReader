@@ -24,29 +24,33 @@ public class Konfiguration {
 	
 	private Integer currentLicenseState = null;
 	private LicenseKeyInput requestWindow;
+	
+	public Konfiguration() {
+		this.getLicenseState();
+	}
 
 	public Integer getLicenseState(){
 		if (currentLicenseState==null){
-			currentLicenseState=requestLicenseState();
+			requestLicenseState();
 		}
 		return currentLicenseState; 
 	}
 
-	public void setCurrentLicenseState(Integer currentLicenseState) {
+	public boolean setCurrentLicenseState(Integer currentLicenseState) {
 		this.currentLicenseState = currentLicenseState;
 		System.out.println(currentLicenseState.intValue());
 		
 		if (currentLicenseState.intValue() != LICENSE_STATE_INVALID.intValue()) {
 			showMainWindows(this.currentLicenseState);
+			return true;
 		}
+		return false;
 		
 	}
 
-	private Integer requestLicenseState() {
+	private void requestLicenseState() {
 		this.requestWindow=new LicenseKeyInput(this);
 		this.requestWindow.DisplayLicenseQuestion(this);
-		// TODO Auto-generated method stub
-		return LICENSE_STATE_PRIVATE;
 	}
 
 	public Integer checkLicenseKey(String text) {

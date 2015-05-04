@@ -21,7 +21,7 @@ public class PanelConsumeItems extends PanelWithCardLayout {
 	
 	private void initialize() {
 		panelShowItem = new PanelShowItem();
-		panelSubscribeChannel = new PanelSubscribeChannel();
+		panelSubscribeChannel = new PanelSubscribeChannel(this.currentLicenseState);
 		panelShowSummaryItems = new PanelShowSummaryItems();
 		
 		this.add(panelShowItem, SHOW_FEED_PANEL);
