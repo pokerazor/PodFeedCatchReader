@@ -8,7 +8,7 @@ import javax.swing.JList;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
-public class PanelAssignGroup extends JPanel {
+public class PanelAssignUserToGroup extends JPanel {
 
 	private JButton btnCreateGroup;
 	private JButton btnSaveAssignment;
@@ -24,7 +24,7 @@ public class PanelAssignGroup extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PanelAssignGroup() {
+	public PanelAssignUserToGroup() {
 		initialize();
 	}
 	
