@@ -14,15 +14,17 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import nutzerVerwaltung.LoginSchnittstelle;
+import nutzerVerwaltung.ZugriffsSchnittstelle;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class PanelLogIn extends PanelAbstract {
 	
-	public PanelLogIn(Integer currentLicenseState,
-			ProduzentenSchnittstelle produzentenSchnittstelle,
-			KonsumentenSchnittstelle konsumentenSchnittstelle) {
-		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
+	public PanelLogIn(Integer currentLicenseState, ProduzentenSchnittstelle produzentenSchnittstelle, KonsumentenSchnittstelle konsumentenSchnittstelle,
+			LoginSchnittstelle loginSchnittstelle, ZugriffsSchnittstelle zugriffsSchnittstelle) {
+		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle, loginSchnittstelle, zugriffsSchnittstelle);
 	}
 
 	private JTextField textFieldName;

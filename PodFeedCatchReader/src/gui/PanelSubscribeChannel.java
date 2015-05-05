@@ -8,13 +8,19 @@ import javax.swing.JList;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+import nutzerVerwaltung.LoginSchnittstelle;
+import nutzerVerwaltung.ZugriffsSchnittstelle;
 import konfiguration.Konfiguration;
 
 public class PanelSubscribeChannel extends PanelAbstract {
 	public PanelSubscribeChannel(Integer currentLicenseState,
 			ProduzentenSchnittstelle produzentenSchnittstelle,
-			KonsumentenSchnittstelle konsumentenSchnittstelle) {
-		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
+			KonsumentenSchnittstelle konsumentenSchnittstelle,
+			LoginSchnittstelle loginSchnittstelle,
+			ZugriffsSchnittstelle zugriffsSchnittstelle) {
+		super(currentLicenseState, produzentenSchnittstelle,
+				konsumentenSchnittstelle, loginSchnittstelle,
+				zugriffsSchnittstelle);
 	}
 
 	private JTextField txtUrl;

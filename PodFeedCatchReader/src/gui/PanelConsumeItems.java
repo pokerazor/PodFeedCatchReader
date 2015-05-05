@@ -1,5 +1,7 @@
 package gui;
 
+import nutzerVerwaltung.LoginSchnittstelle;
+import nutzerVerwaltung.ZugriffsSchnittstelle;
 import itemSpeicher.KonsumentenSchnittstelle;
 import itemSpeicher.ProduzentenSchnittstelle;
 
@@ -7,8 +9,14 @@ public class PanelConsumeItems extends PanelWithCardLayout {
 	
 	public PanelConsumeItems(Integer currentLicenseState,
 			ProduzentenSchnittstelle produzentenSchnittstelle,
-			KonsumentenSchnittstelle konsumentenSchnittstelle) {
-		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
+			KonsumentenSchnittstelle konsumentenSchnittstelle,
+			LoginSchnittstelle loginSchnittstelle,
+			ZugriffsSchnittstelle zugriffsSchnittstelle) {
+		super(currentLicenseState, produzentenSchnittstelle,
+				konsumentenSchnittstelle, loginSchnittstelle,
+				zugriffsSchnittstelle);
+		
+		this.switchCard(SHOW_SUMMARY_FEEDS_PANEL);
 	}
 
 	private PanelShowItem panelShowItem;
@@ -22,15 +30,13 @@ public class PanelConsumeItems extends PanelWithCardLayout {
 	
 	
 	protected void initialize() {
-		panelShowItem = new PanelShowItem(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle);
-		panelSubscribeChannel = new PanelSubscribeChannel(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle);
-		panelShowSummaryItems = new PanelShowSummaryItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle);
+		panelShowItem = new PanelShowItem(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle);
+		panelSubscribeChannel = new PanelSubscribeChannel(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle);
+		panelShowSummaryItems = new PanelShowSummaryItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle);
 		
 		this.add(panelShowItem, SHOW_FEED_PANEL);
 		this.add(panelShowSummaryItems, SHOW_SUMMARY_FEEDS_PANEL);
 		this.add(panelSubscribeChannel, SUBSCRIBE_CHANNEL_PANEL);
-		
-		this.switchCard(SHOW_SUMMARY_FEEDS_PANEL);
 		
 		panelShowSummaryItems.getBtnShowItem().addActionListener(new ActionListenerSwitchCard(this, SHOW_FEED_PANEL));
 		panelShowSummaryItems.getBtnSubscribeChannel().addActionListener(new ActionListenerSwitchCard(this, SUBSCRIBE_CHANNEL_PANEL));

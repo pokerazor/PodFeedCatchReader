@@ -17,6 +17,9 @@ import java.awt.Button;
 
 import javax.swing.JList;
 
+import nutzerVerwaltung.LoginSchnittstelle;
+import nutzerVerwaltung.ZugriffsSchnittstelle;
+
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
@@ -28,8 +31,12 @@ import konfiguration.Konfiguration;
 public class PanelMain extends PanelAbstract {
 	public PanelMain(Integer currentLicenseState,
 			ProduzentenSchnittstelle produzentenSchnittstelle,
-			KonsumentenSchnittstelle konsumentenSchnittstelle) {
-		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
+			KonsumentenSchnittstelle konsumentenSchnittstelle,
+			LoginSchnittstelle loginSchnittstelle,
+			ZugriffsSchnittstelle zugriffsSchnittstelle) {
+		super(currentLicenseState, produzentenSchnittstelle,
+				konsumentenSchnittstelle, loginSchnittstelle,
+				zugriffsSchnittstelle);
 	}
 	
 	protected void initialize() {
@@ -47,19 +54,19 @@ public class PanelMain extends PanelAbstract {
 		gbc.gridy = 0;
 		add(tabbedPane, gbc);
 		
-		PanelConsumeItems panelConsumeItems = new PanelConsumeItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle);
+		PanelConsumeItems panelConsumeItems = new PanelConsumeItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle);
 		tabbedPane.addTab("Feeds", null, panelConsumeItems, null);
 		
 		if (currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_BUSINESS.intValue() || currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_EDUCATION.intValue()) {
-			PanelProduceItems panelProduceItems = new PanelProduceItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle);
+			PanelProduceItems panelProduceItems = new PanelProduceItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle);
 			tabbedPane.addTab("Feed erstellen", null, panelProduceItems, null);
 		}
 		
 		if (currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_BUSINESS.intValue()) {
-			PanelUserAdministration panelUserAdministration = new PanelUserAdministration(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle);
+			PanelUserAdministration panelUserAdministration = new PanelUserAdministration(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle);
 			tabbedPane.addTab("Nutzerverwaltung", null, panelUserAdministration, null);
 			
-			PanelGroupAdministration panelGroupAdministration =  new PanelGroupAdministration(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle);
+			PanelGroupAdministration panelGroupAdministration =  new PanelGroupAdministration(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle);
 			tabbedPane.addTab("Channelzuweisung", null, panelGroupAdministration, null);
 		}
 	}

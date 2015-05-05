@@ -6,12 +6,21 @@ public class Verwaltung implements LoginSchnittstelle, ZugriffsSchnittstelle{
 
 	NutzerListe nutzer;
 	GruppenListe gruppen;
+	private Nutzer aktuellerNutzer;
 	
 	public Verwaltung(NutzerListe nutzer, GruppenListe gruppen){
 		this.nutzer = nutzer;
 		this.gruppen = gruppen;
 	}
 	
+	
+	
+	public Nutzer getAktuellerNutzer() {
+		return aktuellerNutzer;
+	}
+
+
+
 	@Override
 	public boolean erstelleGruppe(String name) {
 		int id = gruppen.getGruppen().size()+1;
@@ -65,6 +74,7 @@ public class Verwaltung implements LoginSchnittstelle, ZugriffsSchnittstelle{
 			return false;
 		}else{
 			if(n.getPasswort() == passwort){
+				aktuellerNutzer = n;
 				return true;
 			}else{
 				return false;

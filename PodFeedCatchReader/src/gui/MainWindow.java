@@ -65,9 +65,9 @@ public class MainWindow{
 		frame.setBounds(100, 100, 331, 613);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		panelMain = new PanelMain(this.currentLicenseState, this.produzentenSchnittstelle, this.konsumentenSchnittstelle);
-		panelLogIn = new PanelLogIn(this.currentLicenseState, this.produzentenSchnittstelle, this.konsumentenSchnittstelle);
-		panelCard = new PanelWithCardLayout(this.currentLicenseState, this.produzentenSchnittstelle, this.konsumentenSchnittstelle);
+		panelMain = new PanelMain(this.currentLicenseState, this.produzentenSchnittstelle, this.konsumentenSchnittstelle, this.loginSchnittstelle, this.zugriffsSchnittstelle);
+		panelLogIn = new PanelLogIn(this.currentLicenseState, this.produzentenSchnittstelle, this.konsumentenSchnittstelle, this.loginSchnittstelle, this.zugriffsSchnittstelle);
+		panelCard = new PanelWithCardLayout(this.currentLicenseState, this.produzentenSchnittstelle, this.konsumentenSchnittstelle, this.loginSchnittstelle, this.zugriffsSchnittstelle);
 		
 		frame.getContentPane().add(panelCard);
 		

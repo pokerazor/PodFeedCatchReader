@@ -7,12 +7,21 @@ import itemSpeicher.ProduzentenSchnittstelleUni;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import nutzerVerwaltung.LoginSchnittstelle;
+import nutzerVerwaltung.ZugriffsSchnittstelle;
+
 public class PanelProduceItems extends PanelWithCardLayout {
 	
 	public PanelProduceItems(Integer currentLicenseState,
 			ProduzentenSchnittstelle produzentenSchnittstelle,
-			KonsumentenSchnittstelle konsumentenSchnittstelle) {
-		super(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
+			KonsumentenSchnittstelle konsumentenSchnittstelle,
+			LoginSchnittstelle loginSchnittstelle,
+			ZugriffsSchnittstelle zugriffsSchnittstelle) {
+		super(currentLicenseState, produzentenSchnittstelle,
+				konsumentenSchnittstelle, loginSchnittstelle,
+				zugriffsSchnittstelle);
+		
+		this.switchCard(SHOW_CREATED_FEEDS_PANEL);
 	}
 
 	private PanelCreateItem panelCreateItem;
@@ -32,15 +41,13 @@ public class PanelProduceItems extends PanelWithCardLayout {
 	
 	
 	protected void initialize() {
-		panelCreateItem = new PanelCreateItem(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle);
-		panelShowCreatedItems = new PanelShowCreatedItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle);
-		panelCreateChannel = new PanelCreateChannel(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle);
+		panelCreateItem = new PanelCreateItem(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle);
+		panelShowCreatedItems = new PanelShowCreatedItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle);
+		panelCreateChannel = new PanelCreateChannel(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle);
 		
 		this.add(panelCreateItem, CREATE_FEED_PANEL);
 		this.add(panelShowCreatedItems, SHOW_CREATED_FEEDS_PANEL); 
 		this.add(panelCreateChannel, CREATE_CHANNEL_PANEL);
-		
-		this.switchCard(SHOW_CREATED_FEEDS_PANEL);
 		
 		panelShowCreatedItems.getBtnCreateItem().addActionListener(new ActionListenerSwitchCard(this, CREATE_FEED_PANEL));
 		panelCreateChannel.getBtnCancel().addActionListener(new ActionListenerSwitchCard(this, CREATE_FEED_PANEL));

@@ -84,12 +84,11 @@ public class Konfiguration {
 		NutzerListe nutzerListe = new NutzerListe();
 		Verwaltung verwaltung = new Verwaltung(nutzerListe, gruppenListe);
 		
-		System.out.println(currentLicenseState.intValue());
 		ProduzentenSchnittstelle produzentenSchnittstelle = new Produzent(channelVerzeichnis, gruppenListe);
 		KonsumentenSchnittstelle konsumentenSchnittstelle = new Konsument(channelVerzeichnis, channelVerzeichnisURL, nutzerListe);
 		LoginSchnittstelle loginSchnittstelle = verwaltung;
 		ZugriffsSchnittstelle zugriffsSchnittstelle = verwaltung;
-		new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle);
+		new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle, loginSchnittstelle, zugriffsSchnittstelle);
 	}
 	
 }
