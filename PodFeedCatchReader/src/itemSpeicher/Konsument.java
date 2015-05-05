@@ -1,5 +1,7 @@
 package itemSpeicher;
 
+import java.util.Vector;
+
 import nutzerVerwaltung.NutzerListe;
 
 public class Konsument implements KonsumentenSchnittstellePrivat, KonsumentenSchnittstelleUni, KonsumentenSchnittstelleFirma{
@@ -282,6 +284,32 @@ public class Konsument implements KonsumentenSchnittstellePrivat, KonsumentenSch
 		
 		return false;
 	}
+	
+	public Vector<Item> gibAlleItemsZuNutzer(int nutzerID, ItemArt[] itemArt) {
+		Vector<Item> alleItems = new Vector<Item>();
+		//TODO	
+		return alleItems;
+	}
+
+	@Override
+	public Vector<Item> AlleTextAudioItemsZuNuzer(int nutzerID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Vector<Item> AlleItemsZuNuzer(int nutzerID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Vector<Item> AlleTextItemsZuNuzer(int nutzerID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 
 	
 

@@ -1,5 +1,6 @@
 package gui;
 
+import itemSpeicher.Channel;
 import itemSpeicher.KonsumentenSchnittstelle;
 import itemSpeicher.ProduzentenSchnittstelle;
 
@@ -36,11 +37,12 @@ public class PanelCreateItem extends PanelAbstract {
 	
 	private JButton btnSend;
 	private JButton btnCancel;
-	private JList listChannels;
+	private JList<Channel> listChannels;
 	private JButton btnCreateChannel;
 	private JRadioButton rdbtnItemTypeText;
 	private JRadioButton rdbtnItemTypeAudio;
 	private JRadioButton rdbtnItemTypeVideo;
+	private JButton btnRefreshChannelList;
 	
 	public JLabel getLblCreateItem() {
 		return lblCreateItem;
@@ -65,6 +67,14 @@ public class PanelCreateItem extends PanelAbstract {
 	
 
 	
+	public JList<Channel> getListChannels() {
+		return listChannels;
+	}
+
+	public JButton getBtnRefreshChannelList() {
+		return btnRefreshChannelList;
+	}
+
 	public JTextPane getTextPaneFeed() {
 		return textPaneFeed;
 	}
@@ -94,19 +104,19 @@ public class PanelCreateItem extends PanelAbstract {
 		add(textPaneFeed);
 		
 		btnSend = new JButton("Absenden");
-		btnSend.setBounds(85, 396, 117, 29);
+		btnSend.setBounds(85, 437, 117, 29);
 		add(btnSend);
 		
 		btnCancel = new JButton("Abbrechen");
-		btnCancel.setBounds(85, 427, 117, 29);
+		btnCancel.setBounds(85, 465, 117, 29);
 		add(btnCancel);
 		
-		listChannels = new JList();
+		listChannels = new JList<Channel>();
 		listChannels.setBounds(10, 142, 284, 141);
 		add(listChannels);
 		
 		btnCreateChannel = new JButton("Channel erstellen");
-		btnCreateChannel.setBounds(66, 367, 168, 29);
+		btnCreateChannel.setBounds(66, 402, 168, 29);
 		add(btnCreateChannel);
 		
 		ButtonGroup buttonGroupItemType = new ButtonGroup();
@@ -128,6 +138,10 @@ public class PanelCreateItem extends PanelAbstract {
 		add(rdbtnItemTypeVideo);
 		
 		buttonGroupItemType.add(rdbtnItemTypeVideo);
+		
+		btnRefreshChannelList = new JButton("Channelliste aktualisieren");
+		btnRefreshChannelList.setBounds(45, 375, 209, 29);
+		add(btnRefreshChannelList);
 	}
 	
 	public void refreshChannelList() {

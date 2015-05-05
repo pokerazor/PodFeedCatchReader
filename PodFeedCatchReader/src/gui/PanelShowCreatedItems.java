@@ -1,5 +1,6 @@
 package gui;
 
+import itemSpeicher.Item;
 import itemSpeicher.KonsumentenSchnittstelle;
 import itemSpeicher.ProduzentenSchnittstelle;
 
@@ -23,7 +24,7 @@ public class PanelShowCreatedItems extends PanelAbstract {
 	}
 
 	private JButton btnCreateItem;
-	JList listItems;
+	JList<Item> listItems;
 
 	public JList getListItems() {
 		return listItems;
@@ -40,8 +41,12 @@ public class PanelShowCreatedItems extends PanelAbstract {
 		btnCreateItem.setBounds(77, 306, 145, 29);
 		add(btnCreateItem);
 		
-		listItems = new JList();
+		listItems = new JList<Item>();
 		listItems.setBounds(6, 6, 288, 287);
 		add(listItems);
+	}
+	
+	public void refreshListItems() {
+		//this.listItems.setListData(this.produzentenSchnitstelle.getChannelVerzeichnis().getChannels());
 	}
 }

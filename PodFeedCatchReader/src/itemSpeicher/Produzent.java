@@ -87,4 +87,10 @@ public class Produzent implements ProduzentenSchnittstelleUni, ProduzentenSchnit
 		
 	}
 
+	@Override
+	public itemSpeicher.Vector<Item> gibAlleItemsZuProduzent(int nutzerID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

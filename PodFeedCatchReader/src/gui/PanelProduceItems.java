@@ -1,6 +1,7 @@
 package gui;
 
 import itemSpeicher.ItemArt;
+import itemSpeicher.Channel;
 import itemSpeicher.KonsumentenSchnittstelle;
 import itemSpeicher.ProduzentenSchnittstelle;
 import itemSpeicher.ProduzentenSchnittstelleUni;
@@ -63,11 +64,10 @@ public class PanelProduceItems extends PanelWithCardLayout {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ItemArt itemArt;
-				if (panelCreateItem.getRdbtnItemTypeText().isSelected()) { itemArt = ItemArt.Text;}
+				ItemArt itemArt = ItemArt.Text;
 				if (panelCreateItem.getRdbtnItemTypeAudio().isSelected()) { itemArt = ItemArt.Audio;}
 				if (panelCreateItem.getRdbtnItemTypeVideo().isSelected()) { itemArt = ItemArt.Video;}
-				//TODO PanelProduceItems.this.erstelleItem(itemArt, panelCreateItem.getTextPaneFeed(), ChannelID)
+				PanelProduceItems.this.produzentenSchnitstelle.erstelleItem(itemArt, panelCreateItem.getTextPaneFeed().getText(), ((Channel) panelCreateItem.getListChannels().getSelectedValue()).getId());
 			}
 		});
 		
@@ -81,7 +81,18 @@ public class PanelProduceItems extends PanelWithCardLayout {
 				} else {
 					PanelProduceItems.this.produzentenSchnitstelle.erstelleChannel(neuerChannelName);
 					System.out.println("Neuen Channel erstellt: " + neuerChannelName);
+					panelCreateItem.refreshChannelList();
+					PanelProduceItems.this.switchCard(SHOW_CREATED_FEEDS_PANEL);
 				}
+				
+			}
+		});
+		
+		panelCreateItem.getBtnRefreshChannelList().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				panelCreateItem.refreshChannelList();
 				
 			}
 		});
