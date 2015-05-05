@@ -59,6 +59,8 @@ public class LicenseKeyInput extends JDialog implements ActionListener {
 				buttonPane.add(cancelButton);
 			}
 		}
+		
+		txtLicensekey.setText("ACME Inc.");
 	}
 	
 	public void actionPerformed(ActionEvent e) {

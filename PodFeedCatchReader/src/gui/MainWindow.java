@@ -9,7 +9,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import sun.applet.Main;
 import nutzerVerwaltung.LoginSchnittstelle;
+import nutzerVerwaltung.Nutzer;
+import nutzerVerwaltung.NutzerRolle;
 import nutzerVerwaltung.ZugriffsSchnittstelle;
 
 import java.awt.BorderLayout;
@@ -20,12 +23,11 @@ import java.awt.GridBagConstraints;
 
 import konfiguration.Konfiguration;
 
-
-public class MainWindow{
+public class MainWindow {
 
 	private JFrame frame;
 	private Integer currentLicenseState;
-	
+
 	private PanelMain panelMain;
 	private PanelLogIn panelLogIn;
 	private PanelWithCardLayout panelCard;
@@ -33,18 +35,21 @@ public class MainWindow{
 	private KonsumentenSchnittstelle konsumentenSchnittstelle;
 	private LoginSchnittstelle loginSchnittstelle;
 	private ZugriffsSchnittstelle zugriffsSchnittstelle;
-	
+
 	public final static String LOGIN_PANEL = "Panel with the Log-In things";
 	public final static String MAIN_PANEL = "Panel with the Main things";
 	public final static String CARD_PANEL = "Panel with the Card things";
 	private JButton btnNewWindow;
-	
+
 	/**
 	 * Create the application.
+	 * 
 	 * @wbp.parser.entryPoint
 	 */
-	public MainWindow(int currentLicenceState, ProduzentenSchnittstelle produzentenSchnittstelle, 
-			KonsumentenSchnittstelle konsumentenSchnittstelle, LoginSchnittstelle loginSchnittstelle, 
+	public MainWindow(int currentLicenceState,
+			ProduzentenSchnittstelle produzentenSchnittstelle,
+			KonsumentenSchnittstelle konsumentenSchnittstelle,
+			LoginSchnittstelle loginSchnittstelle,
 			ZugriffsSchnittstelle zugriffsSchnittstelle) {
 		this.currentLicenseState = currentLicenceState;
 		this.konsumentenSchnittstelle = konsumentenSchnittstelle;
@@ -53,8 +58,7 @@ public class MainWindow{
 		this.konsumentenSchnittstelle = konsumentenSchnittstelle;
 		initialize();
 		frame.setVisible(true);
-		
-		
+
 	}
 
 	/**
@@ -64,40 +68,70 @@ public class MainWindow{
 		frame = new JFrame();
 		frame.setBounds(100, 100, 331, 613);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		panelMain = new PanelMain(this.currentLicenseState, this.produzentenSchnittstelle, this.konsumentenSchnittstelle, this.loginSchnittstelle, this.zugriffsSchnittstelle);
-		panelLogIn = new PanelLogIn(this.currentLicenseState, this.produzentenSchnittstelle, this.konsumentenSchnittstelle, this.loginSchnittstelle, this.zugriffsSchnittstelle);
-		panelCard = new PanelWithCardLayout(this.currentLicenseState, this.produzentenSchnittstelle, this.konsumentenSchnittstelle, this.loginSchnittstelle, this.zugriffsSchnittstelle);
-		
+
+		panelMain = new PanelMain(this.currentLicenseState,
+				this.produzentenSchnittstelle, this.konsumentenSchnittstelle,
+				this.loginSchnittstelle, this.zugriffsSchnittstelle);
+		panelLogIn = new PanelLogIn(this.currentLicenseState,
+				this.produzentenSchnittstelle, this.konsumentenSchnittstelle,
+				this.loginSchnittstelle, this.zugriffsSchnittstelle);
+		panelCard = new PanelWithCardLayout(this.currentLicenseState,
+				this.produzentenSchnittstelle, this.konsumentenSchnittstelle,
+				this.loginSchnittstelle, this.zugriffsSchnittstelle);
+
 		frame.getContentPane().add(panelCard);
-		
+
 		panelCard.add(panelMain, MAIN_PANEL);
-		
+
 		btnNewWindow = new JButton("Neues Fenster");
 		GridBagConstraints gbc_btnNewWindow = new GridBagConstraints();
 		gbc_btnNewWindow.gridx = 0;
 		gbc_btnNewWindow.gridy = 1;
 		panelMain.add(btnNewWindow, gbc_btnNewWindow);
-		panelCard.add(panelLogIn, LOGIN_PANEL); 
-		
+		panelCard.add(panelLogIn, LOGIN_PANEL);
+
 		panelCard.switchCard(LOGIN_PANEL);
-		
+
 		panelLogIn.getBtnRegister().addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				int userID = MainWindow.this.loginSchnittstelle.neuenNutzerAnlegen(panelLogIn.getTextFieldName().getText(), panelLogIn.getTextFieldPassword().getText(), NutzerRolle.Konsument);
+				MainWindow.this.panelLogIn.getLblInfo().setText(
+						"Deine Nutzer-ID ist " + userID);
 			}
 		});
-		
-		panelLogIn.getBtnLogIn().addActionListener(new ActionListenerSwitchCard(panelCard, MAIN_PANEL));
+
+		panelLogIn.getBtnLogIn().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					if (MainWindow.this.loginSchnittstelle.logInVerifizieren(
+							Integer.parseInt(panelLogIn.getTextFieldName()
+									.getText()), panelLogIn
+									.getTextFieldPassword().getText())) {
+						MainWindow.this.panelCard.switchCard(MAIN_PANEL);
+					} else {
+						MainWindow.this.panelLogIn.getLblInfo().setText(
+								"Login-Daten sind falsch");
+					}
+				} catch (NumberFormatException exception) {
+					MainWindow.this.panelLogIn.getLblInfo().setText(
+							"ID ist keine Zahl");
+				}
+
+			}
+		});
+
 		btnNewWindow.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle, loginSchnittstelle, zugriffsSchnittstelle);
+				new MainWindow(currentLicenseState, produzentenSchnittstelle,
+						konsumentenSchnittstelle, loginSchnittstelle,
+						zugriffsSchnittstelle);
 			}
 		});
 	}
-	
+
 }

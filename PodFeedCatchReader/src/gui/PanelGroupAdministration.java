@@ -19,6 +19,9 @@ public class PanelGroupAdministration extends PanelWithCardLayout {
 				konsumentenSchnittstelle, loginSchnittstelle,
 				zugriffsSchnittstelle);
 		
+		this.add(panelAssignChannelToGroup, ASSIGN_CHANNEL_TO_GROUP_PANEL );
+		this.add(panelCreateChannel, CREATE_CHANNEL_PANEL);
+		this.add(panelCreateGroup, CREATE_GROUP_PANEL);
 		this.switchCard(ASSIGN_CHANNEL_TO_GROUP_PANEL);
 	}
 
@@ -34,11 +37,6 @@ public class PanelGroupAdministration extends PanelWithCardLayout {
 		panelAssignChannelToGroup = new PanelAssignChannelToGroup(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle);
 		panelCreateChannel = new PanelCreateChannel(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle);
 		panelCreateGroup = new PanelCreateGroup(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle);
-		
-		this.add(panelAssignChannelToGroup, ASSIGN_CHANNEL_TO_GROUP_PANEL );
-		this.add(panelCreateChannel, CREATE_CHANNEL_PANEL);
-		this.add(panelCreateGroup, CREATE_GROUP_PANEL);
-		
 		
 		
 		panelCreateChannel.getBtnCancel().addActionListener(new ActionListenerSwitchCard(this, ASSIGN_CHANNEL_TO_GROUP_PANEL));

@@ -1,12 +1,13 @@
 package itemSpeicher;
 
 import java.util.LinkedList;
+import java.util.Vector;
 
 import nutzerVerwaltung.Gruppe;
 import nutzerVerwaltung.GruppenListe;
 import nutzerVerwaltung.Nutzer;
 
-public class Produzent implements ProduzentenSchnittstelleUni, ProduzentenSchnittstelleFirma{
+public class Produzent implements ProduzentenSchnittstelleUni, ProduzentenSchnittstelleFirma, ProduzentenSchnittstellePrivat{
 	
 	ChannelVerzeichnis verzeichnis;
 	GruppenListe gruppen;
@@ -15,10 +16,14 @@ public class Produzent implements ProduzentenSchnittstelleUni, ProduzentenSchnit
 		this.verzeichnis = verzeichnis;
 		this.gruppen = gruppen;
 	}
+	
+	public ChannelVerzeichnis getChannelVerzeichnis() {
+		return verzeichnis;
+	}
 
 	@Override
 	public boolean erstelleItem(ItemArt art, String inhalt, int ChannelID) {
-		LinkedList<Channel> channels = verzeichnis.getChannels(); 
+		Vector<Channel> channels = verzeichnis.getChannels(); 
 		Channel c;
 		int counter = 0;
 		while(channels.get(counter) != null && channels.get(counter).getId() != ChannelID){
@@ -35,7 +40,7 @@ public class Produzent implements ProduzentenSchnittstelleUni, ProduzentenSchnit
 
 	@Override
 	public boolean erstelleChannel(String name) {
-		LinkedList<Channel> channels = verzeichnis.getChannels(); 
+		Vector<Channel> channels = verzeichnis.getChannels(); 
 		Channel c = new Channel(channels.size()+1);
 		c.setName(name);
 		channels.add(c);

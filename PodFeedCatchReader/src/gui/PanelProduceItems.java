@@ -1,5 +1,6 @@
 package gui;
 
+import itemSpeicher.ItemArt;
 import itemSpeicher.KonsumentenSchnittstelle;
 import itemSpeicher.ProduzentenSchnittstelle;
 import itemSpeicher.ProduzentenSchnittstelleUni;
@@ -21,6 +22,9 @@ public class PanelProduceItems extends PanelWithCardLayout {
 				konsumentenSchnittstelle, loginSchnittstelle,
 				zugriffsSchnittstelle);
 		
+		this.add(panelCreateItem, CREATE_FEED_PANEL);
+		this.add(panelShowCreatedItems, SHOW_CREATED_FEEDS_PANEL); 
+		this.add(panelCreateChannel, CREATE_CHANNEL_PANEL);
 		this.switchCard(SHOW_CREATED_FEEDS_PANEL);
 	}
 
@@ -54,10 +58,30 @@ public class PanelProduceItems extends PanelWithCardLayout {
 		panelCreateItem.getBtnCreateChannel().addActionListener(new ActionListenerSwitchCard(this, CREATE_CHANNEL_PANEL));
 		panelCreateItem.getBtnCancel().addActionListener(new ActionListenerSwitchCard(this, SHOW_CREATED_FEEDS_PANEL));
 		
+		
 		panelCreateItem.getBtnSend().addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				ItemArt itemArt;
+				if (panelCreateItem.getRdbtnItemTypeText().isSelected()) { itemArt = ItemArt.Text;}
+				if (panelCreateItem.getRdbtnItemTypeAudio().isSelected()) { itemArt = ItemArt.Audio;}
+				if (panelCreateItem.getRdbtnItemTypeVideo().isSelected()) { itemArt = ItemArt.Video;}
+				//TODO PanelProduceItems.this.erstelleItem(itemArt, panelCreateItem.getTextPaneFeed(), ChannelID)
+			}
+		});
+		
+		panelCreateChannel.getBtnSave().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String neuerChannelName = panelCreateChannel.getTextField().getText();
+				if (neuerChannelName.length() == 0) {
+					panelCreateChannel.getLblInfo().setText("Der Name darf nicht Nichts sein!");
+				} else {
+					PanelProduceItems.this.produzentenSchnitstelle.erstelleChannel(neuerChannelName);
+					System.out.println("Neuen Channel erstellt: " + neuerChannelName);
+				}
 				
 			}
 		});

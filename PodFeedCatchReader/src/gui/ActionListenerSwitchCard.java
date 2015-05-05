@@ -18,7 +18,9 @@ public class ActionListenerSwitchCard implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		panelWithCardLayout.switchCard(targetCard);
+		System.out.println("Card switched");
 	}
 	
 }

@@ -31,6 +31,7 @@ public class PanelCreateChannel extends PanelAbstract {
 	
 	private JButton btnSave;
 	private JButton btnCancel;
+	private JLabel lblInfo;
 
 	public JTextField getTextField() {
 		return textField;
@@ -47,8 +48,16 @@ public class PanelCreateChannel extends PanelAbstract {
 	public JButton getBtnCancel() {
 		return btnCancel;
 	}
+	
+	
 
 	
+	public JLabel getLblInfo() {
+		return lblInfo;
+	}
+
+
+
 	protected void initialize() {
 		setLayout(null);
 		
@@ -70,5 +79,10 @@ public class PanelCreateChannel extends PanelAbstract {
 		btnCancel = new JButton("Abbrechen");
 		btnCancel.setBounds(87, 107, 117, 29);
 		add(btnCancel);
+		
+		lblInfo = new JLabel("Bitte Channelnamen angeben!");
+		lblInfo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInfo.setBounds(6, 148, 288, 16);
+		add(lblInfo);
 	}
 }

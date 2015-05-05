@@ -1,20 +1,21 @@
 package itemSpeicher;
 
 import java.util.LinkedList;
+import java.util.Vector;
 
 public class ChannelVerzeichnis{
 	
-	private LinkedList<Channel> liste;
+	private Vector<Channel> liste;
 	
 	public ChannelVerzeichnis(){
-		liste = new LinkedList<Channel>();
+		liste = new Vector<Channel>();
 	}
 
-	public LinkedList<Channel> getChannels() {
+	public Vector<Channel> getChannels() {
 		return liste;
 	}
 
-	public void setChannels(LinkedList<Channel> liste) {
+	public void setChannels(Vector<Channel> liste) {
 		this.liste.addAll(liste);
 	}
 	

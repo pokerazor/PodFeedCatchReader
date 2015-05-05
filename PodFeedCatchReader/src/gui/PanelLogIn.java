@@ -32,6 +32,19 @@ public class PanelLogIn extends PanelAbstract {
 	
 	private JButton btnLogIn;
 	private JButton btnRegister;
+	private JLabel lblInfo;
+
+	public JLabel getLblInfo() {
+		return lblInfo;
+	}
+
+	public JTextField getTextFieldName() {
+		return textFieldName;
+	}
+
+	public JTextField getTextFieldPassword() {
+		return textFieldPassword;
+	}
 
 	public JButton getBtnLogIn() {
 		return btnLogIn;
@@ -70,6 +83,11 @@ public class PanelLogIn extends PanelAbstract {
 		btnRegister = new JButton("Registrieren");
 		btnRegister.setBounds(105, 180, 119, 29);
 		this.add(btnRegister);
+		
+		lblInfo = new JLabel("Bitte Nutzerdaten eingeben");
+		lblInfo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInfo.setBounds(6, 221, 318, 16);
+		add(lblInfo);
 		
 	}
 

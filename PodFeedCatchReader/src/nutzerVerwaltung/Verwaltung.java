@@ -11,10 +11,17 @@ public class Verwaltung implements LoginSchnittstelle, ZugriffsSchnittstelle{
 	public Verwaltung(NutzerListe nutzer, GruppenListe gruppen){
 		this.nutzer = nutzer;
 		this.gruppen = gruppen;
+		
+		neuenNutzerAnlegen("test", "", NutzerRolle.Produzent);
 	}
 	
 	
 	
+	public NutzerListe getNutzer() {
+		return nutzer;
+	}
+	
+
 	public Nutzer getAktuellerNutzer() {
 		return aktuellerNutzer;
 	}
@@ -59,11 +66,14 @@ public class Verwaltung implements LoginSchnittstelle, ZugriffsSchnittstelle{
 	}
 
 	@Override
-	public boolean LogInVerifizieren(int nutzerID, String passwort) {
+	public boolean logInVerifizieren(int nutzerID, String passwort) {
 		boolean nutzerExistiert = false;
 		Nutzer n = null;
 		
 		for(int i = 0; i < nutzer.getNutzer().size(); ++i){
+			System.out.println(nutzer.getNutzer().get(i).getNutzerID());
+			System.out.println(nutzer.getNutzer().get(i).getPasswort());
+			
 			if(nutzer.getNutzer().get(i).getNutzerID() == nutzerID){
 				n = nutzer.getNutzer().get(i);
 				nutzerExistiert = true;
@@ -71,19 +81,21 @@ public class Verwaltung implements LoginSchnittstelle, ZugriffsSchnittstelle{
 		}
 		
 		if(nutzerExistiert == false){
+			System.out.println("ID unbekannt!");
 			return false;
 		}else{
-			if(n.getPasswort() == passwort){
+			if(n.getPasswort().equals(passwort)){
 				aktuellerNutzer = n;
 				return true;
 			}else{
+				System.out.println("Passwort falsch!");
 				return false;
 			}
 		}
 	}
 
 	@Override
-	public NutzerRolle RolleVonNutzerAusgeben(int nutzerID) {
+	public NutzerRolle rolleVonNutzerAusgeben(int nutzerID) {
 		boolean nutzerExistiert = false;
 		Nutzer n = null;
 		
@@ -106,6 +118,7 @@ public class Verwaltung implements LoginSchnittstelle, ZugriffsSchnittstelle{
 		int id = nutzer.getNutzer().size()+1; 
 		Nutzer neu = new Nutzer(id, name, passwort, rolle);
 		nutzer.setNutzer(neu);
+		System.out.println("Neuer Nutzer: " + "Name: " + neu.getName() + " Passwort: " + neu.getPasswort() + " Rolle: " + neu.getRolle().toString()); 
 		return id;
 	}
 

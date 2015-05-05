@@ -8,12 +8,15 @@ import javax.swing.JLabel;
 
 import java.awt.Font;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
 import javax.swing.JList;
 
 import nutzerVerwaltung.LoginSchnittstelle;
 import nutzerVerwaltung.ZugriffsSchnittstelle;
+
+import javax.swing.JRadioButton;
 
 public class PanelCreateItem extends PanelAbstract {
 	
@@ -35,6 +38,9 @@ public class PanelCreateItem extends PanelAbstract {
 	private JButton btnCancel;
 	private JList listChannels;
 	private JButton btnCreateChannel;
+	private JRadioButton rdbtnItemTypeText;
+	private JRadioButton rdbtnItemTypeAudio;
+	private JRadioButton rdbtnItemTypeVideo;
 	
 	public JLabel getLblCreateItem() {
 		return lblCreateItem;
@@ -55,8 +61,26 @@ public class PanelCreateItem extends PanelAbstract {
 	public JButton getBtnCreateChannel() {
 		return btnCreateChannel;
 	}
+	
+	
 
 	
+	public JTextPane getTextPaneFeed() {
+		return textPaneFeed;
+	}
+
+	public JRadioButton getRdbtnItemTypeText() {
+		return rdbtnItemTypeText;
+	}
+
+	public JRadioButton getRdbtnItemTypeAudio() {
+		return rdbtnItemTypeAudio;
+	}
+
+	public JRadioButton getRdbtnItemTypeVideo() {
+		return rdbtnItemTypeVideo;
+	}
+
 	protected void initialize() {
 		setLayout(null);
 		
@@ -70,11 +94,11 @@ public class PanelCreateItem extends PanelAbstract {
 		add(textPaneFeed);
 		
 		btnSend = new JButton("Absenden");
-		btnSend.setBounds(92, 351, 117, 29);
+		btnSend.setBounds(85, 396, 117, 29);
 		add(btnSend);
 		
 		btnCancel = new JButton("Abbrechen");
-		btnCancel.setBounds(90, 392, 117, 29);
+		btnCancel.setBounds(85, 427, 117, 29);
 		add(btnCancel);
 		
 		listChannels = new JList();
@@ -82,7 +106,31 @@ public class PanelCreateItem extends PanelAbstract {
 		add(listChannels);
 		
 		btnCreateChannel = new JButton("Channel erstellen");
-		btnCreateChannel.setBounds(66, 286, 168, 29);
+		btnCreateChannel.setBounds(66, 367, 168, 29);
 		add(btnCreateChannel);
+		
+		ButtonGroup buttonGroupItemType = new ButtonGroup();
+		
+		rdbtnItemTypeText = new JRadioButton("Text");
+		rdbtnItemTypeText.setBounds(66, 283, 200, 29);
+		add(rdbtnItemTypeText);
+		
+		buttonGroupItemType.add(rdbtnItemTypeText);
+		
+		rdbtnItemTypeAudio = new JRadioButton("Audio");
+		rdbtnItemTypeAudio.setBounds(66, 310, 200, 29);
+		add(rdbtnItemTypeAudio);
+		
+		buttonGroupItemType.add(rdbtnItemTypeAudio);
+		
+		rdbtnItemTypeVideo = new JRadioButton("Video");
+		rdbtnItemTypeVideo.setBounds(66, 340, 216, 23);
+		add(rdbtnItemTypeVideo);
+		
+		buttonGroupItemType.add(rdbtnItemTypeVideo);
+	}
+	
+	public void refreshChannelList() {
+		this.listChannels.setListData(this.produzentenSchnitstelle.getChannelVerzeichnis().getChannels());
 	}
 }

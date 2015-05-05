@@ -7,8 +7,14 @@ import itemSpeicher.ChannelVerzeichnis;
 import itemSpeicher.ChannelVerzeichnisURL;
 import itemSpeicher.Konsument;
 import itemSpeicher.KonsumentenSchnittstelle;
+import itemSpeicher.KonsumentenSchnittstelleFirma;
+import itemSpeicher.KonsumentenSchnittstellePrivat;
+import itemSpeicher.KonsumentenSchnittstelleUni;
 import itemSpeicher.Produzent;
 import itemSpeicher.ProduzentenSchnittstelle;
+import itemSpeicher.ProduzentenSchnittstelleFirma;
+import itemSpeicher.ProduzentenSchnittstellePrivat;
+import itemSpeicher.ProduzentenSchnittstelleUni;
 import gui.LicenseKeyInput;
 import gui.MainWindow;
 
@@ -84,11 +90,30 @@ public class Konfiguration {
 		NutzerListe nutzerListe = new NutzerListe();
 		Verwaltung verwaltung = new Verwaltung(nutzerListe, gruppenListe);
 		
-		ProduzentenSchnittstelle produzentenSchnittstelle = new Produzent(channelVerzeichnis, gruppenListe);
-		KonsumentenSchnittstelle konsumentenSchnittstelle = new Konsument(channelVerzeichnis, channelVerzeichnisURL, nutzerListe);
 		LoginSchnittstelle loginSchnittstelle = verwaltung;
 		ZugriffsSchnittstelle zugriffsSchnittstelle = verwaltung;
-		new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle, loginSchnittstelle, zugriffsSchnittstelle);
+		
+		if (currentLicenseState == this.LICENSE_STATE_PRIVATE) {
+			ProduzentenSchnittstellePrivat  produzentenSchnittstelle = new Produzent(channelVerzeichnis, gruppenListe);
+			KonsumentenSchnittstellePrivat  konsumentenSchnittstelle = new Konsument(channelVerzeichnis, channelVerzeichnisURL, nutzerListe);
+			
+			new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle, loginSchnittstelle, zugriffsSchnittstelle);
+		}
+		
+		if (currentLicenseState == this.LICENSE_STATE_EDUCATION) {
+			ProduzentenSchnittstelleUni  produzentenSchnittstelle = new Produzent(channelVerzeichnis, gruppenListe);
+			KonsumentenSchnittstelleUni  konsumentenSchnittstelle = new Konsument(channelVerzeichnis, channelVerzeichnisURL, nutzerListe);
+			
+			new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle, loginSchnittstelle, zugriffsSchnittstelle);
+		}
+		
+		if (currentLicenseState == this.LICENSE_STATE_BUSINESS) {
+			ProduzentenSchnittstelleFirma  produzentenSchnittstelle = new Produzent(channelVerzeichnis, gruppenListe);
+			KonsumentenSchnittstelleFirma  konsumentenSchnittstelle = new Konsument(channelVerzeichnis, channelVerzeichnisURL, nutzerListe);
+			
+			new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle, loginSchnittstelle, zugriffsSchnittstelle);
+		}
+		
 	}
 	
 }
