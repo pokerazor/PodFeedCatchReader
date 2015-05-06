@@ -60,7 +60,7 @@ public class LicenseKeyInput extends JDialog implements ActionListener {
 			}
 		}
 		
-		txtLicensekey.setText(Konfiguration.LICENSE_KEY_EDUCATION);
+		//txtLicensekey.setText(Konfiguration.LICENSE_KEY_EDUCATION);
 	}
 	
 	public void actionPerformed(ActionEvent e) {

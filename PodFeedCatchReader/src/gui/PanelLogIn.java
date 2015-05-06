@@ -76,7 +76,7 @@ public class PanelLogIn extends PanelAbstract {
 		this.add(textFieldName);
 		textFieldName.setColumns(10);
 		
-		textFieldName.setText("1");
+		//textFieldName.setText("1");
 		
 		JLabel lblPassword = new JLabel("Passwort:");
 		lblPassword.setBounds(135, 90, 60, 18);
