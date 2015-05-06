@@ -1,6 +1,6 @@
 package nutzerVerwaltung;
 
-import java.util.LinkedList;
+import java.util.Vector;
 
 import itemSpeicher.Channel;
 import itemSpeicher.ChannelURL;
@@ -11,8 +11,8 @@ public class Nutzer {
 	private String name;
 	private String passwort;
 	private NutzerRolle rolle;
-	private LinkedList<Channel> abonnierteChannels;
-	private LinkedList<ChannelURL> abonnierteURLs;
+	private Vector<Channel> abonnierteChannels;
+	private Vector<ChannelURL> abonnierteURLs;
 	
 	public Nutzer(int id, String name, String passwort, NutzerRolle rolle){
 		nutzerID = id;
@@ -37,7 +37,7 @@ public class Nutzer {
 		return rolle;
 	}
 
-	public LinkedList<Channel> getAbonnierteChannels() {
+	public Vector<Channel> getAbonnierteChannels() {
 		return abonnierteChannels;
 	}
 
@@ -45,7 +45,7 @@ public class Nutzer {
 		abonnierteChannels.add(channel);
 	}
 
-	public LinkedList<ChannelURL> getAbonnierteURLs() {
+	public Vector<ChannelURL> getAbonnierteURLs() {
 		return abonnierteURLs;
 	}
 

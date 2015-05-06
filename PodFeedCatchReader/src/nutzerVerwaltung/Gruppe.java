@@ -1,20 +1,20 @@
 package nutzerVerwaltung;
 
-import java.util.LinkedList;
+import java.util.Vector;
 
 public class Gruppe {
 
 	int gruppenID;
 	String name;
-	LinkedList<Nutzer> nutzer;
+	Vector<Nutzer> nutzer;
 	
 	public Gruppe(int id, String name){
 		gruppenID = id;
 		this.name = name;
-		nutzer = new LinkedList<Nutzer>();
+		nutzer = new Vector<Nutzer>();
 	}
 
-	public LinkedList<Nutzer> getNutzer() {
+	public Vector<Nutzer> getNutzer() {
 		return nutzer;
 	}
 

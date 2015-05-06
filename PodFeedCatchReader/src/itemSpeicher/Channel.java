@@ -1,16 +1,16 @@
 package itemSpeicher;
 
-import java.util.LinkedList;
+import java.util.Vector;
 
 public class Channel{
 	
 	private int id;
 	private String name;
-	private LinkedList<Item> items;
+	private Vector<Item> items;
 	
 	public Channel(int id){
 		this.id = id;
-		items = new LinkedList<Item>();
+		items = new Vector<Item>();
 	}
 
 	public String getName() {
@@ -21,16 +21,16 @@ public class Channel{
 		this.name = name;
 	}
 
-	public LinkedList<Item> getFeeds() {
+	public Vector<Item> getItems() {
 		return items;
 	}
 
-	public void setFeeds(LinkedList<Item> items) {
+	public void setItems(Vector<Item> items) {
 		this.items.addAll(items);
 	}
 	
-	public void setFeed(Item item){
-		this.items.addFirst(item);
+	public void setItem(Item item){
+		this.items.add(item);
 	}
 
 	public int getId() {

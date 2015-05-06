@@ -36,7 +36,7 @@ public class PanelCreateItem extends PanelAbstract {
 
 
 	private JLabel lblCreateItem;
-	private JTextPane textPaneFeed;
+	private JTextPane textPaneItem;
 	
 	private JButton btnSend;
 	private JButton btnCancel;
@@ -52,7 +52,7 @@ public class PanelCreateItem extends PanelAbstract {
 	}
 
 	public JTextPane getTextPanePane() {
-		return textPaneFeed;
+		return textPaneItem;
 	}
 
 	public JButton getBtnSend() {
@@ -78,8 +78,8 @@ public class PanelCreateItem extends PanelAbstract {
 		return btnRefreshChannelList;
 	}
 
-	public JTextPane getTextPaneFeed() {
-		return textPaneFeed;
+	public JTextPane getTextPaneItem() {
+		return textPaneItem;
 	}
 
 	public JRadioButton getRdbtnItemTypeText() {
@@ -102,9 +102,9 @@ public class PanelCreateItem extends PanelAbstract {
 		lblCreateItem.setBounds(85, 6, 130, 16);
 		add(lblCreateItem);
 		
-		textPaneFeed = new JTextPane();
-		textPaneFeed.setBounds(10, 28, 284, 102);
-		add(textPaneFeed);
+		textPaneItem = new JTextPane();
+		textPaneItem.setBounds(10, 28, 284, 102);
+		add(textPaneItem);
 		
 		btnSend = new JButton("Absenden");
 		btnSend.setBounds(85, 437, 117, 29);

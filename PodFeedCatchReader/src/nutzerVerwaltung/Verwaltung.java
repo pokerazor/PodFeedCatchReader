@@ -1,6 +1,5 @@
 package nutzerVerwaltung;
 
-import java.util.LinkedList;
 import java.util.Vector;
 
 public class Verwaltung implements LoginSchnittstelle, ZugriffsSchnittstelle{
@@ -125,16 +124,14 @@ public class Verwaltung implements LoginSchnittstelle, ZugriffsSchnittstelle{
 
 	@Override
 	public Vector<Gruppe> gibAlleGruppen() {
-		// TODO Auto-generated method stub
-		return null;
+		return gruppen.getGruppen();
 	}
 
 
 
 	@Override
 	public Vector<Nutzer> gibAlleNutzer() {
-		// TODO Auto-generated method stub
-		return null;
+		return nutzer.getNutzer();
 	}
 
 }

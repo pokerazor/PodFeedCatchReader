@@ -18,19 +18,19 @@ public class PanelConsumeItems extends PanelWithCardLayout {
 				konsumentenSchnittstelle, loginSchnittstelle,
 				zugriffsSchnittstelle, session);
 		
-		this.add(panelShowItem, SHOW_FEED_PANEL);
-		this.add(panelShowSummaryItems, SHOW_SUMMARY_FEEDS_PANEL);
+		this.add(panelShowItem, SHOW_Item_PANEL);
+		this.add(panelShowSummaryItems, SHOW_SUMMARY_ItemS_PANEL);
 		this.add(panelSubscribeChannel, SUBSCRIBE_CHANNEL_PANEL);
-		this.switchCard(SHOW_SUMMARY_FEEDS_PANEL);
+		this.switchCard(SHOW_SUMMARY_ItemS_PANEL);
 	}
 
 	private PanelShowItem panelShowItem;
 	private PanelSubscribeChannel panelSubscribeChannel;
 	private PanelShowSummaryItems panelShowSummaryItems;
 	
-	public static final String SHOW_FEED_PANEL = "Panel Show Feed";
+	public static final String SHOW_Item_PANEL = "Panel Show Item";
 	public static final String SUBSCRIBE_CHANNEL_PANEL = "Panel Subscribe Channel";
-	public static final String SHOW_SUMMARY_FEEDS_PANEL = "Panel Show Summary Feeds";
+	public static final String SHOW_SUMMARY_ItemS_PANEL = "Panel Show Summary Items";
 
 	
 	
@@ -39,10 +39,10 @@ public class PanelConsumeItems extends PanelWithCardLayout {
 		panelSubscribeChannel = new PanelSubscribeChannel(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
 		panelShowSummaryItems = new PanelShowSummaryItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
 		
-		panelShowSummaryItems.getBtnShowItem().addActionListener(new ActionListenerSwitchCard(this, SHOW_FEED_PANEL));
+		panelShowSummaryItems.getBtnShowItem().addActionListener(new ActionListenerSwitchCard(this, SHOW_Item_PANEL));
 		panelShowSummaryItems.getBtnSubscribeChannel().addActionListener(new ActionListenerSwitchCard(this, SUBSCRIBE_CHANNEL_PANEL));
-		panelShowItem.getBtnBack().addActionListener(new ActionListenerSwitchCard(this, SHOW_SUMMARY_FEEDS_PANEL));
-		panelSubscribeChannel.getBtnCancel().addActionListener(new ActionListenerSwitchCard(this, SHOW_SUMMARY_FEEDS_PANEL));
+		panelShowItem.getBtnBack().addActionListener(new ActionListenerSwitchCard(this, SHOW_SUMMARY_ItemS_PANEL));
+		panelSubscribeChannel.getBtnCancel().addActionListener(new ActionListenerSwitchCard(this, SHOW_SUMMARY_ItemS_PANEL));
 			
 	}
 }

@@ -1,20 +1,20 @@
 package nutzerVerwaltung;
 
-import java.util.LinkedList;
+import java.util.Vector;
 
 public class NutzerListe {
 	
-	private LinkedList<Nutzer> nutzer;
+	private Vector<Nutzer> nutzer;
 	
 	public NutzerListe(){
-		nutzer = new LinkedList<Nutzer>();
+		nutzer = new Vector<Nutzer>();
 	}
 	
 	public void setNutzer(Nutzer neuerNutzer){
 		nutzer.add(neuerNutzer);
 	}
 	
-	public LinkedList<Nutzer> getNutzer(){
+	public Vector<Nutzer> getNutzer(){
 		return nutzer;
 	}
 

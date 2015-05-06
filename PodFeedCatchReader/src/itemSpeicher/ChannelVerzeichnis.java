@@ -1,6 +1,6 @@
 package itemSpeicher;
 
-import java.util.LinkedList;
+import java.util.Vector;
 import java.util.Vector;
 
 public class ChannelVerzeichnis{
