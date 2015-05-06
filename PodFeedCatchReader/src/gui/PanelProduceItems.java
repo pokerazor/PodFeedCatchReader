@@ -59,34 +59,6 @@ public class PanelProduceItems extends PanelWithCardLayout {
 		panelCreateChannel.getBtnCancel().addActionListener(new ActionListenerSwitchCard(this, CREATE_item_PANEL));
 		panelCreateItem.getBtnCreateChannel().addActionListener(new ActionListenerSwitchCard(this, CREATE_CHANNEL_PANEL));
 		panelCreateItem.getBtnCancel().addActionListener(new ActionListenerSwitchCard(this, SHOW_CREATED_itemS_PANEL));
-		
-		
-		
-		panelCreateChannel.getBtnSave().addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String neuerChannelName = panelCreateChannel.getTextField().getText();
-				if (neuerChannelName.length() == 0) {
-					panelCreateChannel.getLblInfo().setText("Der Name darf nicht Nichts sein!");
-				} else {
-					PanelProduceItems.this.produzentenSchnitstelle.erstelleChannel(neuerChannelName);
-					System.out.println("Neuen Channel erstellt: " + neuerChannelName);
-					panelCreateItem.refreshChannelList();
-					PanelProduceItems.this.switchCard(SHOW_CREATED_itemS_PANEL);
-				}
-				
-			}
-		});
-		
-		panelCreateItem.getBtnRefreshChannelList().addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				panelCreateItem.refreshChannelList();
-				
-			}
-		});
 
 	}
 	

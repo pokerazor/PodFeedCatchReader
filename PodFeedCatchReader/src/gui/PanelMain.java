@@ -74,11 +74,11 @@ public class PanelMain extends PanelAbstract {
 		add(tabbedPane, gbc);
 		
 		PanelConsumeItems panelConsumeItems = new PanelConsumeItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
-		tabbedPane.addTab("items", null, panelConsumeItems, null);
+		tabbedPane.addTab("Items", null, panelConsumeItems, null);
 		
 		if (currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_BUSINESS.intValue() || currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_EDUCATION.intValue()) {
 			PanelProduceItems panelProduceItems = new PanelProduceItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
-			tabbedPane.addTab("item erstellen", null, panelProduceItems, null);
+			tabbedPane.addTab("Item erstellen", null, panelProduceItems, null);
 		}
 		
 		if (currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_BUSINESS.intValue()) {

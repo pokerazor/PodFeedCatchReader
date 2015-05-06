@@ -29,7 +29,7 @@ public abstract class PanelAbstract extends JPanel {
 		this.produzentenSchnitstelle = produzentenSchnittstelle;
 		this.konsumentenSchnittstelle = konsumentenSchnittstelle;
 		this.loginSchnittstelle = loginSchnittstelle;
-		this.produzentenSchnitstelle =  produzentenSchnittstelle;
+		this.zugriffsSchnittstelle = zugriffsSchnittstelle;
 		this.session = session;
 		initialize();
 	}

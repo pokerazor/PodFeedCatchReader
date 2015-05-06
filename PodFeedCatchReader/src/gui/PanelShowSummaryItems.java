@@ -1,5 +1,8 @@
 package gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import itemSpeicher.Item;
 import itemSpeicher.KonsumentenSchnittstelle;
 import itemSpeicher.KonsumentenSchnittstellePrivat;
@@ -20,7 +23,7 @@ import nutzerVerwaltung.ZugriffsSchnittstelle;
 import javax.swing.JList;
 
 public class PanelShowSummaryItems extends PanelAbstract {
-	
+
 	public PanelShowSummaryItems(Integer currentLicenseState,
 			ProduzentenSchnittstelle produzentenSchnittstelle,
 			KonsumentenSchnittstelle konsumentenSchnittstelle,
@@ -30,12 +33,11 @@ public class PanelShowSummaryItems extends PanelAbstract {
 				konsumentenSchnittstelle, loginSchnittstelle,
 				zugriffsSchnittstelle, session);
 	}
+
 	private JButton btnShowItem;
 	private JButton btnSubscribeChannel;
 	private JList<Item> listItems;
 	private JButton btnRefreshItemList;
-	
-	
 
 	public JButton getBtnRefreshItemList() {
 		return btnRefreshItemList;
@@ -49,35 +51,58 @@ public class PanelShowSummaryItems extends PanelAbstract {
 		return btnSubscribeChannel;
 	}
 	
+	
+
+	public JList<Item> getListItems() {
+		return listItems;
+	}
+
 	protected void initialize() {
 		setLayout(null);
-		
+
 		btnShowItem = new JButton("Beitrag anzeigen");
 		btnShowItem.setBounds(77, 359, 146, 29);
 		add(btnShowItem);
-		
 		btnSubscribeChannel = new JButton("Channel abonnieren");
 		btnSubscribeChannel.setBounds(65, 387, 169, 29);
 		add(btnSubscribeChannel);
-		
+
+		if (currentLicenseState == Konfiguration.LICENSE_STATE_BUSINESS)
+			btnSubscribeChannel.setVisible(false);
+		;
+
 		listItems = new JList<Item>();
 		listItems.setBounds(6, 6, 288, 316);
 		add(listItems);
-		
+
 		btnRefreshItemList = new JButton("Aktualisieren");
 		btnRefreshItemList.setBounds(91, 323, 117, 29);
 		add(btnRefreshItemList);
+
+		btnRefreshItemList.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				refreshListItems();
+			}
+		});
 	}
-	
+
 	public void refreshListItems() {
 		if (this.currentLicenseState == Konfiguration.LICENSE_STATE_PRIVATE)
-			this.listItems.setListData(((KonsumentenSchnittstellePrivat)this.konsumentenSchnittstelle).
-					gibAlleTextItemsZuNuzer(session.getCurrentUser().getNutzerID()));
+			this.listItems
+					.setListData(((KonsumentenSchnittstellePrivat) this.konsumentenSchnittstelle)
+							.gibAlleTextItemsZuNuzer(session.getCurrentUser()
+									.getNutzerID()));
 		if (this.currentLicenseState == Konfiguration.LICENSE_STATE_EDUCATION)
-			this.listItems.setListData(((KonsumentenSchnittstelleUni)this.konsumentenSchnittstelle).
-					gibAlleItemsZuNuzer(session.getCurrentUser().getNutzerID()));
+			this.listItems
+					.setListData(((KonsumentenSchnittstelleUni) this.konsumentenSchnittstelle)
+							.gibAlleItemsZuNuzer(session.getCurrentUser()
+									.getNutzerID()));
 		if (this.currentLicenseState == Konfiguration.LICENSE_STATE_BUSINESS)
-			this.listItems.setListData(((KonsumentenSchnittstellePrivat)this.konsumentenSchnittstelle).
-					gibAlleTextItemsZuNuzer(session.getCurrentUser().getNutzerID()));
+			this.listItems
+					.setListData(((KonsumentenSchnittstelleFirma) this.konsumentenSchnittstelle)
+							.gibAlleTextAudioItemsZuNuzer(session.getCurrentUser()
+									.getNutzerID()));
 	}
 }

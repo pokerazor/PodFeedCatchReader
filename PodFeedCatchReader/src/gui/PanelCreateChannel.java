@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
@@ -86,5 +88,20 @@ public class PanelCreateChannel extends PanelAbstract {
 		lblInfo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInfo.setBounds(6, 148, 288, 16);
 		add(lblInfo);
+		
+		btnSave.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String neuerChannelName = textField.getText();
+				if (neuerChannelName.length() == 0) {
+					lblInfo.setText("Der Name darf nicht Nichts sein!");
+				} else {
+					produzentenSchnitstelle.erstelleChannel(neuerChannelName);
+					System.out.println("Neuen Channel erstellt: " + neuerChannelName);
+				}
+				
+			}
+		});
 	}
 }

@@ -1,7 +1,11 @@
 package gui;
 
+import itemSpeicher.Channel;
 import itemSpeicher.KonsumentenSchnittstelle;
 import itemSpeicher.ProduzentenSchnittstelle;
+import itemSpeicher.ProduzentenSchnittstellePrivat;
+import itemSpeicher.ProduzentenSchnittstelleFirma;
+import itemSpeicher.ProduzentenSchnittstelleUni;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -14,11 +18,14 @@ import java.awt.List;
 import javax.swing.JList;
 import javax.swing.JButton;
 
+import nutzerVerwaltung.Gruppe;
 import nutzerVerwaltung.LoginSchnittstelle;
 import nutzerVerwaltung.Nutzer;
 import nutzerVerwaltung.ZugriffsSchnittstelle;
 
 import java.awt.Button;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import konfiguration.Session;
 
@@ -39,6 +46,10 @@ public class PanelAssignChannelToGroup extends PanelAbstract {
 	private JButton btnCancel;
 	private JButton btnNewChannel;
 	private JButton btnNewGroup;
+	private JList<Gruppe> listGroups;
+	private JList<Channel> listChannels;
+	private JLabel lblChannel;
+	private JLabel lblGroup;
 
 	public JButton getBtnSave() {
 		return btnSave;
@@ -65,30 +76,30 @@ public class PanelAssignChannelToGroup extends PanelAbstract {
 		lblHeading.setBounds(26, 6, 248, 16);
 		add(lblHeading);
 
-		JList listChannel = new JList();
-		listChannel.setBounds(10, 54, 280, 155);
-		add(listChannel);
+		listChannels = new JList<Channel>();
+		listChannels.setBounds(10, 54, 280, 155);
+		add(listChannels);
 
-		JLabel lblNewLabel = new JLabel("Channel");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(90, 32, 119, 16);
-		add(lblNewLabel);
+		lblChannel = new JLabel("Channel");
+		lblChannel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblChannel.setBounds(90, 32, 119, 16);
+		add(lblChannel);
 
-		JLabel lblGroup = new JLabel("Gruppe");
+		lblGroup = new JLabel("Gruppe");
 		lblGroup.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGroup.setBounds(119, 242, 61, 16);
 		add(lblGroup);
 
-		JList listGroup = new JList();
-		listGroup.setBounds(6, 265, 284, 155);
-		add(listGroup);
+		listGroups = new JList<Gruppe>();
+		listGroups.setBounds(6, 265, 284, 147);
+		add(listGroups);
 
 		btnSave = new JButton("Speichern");
-		btnSave.setBounds(10, 454, 117, 29);
+		btnSave.setBounds(10, 465, 117, 29);
 		add(btnSave);
 
 		btnCancel = new JButton("Abbrechen");
-		btnCancel.setBounds(173, 454, 117, 29);
+		btnCancel.setBounds(173, 465, 117, 29);
 		add(btnCancel);
 
 		btnNewChannel = new JButton("Neuer Channel");
@@ -96,8 +107,40 @@ public class PanelAssignChannelToGroup extends PanelAbstract {
 		add(btnNewChannel);
 
 		btnNewGroup = new JButton("Neue Gruppe");
-		btnNewGroup.setBounds(92, 424, 117, 29);
+		btnNewGroup.setBounds(92, 413, 117, 29);
 		add(btnNewGroup);
+		
+		JButton btnRefresh = new JButton("Aktualisieren");
+		btnRefresh.setBounds(92, 441, 117, 29);
+		add(btnRefresh);
+		
+		btnRefresh.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				refreshListGroups();
+				refreshListUsers();
+				
+			}
+		});
+		
+		btnSave.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				((ProduzentenSchnittstelleFirma)produzentenSchnitstelle).abonniereChannelFuerGruppe
+					(listChannels.getSelectedValue().getId(), listGroups.getSelectedValue().getGruppenID());
+				
+			}
+		});
 
+	}
+	
+	public void refreshListUsers() {
+		this.listChannels.setListData(this.produzentenSchnitstelle.getChannelVerzeichnis().getChannels());
+	}
+	
+	public void refreshListGroups() {
+		this.listGroups.setListData(this.zugriffsSchnittstelle.gibAlleGruppen());
 	}
 }

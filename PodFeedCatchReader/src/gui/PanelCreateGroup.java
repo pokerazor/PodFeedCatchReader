@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -64,6 +66,15 @@ public class PanelCreateGroup extends PanelAbstract {
 		btnCancel = new JButton("Abbrechen");
 		btnCancel.setBounds(91, 108, 117, 29);
 		add(btnCancel);
+		
+		btnSaveGroup.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				PanelCreateGroup.this.zugriffsSchnittstelle.erstelleGruppe(PanelCreateGroup.this.textField.getText());
+				
+			}
+		});
 	}
 
 }

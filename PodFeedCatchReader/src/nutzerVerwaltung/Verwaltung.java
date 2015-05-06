@@ -11,7 +11,8 @@ public class Verwaltung implements LoginSchnittstelle, ZugriffsSchnittstelle{
 		this.nutzer = nutzer;
 		this.gruppen = gruppen;
 		
-		neuenNutzerAnlegen("test", "", NutzerRolle.Produzent);
+		neuenNutzerAnlegen("Produzent", "", NutzerRolle.Produzent);
+		neuenNutzerAnlegen("Konsument", "", NutzerRolle.Produzent);
 	}
 	
 	
@@ -56,6 +57,7 @@ public class Verwaltung implements LoginSchnittstelle, ZugriffsSchnittstelle{
 			return false;
 		}else{
 			g.setNutzer(n);
+			System.out.println("Nutzer zu Gruppe hinzugefügt: Gruppen-ID: " + gruppenID + " Nutzer-ID: " + nutzerID);
 			return true;
 		}
 	}

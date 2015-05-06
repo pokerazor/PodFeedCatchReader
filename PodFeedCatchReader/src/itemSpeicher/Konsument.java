@@ -2,19 +2,23 @@ package itemSpeicher;
 
 import java.util.Vector;
 
+import nutzerVerwaltung.GruppenListe;
 import nutzerVerwaltung.Nutzer;
 import nutzerVerwaltung.NutzerListe;
+import nutzerVerwaltung.Gruppe;
 
 public class Konsument implements KonsumentenSchnittstellePrivat, KonsumentenSchnittstelleUni, KonsumentenSchnittstelleFirma{
 
 	ChannelVerzeichnis verzeichnis;
 	ChannelVerzeichnisURL verzeichnisURL;
 	NutzerListe nutzer;
+	GruppenListe gruppenListe;
 	
-	public Konsument(ChannelVerzeichnis verzeichnis, ChannelVerzeichnisURL verzeichnisURL, NutzerListe nutzer){
+	public Konsument(ChannelVerzeichnis verzeichnis, ChannelVerzeichnisURL verzeichnisURL, NutzerListe nutzer, GruppenListe gruppenListe){
 		this.verzeichnis = verzeichnis;
 		this.verzeichnisURL = verzeichnisURL;
 		this.nutzer = nutzer;
+		this.gruppenListe = gruppenListe;
 	}
 	
 	@Override
@@ -329,6 +333,17 @@ Vector<Item> alleItems = new Vector<Item>();
 				}
 			}
 		}
+		
+		 for (Gruppe g: gruppenListe.gibAlleGruppenZuNutzer(nutzerID)) {
+			 for (Channel c : g.getAbonnierteChannels()) {
+				 for (Item i : c.getItems()) {
+					 if (i.getArt() != ItemArt.Video) {
+						 alleItems.add(i);
+					 }
+				 }
+			 }
+		 }
+		
 		return alleItems;
 	}
 
@@ -361,6 +376,9 @@ Vector<Item> alleItems = new Vector<Item>();
 				}
 			}
 		}
+		
+		
+		
 		return alleItems;
 	}
 

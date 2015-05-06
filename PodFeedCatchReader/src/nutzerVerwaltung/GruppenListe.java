@@ -17,5 +17,17 @@ public class GruppenListe {
 	public Vector<Gruppe> getGruppen(){
 		return gruppen;
 	}
+	
+	public Vector<Gruppe> gibAlleGruppenZuNutzer(int nutzerID) {
+		Vector<Gruppe> gruppenEnthalten = new Vector<Gruppe>();
+		for (Gruppe g : gruppen) {
+			for (Nutzer n : g.nutzer) {
+				if (n.getNutzerID() == nutzerID) {
+					gruppenEnthalten.add(g);
+				}
+			}
+		}
+		return gruppenEnthalten;
+	}
 
 }

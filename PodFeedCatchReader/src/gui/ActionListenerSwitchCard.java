@@ -20,7 +20,6 @@ public class ActionListenerSwitchCard implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		panelWithCardLayout.switchCard(targetCard);
-		System.out.println("Card switched");
 	}
 	
 }
