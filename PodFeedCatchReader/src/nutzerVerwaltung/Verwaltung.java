@@ -12,7 +12,7 @@ public class Verwaltung implements LoginSchnittstelle, ZugriffsSchnittstelle{
 		this.gruppen = gruppen;
 		
 		neuenNutzerAnlegen("Produzent", "", NutzerRolle.Produzent);
-		neuenNutzerAnlegen("Konsument", "", NutzerRolle.Produzent);
+		neuenNutzerAnlegen("Konsument", "", NutzerRolle.Konsument);
 	}
 	
 	

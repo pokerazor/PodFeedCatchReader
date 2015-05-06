@@ -19,6 +19,7 @@ import javax.swing.JList;
 
 import nutzerVerwaltung.LoginSchnittstelle;
 import nutzerVerwaltung.Nutzer;
+import nutzerVerwaltung.NutzerRolle;
 import nutzerVerwaltung.ZugriffsSchnittstelle;
 
 import com.jgoodies.forms.layout.FormLayout;
@@ -73,20 +74,24 @@ public class PanelMain extends PanelAbstract {
 		gbc.gridy = 0;
 		add(tabbedPane, gbc);
 		
-		PanelConsumeItems panelConsumeItems = new PanelConsumeItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
-		tabbedPane.addTab("Items", null, panelConsumeItems, null);
-		
-		if (currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_BUSINESS.intValue() || currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_EDUCATION.intValue()) {
-			PanelProduceItems panelProduceItems = new PanelProduceItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
-			tabbedPane.addTab("Item erstellen", null, panelProduceItems, null);
+		if (session.getCurrentUser().getRolle() == NutzerRolle.Konsument) {
+			PanelConsumeItems panelConsumeItems = new PanelConsumeItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
+			tabbedPane.addTab("Items", null, panelConsumeItems, null);
 		}
 		
-		if (currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_BUSINESS.intValue()) {
-			PanelUserAdministration panelUserAdministration = new PanelUserAdministration(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
-			tabbedPane.addTab("Nutzerverwaltung", null, panelUserAdministration, null);
+		if (session.getCurrentUser().getRolle() == NutzerRolle.Produzent) {
+			if (currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_BUSINESS.intValue() || currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_EDUCATION.intValue()) {
+				PanelProduceItems panelProduceItems = new PanelProduceItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
+				tabbedPane.addTab("Item erstellen", null, panelProduceItems, null);
+			}
 			
-			PanelGroupAdministration panelGroupAdministration =  new PanelGroupAdministration(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
-			tabbedPane.addTab("Channelzuweisung", null, panelGroupAdministration, null);
+			if (currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_BUSINESS.intValue()) {
+				PanelUserAdministration panelUserAdministration = new PanelUserAdministration(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
+				tabbedPane.addTab("Nutzerverwaltung", null, panelUserAdministration, null);
+				
+				PanelGroupAdministration panelGroupAdministration =  new PanelGroupAdministration(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
+				tabbedPane.addTab("Channelzuweisung", null, panelGroupAdministration, null);
+			}
 		}
 	}
 	
