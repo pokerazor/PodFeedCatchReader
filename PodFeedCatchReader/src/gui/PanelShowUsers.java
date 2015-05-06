@@ -5,6 +5,7 @@ import itemSpeicher.ProduzentenSchnittstelle;
 
 import javax.swing.JPanel;
 
+import konfiguration.Session;
 import nutzerVerwaltung.LoginSchnittstelle;
 import nutzerVerwaltung.ZugriffsSchnittstelle;
 
@@ -14,10 +15,10 @@ public class PanelShowUsers extends PanelAbstract {
 			ProduzentenSchnittstelle produzentenSchnittstelle,
 			KonsumentenSchnittstelle konsumentenSchnittstelle,
 			LoginSchnittstelle loginSchnittstelle,
-			ZugriffsSchnittstelle zugriffsSchnittstelle) {
+			ZugriffsSchnittstelle zugriffsSchnittstelle, Session session) {
 		super(currentLicenseState, produzentenSchnittstelle,
 				konsumentenSchnittstelle, loginSchnittstelle,
-				zugriffsSchnittstelle);
+				zugriffsSchnittstelle, session);
 	}
 
 	@Override

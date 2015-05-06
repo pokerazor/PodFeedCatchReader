@@ -9,6 +9,7 @@ import itemSpeicher.ProduzentenSchnittstelleUni;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import konfiguration.Session;
 import nutzerVerwaltung.LoginSchnittstelle;
 import nutzerVerwaltung.ZugriffsSchnittstelle;
 
@@ -18,10 +19,10 @@ public class PanelProduceItems extends PanelWithCardLayout {
 			ProduzentenSchnittstelle produzentenSchnittstelle,
 			KonsumentenSchnittstelle konsumentenSchnittstelle,
 			LoginSchnittstelle loginSchnittstelle,
-			ZugriffsSchnittstelle zugriffsSchnittstelle) {
+			ZugriffsSchnittstelle zugriffsSchnittstelle, Session currentSession) {
 		super(currentLicenseState, produzentenSchnittstelle,
 				konsumentenSchnittstelle, loginSchnittstelle,
-				zugriffsSchnittstelle);
+				zugriffsSchnittstelle, currentSession);
 		
 		this.add(panelCreateItem, CREATE_FEED_PANEL);
 		this.add(panelShowCreatedItems, SHOW_CREATED_FEEDS_PANEL); 
@@ -46,9 +47,9 @@ public class PanelProduceItems extends PanelWithCardLayout {
 	
 	
 	protected void initialize() {
-		panelCreateItem = new PanelCreateItem(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle);
-		panelShowCreatedItems = new PanelShowCreatedItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle);
-		panelCreateChannel = new PanelCreateChannel(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle);
+		panelCreateItem = new PanelCreateItem(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
+		panelShowCreatedItems = new PanelShowCreatedItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
+		panelCreateChannel = new PanelCreateChannel(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
 		
 		this.add(panelCreateItem, CREATE_FEED_PANEL);
 		this.add(panelShowCreatedItems, SHOW_CREATED_FEEDS_PANEL); 
@@ -68,6 +69,7 @@ public class PanelProduceItems extends PanelWithCardLayout {
 				if (panelCreateItem.getRdbtnItemTypeAudio().isSelected()) { itemArt = ItemArt.Audio;}
 				if (panelCreateItem.getRdbtnItemTypeVideo().isSelected()) { itemArt = ItemArt.Video;}
 				PanelProduceItems.this.produzentenSchnitstelle.erstelleItem(itemArt, panelCreateItem.getTextPaneFeed().getText(), ((Channel) panelCreateItem.getListChannels().getSelectedValue()).getId());
+				PanelShowCreatedItems
 			}
 		});
 		

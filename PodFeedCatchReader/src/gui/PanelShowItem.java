@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
 
+import konfiguration.Session;
 import nutzerVerwaltung.LoginSchnittstelle;
 import nutzerVerwaltung.ZugriffsSchnittstelle;
 
@@ -16,10 +17,10 @@ public class PanelShowItem extends PanelAbstract {
 			ProduzentenSchnittstelle produzentenSchnittstelle,
 			KonsumentenSchnittstelle konsumentenSchnittstelle,
 			LoginSchnittstelle loginSchnittstelle,
-			ZugriffsSchnittstelle zugriffsSchnittstelle) {
+			ZugriffsSchnittstelle zugriffsSchnittstelle, Session session) {
 		super(currentLicenseState, produzentenSchnittstelle,
 				konsumentenSchnittstelle, loginSchnittstelle,
-				zugriffsSchnittstelle);
+				zugriffsSchnittstelle, null);
 	}
 
 	private JTextPane textPaneItems;

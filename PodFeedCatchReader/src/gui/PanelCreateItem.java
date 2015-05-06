@@ -15,9 +15,12 @@ import javax.swing.JButton;
 import javax.swing.JList;
 
 import nutzerVerwaltung.LoginSchnittstelle;
+import nutzerVerwaltung.Nutzer;
 import nutzerVerwaltung.ZugriffsSchnittstelle;
 
 import javax.swing.JRadioButton;
+
+import konfiguration.Session;
 
 public class PanelCreateItem extends PanelAbstract {
 	
@@ -25,10 +28,10 @@ public class PanelCreateItem extends PanelAbstract {
 			ProduzentenSchnittstelle produzentenSchnittstelle,
 			KonsumentenSchnittstelle konsumentenSchnittstelle,
 			LoginSchnittstelle loginSchnittstelle,
-			ZugriffsSchnittstelle zugriffsSchnittstelle) {
+			ZugriffsSchnittstelle zugriffsSchnittstelle, Session session) {
 		super(currentLicenseState, produzentenSchnittstelle,
 				konsumentenSchnittstelle, loginSchnittstelle,
-				zugriffsSchnittstelle);
+				zugriffsSchnittstelle, session);
 	}
 
 

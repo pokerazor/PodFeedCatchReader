@@ -5,6 +5,7 @@ import itemSpeicher.ProduzentenSchnittstelle;
 
 import javax.swing.JPanel;
 
+import konfiguration.Session;
 import nutzerVerwaltung.LoginSchnittstelle;
 import nutzerVerwaltung.ZugriffsSchnittstelle;
 
@@ -14,10 +15,10 @@ public class PanelUserAdministration extends PanelWithCardLayout {
 			ProduzentenSchnittstelle produzentenSchnittstelle,
 			KonsumentenSchnittstelle konsumentenSchnittstelle,
 			LoginSchnittstelle loginSchnittstelle,
-			ZugriffsSchnittstelle zugriffsSchnittstelle) {
+			ZugriffsSchnittstelle zugriffsSchnittstelle, Session session) {
 		super(currentLicenseState, produzentenSchnittstelle,
 				konsumentenSchnittstelle, loginSchnittstelle,
-				zugriffsSchnittstelle);
+				zugriffsSchnittstelle, session);
 		
 		this.add(panelAssignUserToGroup, ASSIGN_GROUP_PANEL);
 		this.add(panelCreateGroup, CREATE_GROUP_PANEL);
@@ -34,8 +35,8 @@ public class PanelUserAdministration extends PanelWithCardLayout {
 
 	
 	protected void initialize(){
-		panelAssignUserToGroup = new PanelAssignUserToGroup(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle);
-		panelCreateGroup = new PanelCreateGroup(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle);
+		panelAssignUserToGroup = new PanelAssignUserToGroup(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
+		panelCreateGroup = new PanelCreateGroup(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
 		
 		panelAssignUserToGroup.getBtnCreateGroup().addActionListener(new ActionListenerSwitchCard(this, CREATE_GROUP_PANEL));
 		panelCreateGroup.getBtnCancel().addActionListener(new ActionListenerSwitchCard(this, ASSIGN_GROUP_PANEL));

@@ -10,6 +10,7 @@ import javax.swing.JButton;
 
 import nutzerVerwaltung.LoginSchnittstelle;
 import nutzerVerwaltung.ZugriffsSchnittstelle;
+import konfiguration.Session;
 import konfiguration.Konfiguration;
 
 public class PanelSubscribeChannel extends PanelAbstract {
@@ -17,10 +18,10 @@ public class PanelSubscribeChannel extends PanelAbstract {
 			ProduzentenSchnittstelle produzentenSchnittstelle,
 			KonsumentenSchnittstelle konsumentenSchnittstelle,
 			LoginSchnittstelle loginSchnittstelle,
-			ZugriffsSchnittstelle zugriffsSchnittstelle) {
+			ZugriffsSchnittstelle zugriffsSchnittstelle, Session session) {
 		super(currentLicenseState, produzentenSchnittstelle,
 				konsumentenSchnittstelle, loginSchnittstelle,
-				zugriffsSchnittstelle);
+				zugriffsSchnittstelle, session);
 	}
 
 	private JTextField txtUrl;

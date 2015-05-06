@@ -13,7 +13,9 @@ import javax.swing.JList;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
+import konfiguration.Session;
 import nutzerVerwaltung.LoginSchnittstelle;
+import nutzerVerwaltung.Nutzer;
 import nutzerVerwaltung.ZugriffsSchnittstelle;
 
 public class PanelAssignUserToGroup extends PanelAbstract {
@@ -22,10 +24,11 @@ public class PanelAssignUserToGroup extends PanelAbstract {
 			ProduzentenSchnittstelle produzentenSchnittstelle,
 			KonsumentenSchnittstelle konsumentenSchnittstelle,
 			LoginSchnittstelle loginSchnittstelle,
-			ZugriffsSchnittstelle zugriffsSchnittstelle) {
+			ZugriffsSchnittstelle zugriffsSchnittstelle,
+			Session session) {
 		super(currentLicenseState, produzentenSchnittstelle,
 				konsumentenSchnittstelle, loginSchnittstelle,
-				zugriffsSchnittstelle);
+				zugriffsSchnittstelle, null);
 	}
 
 	private JButton btnCreateGroup;

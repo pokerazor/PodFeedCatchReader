@@ -22,6 +22,7 @@ import java.awt.CardLayout;
 import java.awt.GridBagConstraints;
 
 import konfiguration.Konfiguration;
+import konfiguration.Session;
 
 public class MainWindow {
 
@@ -69,15 +70,13 @@ public class MainWindow {
 		frame.setBounds(100, 100, 331, 613);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		panelMain = new PanelMain(this.currentLicenseState,
-				this.produzentenSchnittstelle, this.konsumentenSchnittstelle,
-				this.loginSchnittstelle, this.zugriffsSchnittstelle);
+		
 		panelLogIn = new PanelLogIn(this.currentLicenseState,
 				this.produzentenSchnittstelle, this.konsumentenSchnittstelle,
-				this.loginSchnittstelle, this.zugriffsSchnittstelle);
+				this.loginSchnittstelle, this.zugriffsSchnittstelle, null);
 		panelCard = new PanelWithCardLayout(this.currentLicenseState,
 				this.produzentenSchnittstelle, this.konsumentenSchnittstelle,
-				this.loginSchnittstelle, this.zugriffsSchnittstelle);
+				this.loginSchnittstelle, this.zugriffsSchnittstelle, null);
 
 		frame.getContentPane().add(panelCard);
 
@@ -107,10 +106,11 @@ public class MainWindow {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					if (MainWindow.this.loginSchnittstelle.logInVerifizieren(
+					Nutzer currentUser = MainWindow.this.loginSchnittstelle.logInVerifizieren(
 							Integer.parseInt(panelLogIn.getTextFieldName()
 									.getText()), panelLogIn
-									.getTextFieldPassword().getText())) {
+									.getTextFieldPassword().getText());
+					if (currentUser != null) {
 						MainWindow.this.panelCard.switchCard(MAIN_PANEL);
 					} else {
 						MainWindow.this.panelLogIn.getLblInfo().setText(
@@ -132,6 +132,14 @@ public class MainWindow {
 						zugriffsSchnittstelle);
 			}
 		});
+	}
+	
+	private void createNewSession(Nutzer currentUser) {
+		Session newSession = new Session(currentUser);
+		panelMain = new PanelMain(this.currentLicenseState,
+				this.produzentenSchnittstelle, this.konsumentenSchnittstelle,
+				this.loginSchnittstelle, this.zugriffsSchnittstelle);
+		
 	}
 
 }

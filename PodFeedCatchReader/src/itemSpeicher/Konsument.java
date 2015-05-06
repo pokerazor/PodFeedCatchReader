@@ -292,19 +292,19 @@ public class Konsument implements KonsumentenSchnittstellePrivat, KonsumentenSch
 	}
 
 	@Override
-	public Vector<Item> AlleTextAudioItemsZuNuzer(int nutzerID) {
+	public Vector<Item> gibAlleTextAudioItemsZuNuzer(int nutzerID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Vector<Item> AlleItemsZuNuzer(int nutzerID) {
+	public Vector<Item> gibAlleItemsZuNuzer(int nutzerID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Vector<Item> AlleTextItemsZuNuzer(int nutzerID) {
+	public Vector<Item> gibAlleTextItemsZuNuzer(int nutzerID) {
 		// TODO Auto-generated method stub
 		return null;
 	}

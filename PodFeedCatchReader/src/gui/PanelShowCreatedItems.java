@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JList;
 import javax.swing.JButton;
 
+import konfiguration.Session;
 import nutzerVerwaltung.LoginSchnittstelle;
 import nutzerVerwaltung.ZugriffsSchnittstelle;
 
@@ -17,10 +18,10 @@ public class PanelShowCreatedItems extends PanelAbstract {
 			ProduzentenSchnittstelle produzentenSchnittstelle,
 			KonsumentenSchnittstelle konsumentenSchnittstelle,
 			LoginSchnittstelle loginSchnittstelle,
-			ZugriffsSchnittstelle zugriffsSchnittstelle) {
+			ZugriffsSchnittstelle zugriffsSchnittstelle, Session session) {
 		super(currentLicenseState, produzentenSchnittstelle,
 				konsumentenSchnittstelle, loginSchnittstelle,
-				zugriffsSchnittstelle);
+				zugriffsSchnittstelle, session);
 	}
 
 	private JButton btnCreateItem;
@@ -47,6 +48,6 @@ public class PanelShowCreatedItems extends PanelAbstract {
 	}
 	
 	public void refreshListItems() {
-		//this.listItems.setListData(this.produzentenSchnitstelle.getChannelVerzeichnis().getChannels());
+		this.listItems.setListData(this.produzentenSchnitstelle.gibAlleItemsZuProduzent(session.getCurrentUser().getNutzerID()));
 	}
 }

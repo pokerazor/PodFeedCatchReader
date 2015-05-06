@@ -1,12 +1,12 @@
 package nutzerVerwaltung;
 
 import java.util.LinkedList;
+import java.util.Vector;
 
 public class Verwaltung implements LoginSchnittstelle, ZugriffsSchnittstelle{
 
 	NutzerListe nutzer;
 	GruppenListe gruppen;
-	private Nutzer aktuellerNutzer;
 	
 	public Verwaltung(NutzerListe nutzer, GruppenListe gruppen){
 		this.nutzer = nutzer;
@@ -66,7 +66,7 @@ public class Verwaltung implements LoginSchnittstelle, ZugriffsSchnittstelle{
 	}
 
 	@Override
-	public boolean logInVerifizieren(int nutzerID, String passwort) {
+	public Nutzer logInVerifizieren(int nutzerID, String passwort) {
 		boolean nutzerExistiert = false;
 		Nutzer n = null;
 		
@@ -82,14 +82,13 @@ public class Verwaltung implements LoginSchnittstelle, ZugriffsSchnittstelle{
 		
 		if(nutzerExistiert == false){
 			System.out.println("ID unbekannt!");
-			return false;
+			return null;
 		}else{
 			if(n.getPasswort().equals(passwort)){
-				aktuellerNutzer = n;
-				return true;
+				return n;
 			}else{
 				System.out.println("Passwort falsch!");
-				return false;
+				return null;
 			}
 		}
 	}
@@ -120,6 +119,22 @@ public class Verwaltung implements LoginSchnittstelle, ZugriffsSchnittstelle{
 		nutzer.setNutzer(neu);
 		System.out.println("Neuer Nutzer: " + "Name: " + neu.getName() + " Passwort: " + neu.getPasswort() + " Rolle: " + neu.getRolle().toString()); 
 		return id;
+	}
+
+
+
+	@Override
+	public Vector<Gruppe> gibAlleGruppen() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public Vector<Nutzer> gibAlleNutzer() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

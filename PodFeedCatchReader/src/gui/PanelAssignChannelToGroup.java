@@ -15,9 +15,12 @@ import javax.swing.JList;
 import javax.swing.JButton;
 
 import nutzerVerwaltung.LoginSchnittstelle;
+import nutzerVerwaltung.Nutzer;
 import nutzerVerwaltung.ZugriffsSchnittstelle;
 
 import java.awt.Button;
+
+import konfiguration.Session;
 
 public class PanelAssignChannelToGroup extends PanelAbstract {
 
@@ -25,10 +28,11 @@ public class PanelAssignChannelToGroup extends PanelAbstract {
 			ProduzentenSchnittstelle produzentenSchnittstelle,
 			KonsumentenSchnittstelle konsumentenSchnittstelle,
 			LoginSchnittstelle loginSchnittstelle,
-			ZugriffsSchnittstelle zugriffsSchnittstelle) {
+			ZugriffsSchnittstelle zugriffsSchnittstelle,
+			Session session) {
 		super(currentLicenseState, produzentenSchnittstelle,
 				konsumentenSchnittstelle, loginSchnittstelle,
-				zugriffsSchnittstelle);
+				zugriffsSchnittstelle, session);
 	}
 
 	private JButton btnSave;

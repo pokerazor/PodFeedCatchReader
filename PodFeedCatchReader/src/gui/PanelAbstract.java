@@ -7,7 +7,9 @@ import itemSpeicher.ProduzentenSchnittstelle;
 
 import javax.swing.JPanel;
 
+import konfiguration.Session;
 import nutzerVerwaltung.LoginSchnittstelle;
+import nutzerVerwaltung.Nutzer;
 import nutzerVerwaltung.ZugriffsSchnittstelle;
 
 public abstract class PanelAbstract extends JPanel {
@@ -16,17 +18,19 @@ public abstract class PanelAbstract extends JPanel {
 	protected Integer currentLicenseState;
 	protected LoginSchnittstelle loginSchnittstelle;
 	protected ZugriffsSchnittstelle zugriffsSchnittstelle;
+	protected Session session;
 
 	/**
 	 * Create the panel.
 	 */
 	public PanelAbstract(Integer currentLicenseState, ProduzentenSchnittstelle produzentenSchnittstelle, KonsumentenSchnittstelle konsumentenSchnittstelle, 
-			LoginSchnittstelle loginSchnittstelle, ZugriffsSchnittstelle zugriffsSchnittstelle) {
+			LoginSchnittstelle loginSchnittstelle, ZugriffsSchnittstelle zugriffsSchnittstelle, Session session) {
 		this.currentLicenseState = currentLicenseState;
 		this.produzentenSchnitstelle = produzentenSchnittstelle;
 		this.konsumentenSchnittstelle = konsumentenSchnittstelle;
 		this.loginSchnittstelle = loginSchnittstelle;
 		this.produzentenSchnitstelle =  produzentenSchnittstelle;
+		this.session = session;
 		initialize();
 	}
 	
