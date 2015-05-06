@@ -224,12 +224,14 @@ public class Konsument implements KonsumentenSchnittstellePrivat, KonsumentenSch
 
 	@Override
 	public boolean ChannelAbonnierenVerzeichnis(int nutzerID, int ChannelID) {
+		
 		boolean channelExistiert = false;
 		boolean nutzerExistiert = false;
 		Channel c = null;
 		
 		for(int i = 0; i < verzeichnis.getChannels().size(); ++i){
 			if(verzeichnis.getChannels().get(i).getId() == ChannelID){
+				channelExistiert = true;
 				c = verzeichnis.getChannels().get(i);
 			}
 		}
@@ -237,6 +239,7 @@ public class Konsument implements KonsumentenSchnittstellePrivat, KonsumentenSch
 		if(channelExistiert == true){
 			for(int i = 0; i < nutzer.getNutzer().size(); ++i){
 				if(nutzer.getNutzer().get(i).getNutzerID() == nutzerID){
+					System.out.println("Channel wird aboniert: " + " Nutzer-ID: " + nutzerID + " ChannelID " + c.getId());
 					nutzer.getNutzer().get(i).setChannel(c);
 					nutzerExistiert = true;
 					return true;
@@ -294,7 +297,7 @@ public class Konsument implements KonsumentenSchnittstellePrivat, KonsumentenSch
 
 	@Override
 	public Vector<Item> gibAlleTextAudioItemsZuNuzer(int nutzerID) {
-Vector<Item> alleItems = new Vector();
+Vector<Item> alleItems = new Vector<Item>();
 		
 		Nutzer n = null;
 		for(int i = 0; i < nutzer.getNutzer().size(); ++i){
@@ -303,33 +306,35 @@ Vector<Item> alleItems = new Vector();
 			}
 		}
 		Vector <Channel> listeChannel = n.getAbonnierteChannels();
-		
-		for(int j = 0; j < listeChannel.size(); ++j){
-			Vector <Item> listeItem = listeChannel.get(j).getItems();
-			for(int k = 0; k < listeItem.size();++k){
-				if(listeItem.get(k).getArt() != ItemArt.Video){
-					alleItems.add(listeItem.get(k));
+
+		if(listeChannel != null){
+			for(int j = 0; j < listeChannel.size(); ++j){
+				Vector <Item> listeItem = listeChannel.get(j).getItems();
+				for(int k = 0; k < listeItem.size();++k){
+					if(listeItem.get(k).getArt() != ItemArt.Video){
+						alleItems.add(listeItem.get(k));
+					}
 				}
 			}
 		}
-		
 		Vector <ChannelURL> listeChannelURL = n.getAbonnierteURLs();
-		
-		for(int j = 0; j < listeChannelURL.size(); ++j){
-			Vector <Item> listeItemURL = listeChannelURL.get(j).getItems();
-			for(int k = 0; k < listeItemURL.size();++k){
-				if(listeItemURL.get(k).getArt() != ItemArt.Video){
-					alleItems.add(listeItemURL.get(k));
+
+		if(listeChannelURL != null){
+			for(int j = 0; j < listeChannelURL.size(); ++j){
+				Vector <Item> listeItemURL = listeChannelURL.get(j).getItems();
+				for(int k = 0; k < listeItemURL.size();++k){
+					if(listeItemURL.get(k).getArt() != ItemArt.Video){
+						alleItems.add(listeItemURL.get(k));
+					}
 				}
 			}
 		}
-		
 		return alleItems;
 	}
 
 	@Override
 	public Vector<Item> gibAlleItemsZuNuzer(int nutzerID) {
-		Vector<Item> alleItems = new Vector();
+		Vector<Item> alleItems = new Vector <Item>();
 		
 		Nutzer n = null;
 		for(int i = 0; i < nutzer.getNutzer().size(); ++i){
@@ -338,58 +343,61 @@ Vector<Item> alleItems = new Vector();
 			}
 		}
 		Vector <Channel> listeChannel = n.getAbonnierteChannels();
-		
-		for(int j = 0; j < listeChannel.size(); ++j){
-			Vector <Item> listeItem = listeChannel.get(j).getItems();
-			for(int k = 0; k < listeItem.size();++k){
-				alleItems.add(listeItem.get(k));
-			}
-		}
-		
-		Vector <ChannelURL> listeChannelURL = n.getAbonnierteURLs();
-		
-		for(int j = 0; j < listeChannelURL.size(); ++j){
-			Vector <Item> listeItemURL = listeChannelURL.get(j).getItems();
-			for(int k = 0; k < listeItemURL.size();++k){
-				alleItems.add(listeItemURL.get(k));
-			}
-		}
-		
-		return alleItems;
-	}
-
-	@Override
-	public Vector<Item> gibAlleTextItemsZuNuzer(int nutzerID) {
-Vector<Item> alleItems = new Vector();
-		
-		Nutzer n = null;
-		for(int i = 0; i < nutzer.getNutzer().size(); ++i){
-			if(nutzer.getNutzer().get(i).getNutzerID() == nutzerID){
-				n = nutzer.getNutzer().get(i);
-			}
-		}
-		Vector <Channel> listeChannel = n.getAbonnierteChannels();
-		
-		for(int j = 0; j < listeChannel.size(); ++j){
-			Vector <Item> listeItem = listeChannel.get(j).getItems();
-			for(int k = 0; k < listeItem.size();++k){
-				if(listeItem.get(k).getArt() == ItemArt.Text){
+		if(listeChannel != null){
+			for(int j = 0; j < listeChannel.size(); ++j){
+				Vector <Item> listeItem = listeChannel.get(j).getItems();
+				for(int k = 0; k < listeItem.size();++k){
 					alleItems.add(listeItem.get(k));
 				}
 			}
 		}
 		
 		Vector <ChannelURL> listeChannelURL = n.getAbonnierteURLs();
-		
-		for(int j = 0; j < listeChannelURL.size(); ++j){
-			Vector <Item> listeItemURL = listeChannelURL.get(j).getItems();
-			for(int k = 0; k < listeItemURL.size();++k){
-				if(listeItemURL.get(k).getArt() == ItemArt.Text){
+		if(listeChannelURL!= null){
+			for(int j = 0; j < listeChannelURL.size(); ++j){
+				Vector <Item> listeItemURL = listeChannelURL.get(j).getItems();
+				for(int k = 0; k < listeItemURL.size();++k){
 					alleItems.add(listeItemURL.get(k));
 				}
 			}
 		}
+		return alleItems;
+	}
+
+	@Override
+	public Vector<Item> gibAlleTextItemsZuNuzer(int nutzerID) {
+Vector<Item> alleItems = new Vector<Item>();
 		
+		Nutzer n = null;
+		for(int i = 0; i < nutzer.getNutzer().size(); ++i){
+			if(nutzer.getNutzer().get(i).getNutzerID() == nutzerID){
+				n = nutzer.getNutzer().get(i);
+			}
+		}
+		Vector <Channel> listeChannel = n.getAbonnierteChannels();
+
+		if(listeChannel != null){
+			for(int j = 0; j < listeChannel.size(); ++j){
+				Vector <Item> listeItem = listeChannel.get(j).getItems();
+				for(int k = 0; k < listeItem.size();++k){
+					if(listeItem.get(k).getArt() == ItemArt.Text){
+						alleItems.add(listeItem.get(k));
+					}
+				}
+			}
+		}
+		Vector <ChannelURL> listeChannelURL = n.getAbonnierteURLs();
+
+		if(listeChannel != null){
+			for(int j = 0; j < listeChannelURL.size(); ++j){
+				Vector <Item> listeItemURL = listeChannelURL.get(j).getItems();
+				for(int k = 0; k < listeItemURL.size();++k){
+					if(listeItemURL.get(k).getArt() == ItemArt.Text){
+						alleItems.add(listeItemURL.get(k));
+					}
+				}
+			}
+		}
 		return alleItems;
 	}
 	

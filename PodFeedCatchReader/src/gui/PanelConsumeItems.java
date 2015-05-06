@@ -58,15 +58,7 @@ public class PanelConsumeItems extends PanelWithCardLayout {
 			}
 		});
 		
-		panelSubscribeChannel.getBtnSubscribe().addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				((KonsumentenSchnittstelleUni) PanelConsumeItems.this.konsumentenSchnittstelle).ChannelAbonnierenVerzeichnis
-					(PanelConsumeItems.this.session.getCurrentUser().getNutzerID(), panelSubscribeChannel.getListChannels().getSelectedValue().getId());
-				
-			}
-		});
+		
 			
 	}
 }

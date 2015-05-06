@@ -48,6 +48,6 @@ public class PanelShowCreatedItems extends PanelAbstract {
 	}
 	
 	public void refreshListItems() {
-		this.listItems.setListData(this.produzentenSchnitstelle.gibAlleItemsZuProduzent(session.getCurrentUser().getNutzerID()));
+		//this.listItems.setListData(this.produzentenSchnitstelle.gibAlleItemsZuProduzent(session.getCurrentUser().getNutzerID()));
 	}
 }

@@ -33,6 +33,7 @@ public class PanelSubscribeChannel extends PanelAbstract {
 	private JButton btnSubscribe;
 	private JButton btnCancel;
 	private JList<Channel> listChannels;
+	private JButton btnRefreshListChannels;
 
 	public JTextField getTxtUrl() {
 		return txtUrl;
@@ -68,12 +69,35 @@ public class PanelSubscribeChannel extends PanelAbstract {
 		txtUrl.setColumns(10);
 		
 		btnSubscribe = new JButton("Abonnieren");
-		btnSubscribe.setBounds(91, 359, 117, 29);
+		btnSubscribe.setBounds(91, 385, 117, 29);
 		add(btnSubscribe);
 		
 		btnCancel = new JButton("Abbrechen");
-		btnCancel.setBounds(91, 400, 117, 29);
+		btnCancel.setBounds(91, 413, 117, 29);
 		add(btnCancel);
+		
+		btnRefreshListChannels = new JButton("Aktualisieren");
+		btnRefreshListChannels.setBounds(91, 344, 117, 29);
+		add(btnRefreshListChannels);
+		
+		btnRefreshListChannels.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				refreshChannelList();
+				
+			}
+		});
+		
+		btnSubscribe.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				((KonsumentenSchnittstelleUni) PanelSubscribeChannel.this.konsumentenSchnittstelle).ChannelAbonnierenVerzeichnis
+					(PanelSubscribeChannel.this.session.getCurrentUser().getNutzerID(), listChannels.getSelectedValue().getId());
+				
+			}
+		});
 		
 	}
 	

@@ -73,10 +73,10 @@ public class PanelShowSummaryItems extends PanelAbstract {
 		if (this.currentLicenseState == Konfiguration.LICENSE_STATE_PRIVATE)
 			this.listItems.setListData(((KonsumentenSchnittstellePrivat)this.konsumentenSchnittstelle).
 					gibAlleTextItemsZuNuzer(session.getCurrentUser().getNutzerID()));
-		if (this.currentLicenseState == Konfiguration.LICENSE_STATE_PRIVATE)
+		if (this.currentLicenseState == Konfiguration.LICENSE_STATE_EDUCATION)
 			this.listItems.setListData(((KonsumentenSchnittstelleUni)this.konsumentenSchnittstelle).
 					gibAlleItemsZuNuzer(session.getCurrentUser().getNutzerID()));
-		if (this.currentLicenseState == Konfiguration.LICENSE_STATE_PRIVATE)
+		if (this.currentLicenseState == Konfiguration.LICENSE_STATE_BUSINESS)
 			this.listItems.setListData(((KonsumentenSchnittstellePrivat)this.konsumentenSchnittstelle).
 					gibAlleTextItemsZuNuzer(session.getCurrentUser().getNutzerID()));
 	}

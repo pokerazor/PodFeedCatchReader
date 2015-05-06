@@ -61,17 +61,6 @@ public class PanelProduceItems extends PanelWithCardLayout {
 		panelCreateItem.getBtnCancel().addActionListener(new ActionListenerSwitchCard(this, SHOW_CREATED_itemS_PANEL));
 		
 		
-		panelCreateItem.getBtnSend().addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				ItemArt itemArt = ItemArt.Text;
-				if (panelCreateItem.getRdbtnItemTypeAudio().isSelected()) { itemArt = ItemArt.Audio;}
-				if (panelCreateItem.getRdbtnItemTypeVideo().isSelected()) { itemArt = ItemArt.Video;}
-				PanelProduceItems.this.produzentenSchnitstelle.erstelleItem(itemArt, panelCreateItem.getTextPaneitem().getText(), ((Channel) panelCreateItem.getListChannels().getSelectedValue()).getId());
-				//TODO PanelProduceItems.this.pa
-			}
-		});
 		
 		panelCreateChannel.getBtnSave().addActionListener(new ActionListener() {
 			

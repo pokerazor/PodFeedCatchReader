@@ -21,10 +21,6 @@ public class Verwaltung implements LoginSchnittstelle, ZugriffsSchnittstelle{
 	}
 	
 
-	public Nutzer getAktuellerNutzer() {
-		return aktuellerNutzer;
-	}
-
 
 
 	@Override

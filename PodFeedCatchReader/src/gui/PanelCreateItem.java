@@ -1,6 +1,7 @@
 package gui;
 
 import itemSpeicher.Channel;
+import itemSpeicher.ItemArt;
 import itemSpeicher.KonsumentenSchnittstelle;
 import itemSpeicher.ProduzentenSchnittstelle;
 
@@ -8,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JTextPane;
@@ -145,6 +148,19 @@ public class PanelCreateItem extends PanelAbstract {
 		btnRefreshChannelList = new JButton("Channelliste aktualisieren");
 		btnRefreshChannelList.setBounds(45, 375, 209, 29);
 		add(btnRefreshChannelList);
+		
+		rdbtnItemTypeText.setSelected(true);
+		
+		btnSend.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ItemArt itemArt = ItemArt.Text;
+				if (rdbtnItemTypeAudio.isSelected()) { itemArt = ItemArt.Audio;}
+				if (rdbtnItemTypeVideo.isSelected()) { itemArt = ItemArt.Video;}
+				PanelCreateItem.this.produzentenSchnitstelle.erstelleItem(itemArt, textPaneitem.getText(), ((Channel) listChannels.getSelectedValue()).getId());
+			}
+		});
 	}
 	
 	public void refreshChannelList() {

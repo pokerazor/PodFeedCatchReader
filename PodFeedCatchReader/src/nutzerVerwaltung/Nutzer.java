@@ -19,6 +19,8 @@ public class Nutzer {
 		this.name = name;
 		this.passwort = passwort;
 		this.rolle = rolle;
+		abonnierteChannels = new Vector <Channel>();
+		abonnierteURLs = new Vector <ChannelURL>();
 	}
 
 	public int getNutzerID() {
