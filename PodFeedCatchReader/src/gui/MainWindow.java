@@ -9,7 +9,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import sun.applet.Main;
 import nutzerVerwaltung.LoginSchnittstelle;
 import nutzerVerwaltung.Nutzer;
 import nutzerVerwaltung.NutzerRolle;
