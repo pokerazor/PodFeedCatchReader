@@ -53,11 +53,6 @@ public class LicenseKeyInput extends JDialog implements ActionListener {
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
-			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
-			}
 		}
 		
 		//txtLicensekey.setText(Konfiguration.LICENSE_KEY_EDUCATION);
