@@ -1,19 +1,19 @@
 package itemSpeicher;
 
-import java.util.LinkedList;
+import java.util.Vector;
 
 public class Item{
 	
 	private int id;
 	private ItemArt art;
 	private String inhalt;
-	private LinkedList<String> kommentare;
+	private Vector<String> kommentare;
 	
 	public Item(int id, ItemArt art, String inhalt){
 		this.id = id;
 		this.art = art;
 		this.inhalt = inhalt;
-		kommentare = new LinkedList<String>();
+		kommentare = new Vector<String>();
 	}
 
 	public ItemArt getArt() {
@@ -32,7 +32,7 @@ public class Item{
 		kommentare.add(kommentar);
 	}
 	
-	public LinkedList<String> getKommentare(){
+	public Vector<String> getKommentare(){
 		return kommentare;
 	}
 	
