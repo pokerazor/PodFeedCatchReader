@@ -196,24 +196,25 @@ public class Konfiguration {
 		
 		if (currentLicenseState == this.LICENSE_STATE_PRIVATE) {
 			ProduzentenSchnittstellePrivat  produzentenSchnittstelle = new Produzent(channelVerzeichnis, gruppenListe);
-			KonsumentenSchnittstellePrivat  konsumentenSchnittstelle = new Konsument(channelVerzeichnis, channelVerzeichnisURL, nutzerListe);
+			KonsumentenSchnittstellePrivat  konsumentenSchnittstelle = new Konsument(channelVerzeichnis, channelVerzeichnisURL, nutzerListe, gruppenListe);
 			
 			new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle, loginSchnittstelle, zugriffsSchnittstelle, this);
 		}
 		
 		if (currentLicenseState == this.LICENSE_STATE_EDUCATION) {
 			ProduzentenSchnittstelleUni  produzentenSchnittstelle = new Produzent(channelVerzeichnis, gruppenListe);
-			KonsumentenSchnittstelleUni  konsumentenSchnittstelle = new Konsument(channelVerzeichnis, channelVerzeichnisURL, nutzerListe);
+			KonsumentenSchnittstelleUni  konsumentenSchnittstelle = new Konsument(channelVerzeichnis, channelVerzeichnisURL, nutzerListe, gruppenListe);
 			
 			new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle, loginSchnittstelle, zugriffsSchnittstelle, this);
 		}
 		
 		if (currentLicenseState == this.LICENSE_STATE_BUSINESS) {
 			ProduzentenSchnittstelleFirma  produzentenSchnittstelle = new Produzent(channelVerzeichnis, gruppenListe);
-			KonsumentenSchnittstelleFirma  konsumentenSchnittstelle = new Konsument(channelVerzeichnis, channelVerzeichnisURL, nutzerListe);
+			KonsumentenSchnittstelleFirma  konsumentenSchnittstelle = new Konsument(channelVerzeichnis, channelVerzeichnisURL, nutzerListe, gruppenListe);
 			
 			new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle, loginSchnittstelle, zugriffsSchnittstelle, this);
 		}
+		
 		
 	}
 	
