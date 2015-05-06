@@ -77,8 +77,6 @@ public class Konfiguration {
 		
 		if (currentLicenseState==null){
 			requestLicenseState();
-		}else{
-			showMainWindows(currentLicenseState);
 		}
 		return currentLicenseState; 
 	}
@@ -151,13 +149,13 @@ public class Konfiguration {
 					e.printStackTrace();
 				}
 			}
-		
-		
-		if (currentLicenseState.intValue() != LICENSE_STATE_INVALID.intValue()) {
-			showMainWindows(this.currentLicenseState);
-			return true;
-		}
-		return false;
+			
+			if(currentLicenseState != LICENSE_STATE_INVALID){
+				showMainWindows(currentLicenseState);
+				return true;
+			}else{
+				return false;
+			}
 		
 	}
 

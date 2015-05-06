@@ -144,7 +144,7 @@ public class MainWindow implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		config.setCurrentLicenseState(-1);
-		new Konfiguration();
+		config = new Konfiguration();
 		this.frame.dispose();
 		
 	}
