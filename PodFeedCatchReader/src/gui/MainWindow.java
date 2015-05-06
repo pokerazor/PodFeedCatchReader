@@ -40,7 +40,6 @@ public class MainWindow {
 	public final static String LOGIN_PANEL = "Panel with the Log-In things";
 	public final static String MAIN_PANEL = "Panel with the Main things";
 	public final static String CARD_PANEL = "Panel with the Card things";
-	private JButton btnNewWindow;
 
 	/**
 	 * Create the application.
@@ -80,13 +79,7 @@ public class MainWindow {
 
 		frame.getContentPane().add(panelCard);
 
-		panelCard.add(panelMain, MAIN_PANEL);
 
-		btnNewWindow = new JButton("Neues Fenster");
-		GridBagConstraints gbc_btnNewWindow = new GridBagConstraints();
-		gbc_btnNewWindow.gridx = 0;
-		gbc_btnNewWindow.gridy = 1;
-		panelMain.add(btnNewWindow, gbc_btnNewWindow);
 		panelCard.add(panelLogIn, LOGIN_PANEL);
 
 		panelCard.switchCard(LOGIN_PANEL);
@@ -111,7 +104,7 @@ public class MainWindow {
 									.getText()), panelLogIn
 									.getTextFieldPassword().getText());
 					if (currentUser != null) {
-						MainWindow.this.panelCard.switchCard(MAIN_PANEL);
+						MainWindow.this.createNewSession(currentUser);
 					} else {
 						MainWindow.this.panelLogIn.getLblInfo().setText(
 								"Login-Daten sind falsch");
@@ -124,7 +117,16 @@ public class MainWindow {
 			}
 		});
 
-		btnNewWindow.addActionListener(new ActionListener() {
+	}
+	
+	private void createNewSession(Nutzer currentUser) {
+		Session newSession = new Session(currentUser);
+		panelMain = new PanelMain(this.currentLicenseState,
+				this.produzentenSchnittstelle, this.konsumentenSchnittstelle,
+				this.loginSchnittstelle, this.zugriffsSchnittstelle, newSession);
+		
+		panelCard.add(panelMain, MAIN_PANEL);
+		panelMain.getBtnNewWindow().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new MainWindow(currentLicenseState, produzentenSchnittstelle,
@@ -132,13 +134,8 @@ public class MainWindow {
 						zugriffsSchnittstelle);
 			}
 		});
-	}
-	
-	private void createNewSession(Nutzer currentUser) {
-		Session newSession = new Session(currentUser);
-		panelMain = new PanelMain(this.currentLicenseState,
-				this.produzentenSchnittstelle, this.konsumentenSchnittstelle,
-				this.loginSchnittstelle, this.zugriffsSchnittstelle);
+		
+		MainWindow.this.panelCard.switchCard(MAIN_PANEL);
 		
 	}
 

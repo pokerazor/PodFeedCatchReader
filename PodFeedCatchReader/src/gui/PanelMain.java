@@ -41,6 +41,16 @@ public class PanelMain extends PanelAbstract {
 				zugriffsSchnittstelle, session);
 	}
 	
+	
+	
+	public JButton getBtnNewWindow() {
+		return btnNewWindow;
+	}
+
+
+
+	private JButton btnNewWindow;
+	
 	protected void initialize() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{330, 0};
@@ -48,6 +58,13 @@ public class PanelMain extends PanelAbstract {
 		gridBagLayout.columnWeights = new double[]{0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
+		
+		btnNewWindow = new JButton("Neues Fenster");
+		
+		GridBagConstraints gbc_btnNewWindow = new GridBagConstraints();
+		gbc_btnNewWindow.gridx = 0;
+		gbc_btnNewWindow.gridy = 1;
+		add(btnNewWindow, gbc_btnNewWindow);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -57,11 +74,11 @@ public class PanelMain extends PanelAbstract {
 		add(tabbedPane, gbc);
 		
 		PanelConsumeItems panelConsumeItems = new PanelConsumeItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
-		tabbedPane.addTab("Feeds", null, panelConsumeItems, null);
+		tabbedPane.addTab("items", null, panelConsumeItems, null);
 		
 		if (currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_BUSINESS.intValue() || currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_EDUCATION.intValue()) {
 			PanelProduceItems panelProduceItems = new PanelProduceItems(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
-			tabbedPane.addTab("Feed erstellen", null, panelProduceItems, null);
+			tabbedPane.addTab("item erstellen", null, panelProduceItems, null);
 		}
 		
 		if (currentLicenseState.intValue() == Konfiguration.LICENSE_STATE_BUSINESS.intValue()) {

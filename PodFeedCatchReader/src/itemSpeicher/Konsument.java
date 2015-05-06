@@ -31,10 +31,10 @@ public class Konsument implements KonsumentenSchnittstellePrivat, KonsumentenSch
 		}
 		
 		if(channelExistiert == true){
-			for(int i = 0; i < channel.getFeeds().size(); ++i){
-				if(channel.getFeeds().get(i).getId() == ItemID){
+			for(int i = 0; i < channel.getitems().size(); ++i){
+				if(channel.getitems().get(i).getId() == ItemID){
 					itemExistiert = true;
-					item = channel.getFeeds().get(i);
+					item = channel.getitems().get(i);
 				}
 			}
 			
@@ -65,10 +65,10 @@ public class Konsument implements KonsumentenSchnittstellePrivat, KonsumentenSch
 		}
 		
 		if(channelExistiert == true){
-			for(int i = 0; i < channel.getFeeds().size(); ++i){
-				if(channel.getFeeds().get(i).getId() == ItemID){
+			for(int i = 0; i < channel.getitems().size(); ++i){
+				if(channel.getitems().get(i).getId() == ItemID){
 					itemExistiert = true;
-					item = channel.getFeeds().get(i);
+					item = channel.getitems().get(i);
 				}
 			}
 			
@@ -99,10 +99,10 @@ public class Konsument implements KonsumentenSchnittstellePrivat, KonsumentenSch
 		}
 		
 		if(channelExistiert == true){
-			for(int i = 0; i < channel.getFeeds().size(); ++i){
-				if(channel.getFeeds().get(i).getId() == ItemID){
+			for(int i = 0; i < channel.getitems().size(); ++i){
+				if(channel.getitems().get(i).getId() == ItemID){
 					itemExistiert = true;
-					item = channel.getFeeds().get(i);
+					item = channel.getitems().get(i);
 				}
 			}
 			
@@ -135,10 +135,10 @@ public class Konsument implements KonsumentenSchnittstellePrivat, KonsumentenSch
 		}
 		
 		if(channelExistiert == true){
-			for(int i = 0; i < channel.getFeeds().size(); ++i){
-				if(channel.getFeeds().get(i).getId() == ItemID){
+			for(int i = 0; i < channel.getitems().size(); ++i){
+				if(channel.getitems().get(i).getId() == ItemID){
 					itemExistiert = true;
-					item = channel.getFeeds().get(i);
+					item = channel.getitems().get(i);
 				}
 			}
 			
@@ -170,10 +170,10 @@ public class Konsument implements KonsumentenSchnittstellePrivat, KonsumentenSch
 		}
 		
 		if(channelExistiert == true){
-			for(int i = 0; i < channel.getFeeds().size(); ++i){
-				if(channel.getFeeds().get(i).getId() == ItemID){
+			for(int i = 0; i < channel.getitems().size(); ++i){
+				if(channel.getitems().get(i).getId() == ItemID){
 					itemExistiert = true;
-					item = channel.getFeeds().get(i);
+					item = channel.getitems().get(i);
 				}
 			}
 			
@@ -203,10 +203,10 @@ public class Konsument implements KonsumentenSchnittstellePrivat, KonsumentenSch
 		}
 		
 		if(channelExistiert == true){
-			for(int i = 0; i < channel.getFeeds().size(); ++i){
-				if(channel.getFeeds().get(i).getId() == ItemID){
+			for(int i = 0; i < channel.getitems().size(); ++i){
+				if(channel.getitems().get(i).getId() == ItemID){
 					itemExistiert = true;
-					item = channel.getFeeds().get(i);
+					item = channel.getitems().get(i);
 				}
 			}
 			

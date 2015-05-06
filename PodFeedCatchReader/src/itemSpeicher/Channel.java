@@ -21,15 +21,15 @@ public class Channel{
 		this.name = name;
 	}
 
-	public LinkedList<Item> getFeeds() {
+	public LinkedList<Item> getitems() {
 		return items;
 	}
 
-	public void setFeeds(LinkedList<Item> items) {
+	public void setitems(LinkedList<Item> items) {
 		this.items.addAll(items);
 	}
 	
-	public void setFeed(Item item){
+	public void setitem(Item item){
 		this.items.addFirst(item);
 	}
 

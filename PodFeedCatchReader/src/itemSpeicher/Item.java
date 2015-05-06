@@ -36,5 +36,9 @@ public class Item{
 		return kommentare;
 	}
 	
+	public String toString(){
+		return inhalt;
+	}
+	
 
 }
