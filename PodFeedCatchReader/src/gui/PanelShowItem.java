@@ -2,7 +2,6 @@ package gui;
 
 import itemSpeicher.KonsumentenSchnittstelle;
 import itemSpeicher.ProduzentenSchnittstelle;
-import javafx.scene.layout.Border;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;

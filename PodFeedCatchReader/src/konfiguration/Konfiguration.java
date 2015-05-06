@@ -47,9 +47,9 @@ public class Konfiguration {
 	public static Integer LICENSE_STATE_BUSINESS=3;
 	public static Integer LICENSE_STATE_INVALID=-1;
 	
-	public static String LICENSE_KEY_PRIVATE="Privat";
-	public static String LICENSE_KEY_EDUCATION="Uni DuE";
-	public static String LICENSE_KEY_BUSINESS="ACME Inc.";
+	public static String LICENSE_KEY_PRIVATE="P123";
+	public static String LICENSE_KEY_EDUCATION="E123";
+	public static String LICENSE_KEY_BUSINESS="B123";
 	
 	private Integer currentLicenseState = null;
 	private LicenseKeyInput requestWindow;
