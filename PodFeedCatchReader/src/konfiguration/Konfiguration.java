@@ -59,9 +59,10 @@ public class Konfiguration {
 	}
 
 	public Integer getLicenseState(){
+		
 		String state = "";
 		try {
-			state = readFile("C:/Users/JanineWenzel/git/PodFeedCatchReader/1/PodFeedCatchReader/src/konfiguration/config.txt");
+			state = readFile("config.txt");
 		System.out.print(state);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -74,6 +75,12 @@ public class Konfiguration {
 		case "firma": setCurrentLicenseState(LICENSE_STATE_BUSINESS);break;
 		}
 		System.out.print(currentLicenseState);
+		if(currentLicenseState == LICENSE_STATE_EDUCATION){
+			System.out.print(true);
+		}else{
+			System.out.print(false);
+		}
+		
 		if (currentLicenseState==null){
 			requestLicenseState();
 		}else{
@@ -90,7 +97,6 @@ public class Konfiguration {
 
 	        while (line != null) {
 	            sb.append(line);
-	            sb.append("\n");
 	            line = br.readLine();
 	        }
 	        return sb.toString();
@@ -120,8 +126,7 @@ public class Konfiguration {
 		this.currentLicenseState = currentLicenseState;
 		System.out.println(currentLicenseState.intValue());
 		
-			System.out.println("wir schreiben");
-			String filename = "C:/Users/JanineWenzel/git/PodFeedCatchReader/1/PodFeedCatchReader/src/konfiguration/config.txt";
+			String filename = "config.txt";
 			
 			if(currentLicenseState == LICENSE_STATE_PRIVATE){
 				try {
@@ -140,6 +145,13 @@ public class Konfiguration {
 			}else if(currentLicenseState == LICENSE_STATE_BUSINESS){
 				try {
 					writeFile(filename, "firma");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}else if(currentLicenseState == LICENSE_STATE_INVALID){
+				try {
+					writeFile(filename, "");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -186,21 +198,21 @@ public class Konfiguration {
 			ProduzentenSchnittstellePrivat  produzentenSchnittstelle = new Produzent(channelVerzeichnis, gruppenListe);
 			KonsumentenSchnittstellePrivat  konsumentenSchnittstelle = new Konsument(channelVerzeichnis, channelVerzeichnisURL, nutzerListe);
 			
-			new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle, loginSchnittstelle, zugriffsSchnittstelle);
+			new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle, loginSchnittstelle, zugriffsSchnittstelle, this);
 		}
 		
 		if (currentLicenseState == this.LICENSE_STATE_EDUCATION) {
 			ProduzentenSchnittstelleUni  produzentenSchnittstelle = new Produzent(channelVerzeichnis, gruppenListe);
 			KonsumentenSchnittstelleUni  konsumentenSchnittstelle = new Konsument(channelVerzeichnis, channelVerzeichnisURL, nutzerListe);
 			
-			new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle, loginSchnittstelle, zugriffsSchnittstelle);
+			new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle, loginSchnittstelle, zugriffsSchnittstelle, this);
 		}
 		
 		if (currentLicenseState == this.LICENSE_STATE_BUSINESS) {
 			ProduzentenSchnittstelleFirma  produzentenSchnittstelle = new Produzent(channelVerzeichnis, gruppenListe);
 			KonsumentenSchnittstelleFirma  konsumentenSchnittstelle = new Konsument(channelVerzeichnis, channelVerzeichnisURL, nutzerListe);
 			
-			new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle, loginSchnittstelle, zugriffsSchnittstelle);
+			new MainWindow(currentLicenseState, produzentenSchnittstelle, konsumentenSchnittstelle, loginSchnittstelle, zugriffsSchnittstelle, this);
 		}
 		
 	}
