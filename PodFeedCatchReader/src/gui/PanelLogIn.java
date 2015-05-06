@@ -36,6 +36,13 @@ public class PanelLogIn extends PanelAbstract {
 	private JButton btnLogIn;
 	private JButton btnRegister;
 	private JLabel lblInfo;
+	private JButton btnInsertKey;
+	
+	
+
+	public JButton getBtnInsertKey() {
+		return btnInsertKey;
+	}
 
 	public JLabel getLblInfo() {
 		return lblInfo;
@@ -93,6 +100,10 @@ public class PanelLogIn extends PanelAbstract {
 		lblInfo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInfo.setBounds(6, 221, 318, 16);
 		add(lblInfo);
+		
+		btnInsertKey = new JButton("Key eingeben");
+		btnInsertKey.setBounds(112, 472, 117, 29);
+		add(btnInsertKey);
 		
 	}
 
