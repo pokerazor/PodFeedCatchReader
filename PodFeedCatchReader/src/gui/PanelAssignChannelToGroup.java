@@ -50,6 +50,7 @@ public class PanelAssignChannelToGroup extends PanelAbstract {
 	private JList<Channel> listChannels;
 	private JLabel lblChannel;
 	private JLabel lblGroup;
+	private JLabel lblInfo;
 
 	public JButton getBtnSave() {
 		return btnSave;
@@ -77,7 +78,7 @@ public class PanelAssignChannelToGroup extends PanelAbstract {
 		add(lblHeading);
 
 		listChannels = new JList<Channel>();
-		listChannels.setBounds(10, 54, 280, 155);
+		listChannels.setBounds(10, 54, 280, 137);
 		add(listChannels);
 
 		lblChannel = new JLabel("Channel");
@@ -87,11 +88,11 @@ public class PanelAssignChannelToGroup extends PanelAbstract {
 
 		lblGroup = new JLabel("Gruppe");
 		lblGroup.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGroup.setBounds(119, 242, 61, 16);
+		lblGroup.setBounds(119, 231, 61, 16);
 		add(lblGroup);
 
 		listGroups = new JList<Gruppe>();
-		listGroups.setBounds(6, 265, 284, 147);
+		listGroups.setBounds(10, 254, 284, 137);
 		add(listGroups);
 
 		btnSave = new JButton("Speichern");
@@ -103,7 +104,7 @@ public class PanelAssignChannelToGroup extends PanelAbstract {
 		add(btnCancel);
 
 		btnNewChannel = new JButton("Neuer Channel");
-		btnNewChannel.setBounds(92, 212, 117, 29);
+		btnNewChannel.setBounds(92, 203, 117, 29);
 		add(btnNewChannel);
 
 		btnNewGroup = new JButton("Neue Gruppe");
@@ -113,6 +114,11 @@ public class PanelAssignChannelToGroup extends PanelAbstract {
 		JButton btnRefresh = new JButton("Aktualisieren");
 		btnRefresh.setBounds(92, 441, 117, 29);
 		add(btnRefresh);
+		
+		lblInfo = new JLabel("New label");
+		lblInfo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInfo.setBounds(67, 395, 166, 16);
+		add(lblInfo);
 		
 		btnRefresh.addActionListener(new ActionListener() {
 			
@@ -128,8 +134,12 @@ public class PanelAssignChannelToGroup extends PanelAbstract {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				((ProduzentenSchnittstelleFirma)produzentenSchnitstelle).abonniereChannelFuerGruppe
-					(listChannels.getSelectedValue().getId(), listGroups.getSelectedValue().getGruppenID());
+				if(((ProduzentenSchnittstelleFirma)produzentenSchnitstelle).abonniereChannelFuerGruppe
+					(listChannels.getSelectedValue().getId(), listGroups.getSelectedValue().getGruppenID()) == true) {
+					lblInfo.setText("Channel zugewiesen");
+				} else {
+					lblInfo.setText("Fehler!");
+				}
 				
 			}
 		});

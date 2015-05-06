@@ -87,7 +87,7 @@ public class PanelSubscribeChannel extends PanelAbstract {
 		add(btnRefreshListChannels);
 		
 		btnSubscribeURL = new JButton("URL Abonnieren");
-		btnSubscribeURL.setBounds(75, 424, 144, 29);
+		btnSubscribeURL.setBounds(75, 411, 144, 29);
 		add(btnSubscribeURL);
 		
 		lblInfo = new JLabel("");

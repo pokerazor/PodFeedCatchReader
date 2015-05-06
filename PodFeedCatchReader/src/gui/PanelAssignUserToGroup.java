@@ -38,6 +38,7 @@ public class PanelAssignUserToGroup extends PanelAbstract {
 	private JButton btnSaveAssignment;
 	private JList<Nutzer> listUsers;
 	private JList<Gruppe> listGroups;
+	private JLabel lblInfo;
 
 	public JButton getBtnCreateGroup() {
 		return btnCreateGroup;
@@ -66,7 +67,7 @@ public class PanelAssignUserToGroup extends PanelAbstract {
 		add(lblUser);
 
 		listGroups = new JList<Gruppe>();
-		listGroups.setBounds(6, 245, 288, 190);
+		listGroups.setBounds(6, 245, 288, 165);
 		add(listGroups);
 
 		JLabel lblGroup = new JLabel("Gruppe");
@@ -74,16 +75,21 @@ public class PanelAssignUserToGroup extends PanelAbstract {
 		add(lblGroup);
 
 		btnCreateGroup = new JButton("Neue Gruppe");
-		btnCreateGroup.setBounds(160, 439, 117, 29);
+		btnCreateGroup.setBounds(160, 422, 117, 29);
 		add(btnCreateGroup);
 
 		btnSaveAssignment = new JButton("Zuordnung speichern");
-		btnSaveAssignment.setBounds(70, 465, 163, 29);
+		btnSaveAssignment.setBounds(68, 451, 163, 29);
 		add(btnSaveAssignment);
 		
 		JButton btnRefresh = new JButton("Aktualisieren");
-		btnRefresh.setBounds(16, 439, 117, 29);
+		btnRefresh.setBounds(6, 422, 117, 29);
 		add(btnRefresh);
+		
+		lblInfo = new JLabel("");
+		lblInfo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInfo.setBounds(19, 478, 261, 16);
+		add(lblInfo);
 		
 		btnRefresh.addActionListener(new ActionListener() {
 			
@@ -98,9 +104,13 @@ public class PanelAssignUserToGroup extends PanelAbstract {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				PanelAssignUserToGroup.this.zugriffsSchnittstelle.weiseGruppeZu
+				if((PanelAssignUserToGroup.this.zugriffsSchnittstelle.weiseGruppeZu
 					(PanelAssignUserToGroup.this.listGroups.getSelectedValue().getGruppenID(), 
-							PanelAssignUserToGroup.this.listUsers.getSelectedValue().getNutzerID());
+							PanelAssignUserToGroup.this.listUsers.getSelectedValue().getNutzerID())) == true){
+					lblInfo.setText("Gruppe zugewiesen");
+				} else {
+					lblInfo.setText("Fehler!");
+				}
 				
 			}
 		});

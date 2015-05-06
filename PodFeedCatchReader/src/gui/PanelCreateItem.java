@@ -23,7 +23,10 @@ import nutzerVerwaltung.ZugriffsSchnittstelle;
 
 import javax.swing.JRadioButton;
 
+import konfiguration.Konfiguration;
 import konfiguration.Session;
+
+import javax.swing.SwingConstants;
 
 public class PanelCreateItem extends PanelAbstract {
 
@@ -48,6 +51,7 @@ public class PanelCreateItem extends PanelAbstract {
 	private JRadioButton rdbtnItemTypeAudio;
 	private JRadioButton rdbtnItemTypeVideo;
 	private JButton btnRefreshChannelList;
+	private JLabel lblInfo;
 
 	public JLabel getLblCreateItem() {
 		return lblCreateItem;
@@ -114,67 +118,82 @@ public class PanelCreateItem extends PanelAbstract {
 		add(btnCancel);
 
 		listChannels = new JList<Channel>();
-		listChannels.setBounds(10, 142, 284, 141);
+		listChannels.setBounds(10, 142, 284, 117);
 		add(listChannels);
 
 		btnCreateChannel = new JButton("Channel erstellen");
-		btnCreateChannel.setBounds(66, 402, 168, 29);
+		btnCreateChannel.setBounds(66, 375, 168, 29);
 		add(btnCreateChannel);
 
 		ButtonGroup buttonGroupItemType = new ButtonGroup();
 
 		rdbtnItemTypeText = new JRadioButton("Text");
-		rdbtnItemTypeText.setBounds(66, 283, 200, 29);
+		rdbtnItemTypeText.setBounds(66, 260, 200, 29);
 		add(rdbtnItemTypeText);
 
 		buttonGroupItemType.add(rdbtnItemTypeText);
+		if (currentLicenseState == Konfiguration.LICENSE_STATE_EDUCATION || currentLicenseState == Konfiguration.LICENSE_STATE_BUSINESS){
+			rdbtnItemTypeAudio = new JRadioButton("Audio");
+			rdbtnItemTypeAudio.setBounds(66, 288, 200, 29);
+			add(rdbtnItemTypeAudio);
 
-		rdbtnItemTypeAudio = new JRadioButton("Audio");
-		rdbtnItemTypeAudio.setBounds(66, 310, 200, 29);
-		add(rdbtnItemTypeAudio);
-
-		buttonGroupItemType.add(rdbtnItemTypeAudio);
-
-		rdbtnItemTypeVideo = new JRadioButton("Video");
-		rdbtnItemTypeVideo.setBounds(66, 340, 216, 23);
-		add(rdbtnItemTypeVideo);
-
-		buttonGroupItemType.add(rdbtnItemTypeVideo);
+			buttonGroupItemType.add(rdbtnItemTypeAudio);
+		}
+		
+		if (currentLicenseState == Konfiguration.LICENSE_STATE_EDUCATION) {
+			rdbtnItemTypeVideo = new JRadioButton("Video");
+			rdbtnItemTypeVideo.setBounds(66, 317, 216, 23);
+			add(rdbtnItemTypeVideo);
+	
+			buttonGroupItemType.add(rdbtnItemTypeVideo);
+		}
 
 		btnRefreshChannelList = new JButton("Channelliste aktualisieren");
-		btnRefreshChannelList.setBounds(45, 375, 209, 29);
+		btnRefreshChannelList.setBounds(45, 347, 209, 29);
 		add(btnRefreshChannelList);
 
 		rdbtnItemTypeText.setSelected(true);
+
+		lblInfo = new JLabel("");
+		lblInfo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInfo.setBounds(10, 409, 284, 16);
+		add(lblInfo);
 
 		btnSend.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ItemArt itemArt = ItemArt.Text;
-				if (rdbtnItemTypeAudio.isSelected()) {
-					itemArt = ItemArt.Audio;
+				if (rdbtnItemTypeAudio != null) {
+					if (rdbtnItemTypeAudio.isSelected()) {
+						itemArt = ItemArt.Audio;
+					}
 				}
-				if (rdbtnItemTypeVideo.isSelected()) {
-					itemArt = ItemArt.Video;
+				if (rdbtnItemTypeVideo != null) {
+					if (rdbtnItemTypeVideo.isSelected()) {
+						itemArt = ItemArt.Video;
+					}
 				}
 				if (listChannels.getSelectedValue() != null) {
-				produzentenSchnitstelle.erstelleItem(itemArt,
-						textPaneitem.getText(),
-						((Channel) listChannels.getSelectedValue()).getId());
+					if (produzentenSchnitstelle.erstelleItem(itemArt,
+							textPaneitem.getText(),
+							((Channel) listChannels.getSelectedValue()).getId()) == true) {
+						lblInfo.setText("Item wurde erstellt");
+					} else {
+						lblInfo.setText("Fehler!");
+					}
 				}
 			}
 		});
 
-		btnRefreshChannelList.addActionListener(
-				new ActionListener() {
+		btnRefreshChannelList.addActionListener(new ActionListener() {
 
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						refreshChannelList();
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				refreshChannelList();
 
-					}
-				});
+			}
+		});
 	}
 
 	public void refreshChannelList() {

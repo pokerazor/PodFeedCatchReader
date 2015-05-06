@@ -80,7 +80,7 @@ public class PanelCreateChannel extends PanelAbstract {
 		btnSave.setBounds(87, 66, 117, 29);
 		add(btnSave);
 		
-		btnCancel = new JButton("Abbrechen");
+		btnCancel = new JButton("Zurück");
 		btnCancel.setBounds(87, 107, 117, 29);
 		add(btnCancel);
 		
@@ -97,8 +97,12 @@ public class PanelCreateChannel extends PanelAbstract {
 				if (neuerChannelName.length() == 0) {
 					lblInfo.setText("Der Name darf nicht Nichts sein!");
 				} else {
-					produzentenSchnitstelle.erstelleChannel(neuerChannelName);
-					System.out.println("Neuen Channel erstellt: " + neuerChannelName);
+					if (produzentenSchnitstelle.erstelleChannel(neuerChannelName) == true){
+						lblInfo.setText("Channel erstellt!");
+						System.out.println("Neuen Channel erstellt: " + neuerChannelName);
+					} else {
+						lblInfo.setText("Fehler!");
+					}
 				}
 				
 			}
