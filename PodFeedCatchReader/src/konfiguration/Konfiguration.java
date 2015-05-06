@@ -3,6 +3,17 @@
  */
 package konfiguration;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URL;
+import java.nio.file.Files;
+
 import itemSpeicher.ChannelVerzeichnis;
 import itemSpeicher.ChannelVerzeichnisURL;
 import itemSpeicher.Konsument;
@@ -48,15 +59,93 @@ public class Konfiguration {
 	}
 
 	public Integer getLicenseState(){
+		String state = "";
+		try {
+			state = readFile("C:/Users/JanineWenzel/git/PodFeedCatchReader/1/PodFeedCatchReader/src/konfiguration/config.txt");
+		System.out.print(state);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		switch(state){
+		case "privat": setCurrentLicenseState(LICENSE_STATE_PRIVATE);break;
+		case "uni": setCurrentLicenseState(LICENSE_STATE_EDUCATION);break;
+		case "firma": setCurrentLicenseState(LICENSE_STATE_BUSINESS);break;
+		}
+		System.out.print(currentLicenseState);
 		if (currentLicenseState==null){
 			requestLicenseState();
+		}else{
+			showMainWindows(currentLicenseState);
 		}
 		return currentLicenseState; 
 	}
+	
+	String readFile(String fileName) throws IOException {
+	    BufferedReader br = new BufferedReader(new FileReader(fileName));
+	    try {
+	        StringBuilder sb = new StringBuilder();
+	        String line = br.readLine();
 
-	public boolean setCurrentLicenseState(Integer currentLicenseState) {
+	        while (line != null) {
+	            sb.append(line);
+	            sb.append("\n");
+	            line = br.readLine();
+	        }
+	        return sb.toString();
+	    } finally {
+	        br.close();
+	    }
+	}
+	
+	void writeFile(String fileName, String text) throws IOException{
+		try {
+			 
+			File file = new File(fileName);
+ 
+			FileWriter fw = new FileWriter(file.getAbsoluteFile());
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(text);
+			bw.close();
+ 
+			System.out.println("Done");
+ 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public boolean setCurrentLicenseState(Integer currentLicenseState){
 		this.currentLicenseState = currentLicenseState;
 		System.out.println(currentLicenseState.intValue());
+		
+			System.out.println("wir schreiben");
+			String filename = "C:/Users/JanineWenzel/git/PodFeedCatchReader/1/PodFeedCatchReader/src/konfiguration/config.txt";
+			
+			if(currentLicenseState == LICENSE_STATE_PRIVATE){
+				try {
+					writeFile(filename, "privat");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}else if(currentLicenseState == LICENSE_STATE_EDUCATION){
+				try {
+					writeFile(filename, "uni");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}else if(currentLicenseState == LICENSE_STATE_BUSINESS){
+				try {
+					writeFile(filename, "firma");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		
 		
 		if (currentLicenseState.intValue() != LICENSE_STATE_INVALID.intValue()) {
 			showMainWindows(this.currentLicenseState);
