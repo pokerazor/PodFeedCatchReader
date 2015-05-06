@@ -23,7 +23,7 @@ import java.awt.GridBagConstraints;
 import konfiguration.Konfiguration;
 import konfiguration.Session;
 
-public class MainWindow {
+public class MainWindow implements ActionListener{
 
 	private JFrame frame;
 	private Integer currentLicenseState;
@@ -35,6 +35,7 @@ public class MainWindow {
 	private KonsumentenSchnittstelle konsumentenSchnittstelle;
 	private LoginSchnittstelle loginSchnittstelle;
 	private ZugriffsSchnittstelle zugriffsSchnittstelle;
+	private Konfiguration config;
 
 	public final static String LOGIN_PANEL = "Panel with the Log-In things";
 	public final static String MAIN_PANEL = "Panel with the Main things";
@@ -49,12 +50,14 @@ public class MainWindow {
 			ProduzentenSchnittstelle produzentenSchnittstelle,
 			KonsumentenSchnittstelle konsumentenSchnittstelle,
 			LoginSchnittstelle loginSchnittstelle,
-			ZugriffsSchnittstelle zugriffsSchnittstelle) {
+			ZugriffsSchnittstelle zugriffsSchnittstelle,
+			Konfiguration config) {
 		this.currentLicenseState = currentLicenceState;
 		this.konsumentenSchnittstelle = konsumentenSchnittstelle;
 		this.produzentenSchnittstelle = produzentenSchnittstelle;
 		this.loginSchnittstelle = loginSchnittstelle;
 		this.zugriffsSchnittstelle = zugriffsSchnittstelle;
+		this.config = config;
 		initialize();
 		frame.setVisible(true);
 
@@ -64,7 +67,6 @@ public class MainWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		//if (this.zugriffsSchnittstelle == null){ System.out.println("ttttt");}
 		frame = new JFrame();
 		frame.setBounds(100, 100, 331, 613);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -117,16 +119,7 @@ public class MainWindow {
 			}
 		});
 		
-		panelLogIn.getBtnInsertKey().addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-
-	}
+		panelLogIn.getBtnInsertKey().addActionListener(this);}
 	
 	private void createNewSession(Nutzer currentUser) {
 		Session newSession = new Session(currentUser);
@@ -140,11 +133,19 @@ public class MainWindow {
 			public void actionPerformed(ActionEvent e) {
 				new MainWindow(currentLicenseState, produzentenSchnittstelle,
 						konsumentenSchnittstelle, loginSchnittstelle,
-						zugriffsSchnittstelle);
+						zugriffsSchnittstelle, config);
 			}
 		});
 		
 		MainWindow.this.panelCard.switchCard(MAIN_PANEL);
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		config.setCurrentLicenseState(-1);
+		new Konfiguration();
+		this.frame.dispose();
 		
 	}
 
