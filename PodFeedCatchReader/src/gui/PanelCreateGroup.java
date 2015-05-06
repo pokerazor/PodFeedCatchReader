@@ -63,7 +63,7 @@ public class PanelCreateGroup extends PanelAbstract {
 		btnSaveGroup.setBounds(91, 67, 117, 29);
 		add(btnSaveGroup);
 		
-		btnCancel = new JButton("Abbrechen");
+		btnCancel = new JButton("Zurück");
 		btnCancel.setBounds(91, 108, 117, 29);
 		add(btnCancel);
 		
