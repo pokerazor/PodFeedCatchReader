@@ -268,8 +268,9 @@ public class Konsument implements KonsumentenSchnittstellePrivat, KonsumentenSch
 		ChannelURL c = null;
 		
 		for(int i = 0; i < verzeichnisURL.getChannels().size(); ++i){
-			if(verzeichnisURL.getChannels().get(i).getURL() == ChannelURL){
+			if(verzeichnisURL.getChannels().get(i).getURL().equals(ChannelURL)){
 				c = verzeichnisURL.getChannels().get(i);
+				channelExistiert =  true;
 			}
 		}
 		
@@ -278,15 +279,18 @@ public class Konsument implements KonsumentenSchnittstellePrivat, KonsumentenSch
 				if(nutzer.getNutzer().get(i).getNutzerID() == nutzerID){
 					nutzer.getNutzer().get(i).setChannelURL(c);
 					nutzerExistiert = true;
+					System.out.println("Channel per URL abonniert: NutzerID: " + nutzerID + " ChannelURL: " + ChannelURL);
 					return true;
 				}
 			}
 			
 			if(nutzerExistiert == false){
+				System.out.println("Nutzer exisitiert nicht!");
 				return false;
 			}
 			
 		}else{
+			System.out.println("Channel exisitiert nicht! -- " + ChannelURL);
 			return false;
 		}
 		

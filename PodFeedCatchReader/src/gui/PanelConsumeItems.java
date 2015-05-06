@@ -65,9 +65,9 @@ public class PanelConsumeItems extends PanelWithCardLayout {
 				if (selectedItem != null) {
 					String itemInhalt = "";
 					if (selectedItem.getArt() == ItemArt.Text) itemInhalt = selectedItem.getInhalt();
-					if (selectedItem.getArt() == ItemArt.Video) itemInhalt = "Hier würde ein Video erscheinen...";
-					if (selectedItem.getArt() == ItemArt.Audio) itemInhalt = "Hier würde man etwas hören...";
-					panelShowItem.getTextPaneItems().setText(itemInhalt);
+					if (selectedItem.getArt() == ItemArt.Video) itemInhalt = "Hier würde das Video vom Item " + selectedItem.getInhalt() + " erscheinen.";
+					if (selectedItem.getArt() == ItemArt.Audio) itemInhalt = "Hier würde die Audiodatei vom Item " + selectedItem.getInhalt() + " erscheinen.";
+					panelShowItem.getTextArea().setText(itemInhalt);
 					switchCard(SHOW_ITEM_PANEL);
 				}
 				

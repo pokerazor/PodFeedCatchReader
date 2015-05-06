@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
 import javax.swing.JList;
@@ -41,7 +42,7 @@ public class PanelCreateItem extends PanelAbstract {
 	}
 
 	private JLabel lblCreateItem;
-	private JTextPane textPaneitem;
+	private JTextArea textAreaItem;
 
 	private JButton btnSend;
 	private JButton btnCancel;
@@ -52,13 +53,10 @@ public class PanelCreateItem extends PanelAbstract {
 	private JRadioButton rdbtnItemTypeVideo;
 	private JButton btnRefreshChannelList;
 	private JLabel lblInfo;
+	private JLabel lblChannel;
 
 	public JLabel getLblCreateItem() {
 		return lblCreateItem;
-	}
-
-	public JTextPane getTextPanePane() {
-		return textPaneitem;
 	}
 
 	public JButton getBtnSend() {
@@ -81,8 +79,8 @@ public class PanelCreateItem extends PanelAbstract {
 		return btnRefreshChannelList;
 	}
 
-	public JTextPane getTextPaneitem() {
-		return textPaneitem;
+	public JTextArea getTextAreaItem() {
+		return textAreaItem;
 	}
 
 	public JRadioButton getRdbtnItemTypeText() {
@@ -105,9 +103,10 @@ public class PanelCreateItem extends PanelAbstract {
 		lblCreateItem.setBounds(85, 6, 130, 16);
 		add(lblCreateItem);
 
-		textPaneitem = new JTextPane();
-		textPaneitem.setBounds(10, 28, 284, 102);
-		add(textPaneitem);
+		textAreaItem = new JTextArea();
+		textAreaItem.setBounds(10, 28, 284, 102);
+		textAreaItem.setLineWrap(true);
+		add(textAreaItem);
 
 		btnSend = new JButton("Absenden");
 		btnSend.setBounds(85, 437, 117, 29);
@@ -118,7 +117,7 @@ public class PanelCreateItem extends PanelAbstract {
 		add(btnCancel);
 
 		listChannels = new JList<Channel>();
-		listChannels.setBounds(10, 142, 284, 117);
+		listChannels.setBounds(10, 164, 284, 95);
 		add(listChannels);
 
 		btnCreateChannel = new JButton("Channel erstellen");
@@ -158,6 +157,11 @@ public class PanelCreateItem extends PanelAbstract {
 		lblInfo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInfo.setBounds(10, 409, 284, 16);
 		add(lblInfo);
+		
+		lblChannel = new JLabel("Channel");
+		lblChannel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblChannel.setBounds(92, 142, 116, 16);
+		add(lblChannel);
 
 		btnSend.addActionListener(new ActionListener() {
 
@@ -176,7 +180,7 @@ public class PanelCreateItem extends PanelAbstract {
 				}
 				if (listChannels.getSelectedValue() != null) {
 					if (produzentenSchnitstelle.erstelleItem(itemArt,
-							textPaneitem.getText(),
+							textAreaItem.getText(),
 							((Channel) listChannels.getSelectedValue()).getId()) == true) {
 						lblInfo.setText("Item wurde erstellt");
 					} else {
