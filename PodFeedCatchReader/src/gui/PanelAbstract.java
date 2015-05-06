@@ -1,12 +1,14 @@
 package gui;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 
 import itemSpeicher.KonsumentenSchnittstelle;
 import itemSpeicher.ProduzentenSchnittstelle;
 
 import javax.swing.JPanel;
 
+import konfiguration.Konfiguration;
 import konfiguration.Session;
 import nutzerVerwaltung.LoginSchnittstelle;
 import nutzerVerwaltung.Nutzer;
@@ -32,6 +34,13 @@ public abstract class PanelAbstract extends JPanel {
 		this.zugriffsSchnittstelle = zugriffsSchnittstelle;
 		this.session = session;
 		initialize();
+		if (this.currentLicenseState == Konfiguration.LICENSE_STATE_PRIVATE)
+			this.setBackground(new Color(123,239,158));
+		if (this.currentLicenseState == Konfiguration.LICENSE_STATE_EDUCATION)
+			this.setBackground(new Color(176,209,246));
+		if (this.currentLicenseState == Konfiguration.LICENSE_STATE_BUSINESS)
+			this.setBackground(new Color(255,75,75));
+			
 	}
 	
 	protected abstract void initialize();

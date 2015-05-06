@@ -1,6 +1,9 @@
 package gui;
 
 import itemSpeicher.KonsumentenSchnittstelle;
+import itemSpeicher.KonsumentenSchnittstelleFirma;
+import itemSpeicher.KonsumentenSchnittstellePrivat;
+import itemSpeicher.KonsumentenSchnittstelleUni;
 import itemSpeicher.ProduzentenSchnittstelle;
 
 import java.awt.EventQueue;
@@ -18,6 +21,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 
 import konfiguration.Konfiguration;
@@ -70,6 +74,7 @@ public class MainWindow implements ActionListener{
 		frame = new JFrame();
 		frame.setBounds(100, 100, 331, 613);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 
 		
 		panelLogIn = new PanelLogIn(this.currentLicenseState,
