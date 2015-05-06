@@ -74,12 +74,6 @@ public class Konfiguration {
 		case "uni": setCurrentLicenseState(LICENSE_STATE_EDUCATION);break;
 		case "firma": setCurrentLicenseState(LICENSE_STATE_BUSINESS);break;
 		}
-		System.out.print(currentLicenseState);
-		if(currentLicenseState == LICENSE_STATE_EDUCATION){
-			System.out.print(true);
-		}else{
-			System.out.print(false);
-		}
 		
 		if (currentLicenseState==null){
 			requestLicenseState();
