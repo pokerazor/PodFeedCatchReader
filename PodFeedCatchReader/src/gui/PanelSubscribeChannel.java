@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import itemSpeicher.Channel;
 import itemSpeicher.KonsumentenSchnittstelle;
+import itemSpeicher.KonsumentenSchnittstellePrivat;
 import itemSpeicher.KonsumentenSchnittstelleUni;
 import itemSpeicher.ProduzentenSchnittstelle;
 
@@ -17,6 +18,9 @@ import nutzerVerwaltung.LoginSchnittstelle;
 import nutzerVerwaltung.ZugriffsSchnittstelle;
 import konfiguration.Session;
 import konfiguration.Konfiguration;
+
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class PanelSubscribeChannel extends PanelAbstract {
 	public PanelSubscribeChannel(Integer currentLicenseState,
@@ -34,6 +38,8 @@ public class PanelSubscribeChannel extends PanelAbstract {
 	private JButton btnCancel;
 	private JList<Channel> listChannels;
 	private JButton btnRefreshListChannels;
+	private JButton btnSubscribeURL;
+	private JLabel lblInfo;
 
 	public JTextField getTxtUrl() {
 		return txtUrl;
@@ -64,21 +70,30 @@ public class PanelSubscribeChannel extends PanelAbstract {
 		
 		txtUrl = new JTextField();
 		txtUrl.setText("URL");
-		txtUrl.setBounds(6, 319, 288, 28);
+		txtUrl.setBounds(6, 384, 288, 28);
 		add(txtUrl);
 		txtUrl.setColumns(10);
 		
 		btnSubscribe = new JButton("Abonnieren");
-		btnSubscribe.setBounds(91, 385, 117, 29);
+		btnSubscribe.setBounds(91, 351, 117, 29);
 		add(btnSubscribe);
 		
 		btnCancel = new JButton("Abbrechen");
-		btnCancel.setBounds(91, 413, 117, 29);
+		btnCancel.setBounds(91, 465, 117, 29);
 		add(btnCancel);
 		
 		btnRefreshListChannels = new JButton("Aktualisieren");
-		btnRefreshListChannels.setBounds(91, 344, 117, 29);
+		btnRefreshListChannels.setBounds(91, 321, 117, 29);
 		add(btnRefreshListChannels);
+		
+		btnSubscribeURL = new JButton("URL Abonnieren");
+		btnSubscribeURL.setBounds(75, 424, 144, 29);
+		add(btnSubscribeURL);
+		
+		lblInfo = new JLabel("");
+		lblInfo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInfo.setBounds(43, 440, 214, 16);
+		add(lblInfo);
 		
 		btnRefreshListChannels.addActionListener(new ActionListener() {
 			
@@ -93,8 +108,25 @@ public class PanelSubscribeChannel extends PanelAbstract {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				((KonsumentenSchnittstelleUni) PanelSubscribeChannel.this.konsumentenSchnittstelle).ChannelAbonnierenVerzeichnis
-					(PanelSubscribeChannel.this.session.getCurrentUser().getNutzerID(), listChannels.getSelectedValue().getId());
+				if (((KonsumentenSchnittstelleUni) konsumentenSchnittstelle).ChannelAbonnierenVerzeichnis
+					(session.getCurrentUser().getNutzerID(), listChannels.getSelectedValue().getId()) == true) {
+					lblInfo.setText("Channel abonniert!");
+					
+				}
+				
+			}
+		});
+		
+		btnSubscribeURL.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (currentLicenseState == Konfiguration.LICENSE_STATE_PRIVATE) {
+					if (((KonsumentenSchnittstellePrivat) konsumentenSchnittstelle).ChannelAbonnierenURL(session.getCurrentUser().getNutzerID(),
+							txtUrl.getText()) == true) {
+						lblInfo.setText("Channel per URL abonniert!");
+					}
+				}
 				
 			}
 		});

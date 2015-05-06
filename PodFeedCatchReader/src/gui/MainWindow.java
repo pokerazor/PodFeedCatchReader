@@ -54,7 +54,7 @@ public class MainWindow {
 		this.konsumentenSchnittstelle = konsumentenSchnittstelle;
 		this.produzentenSchnittstelle = produzentenSchnittstelle;
 		this.loginSchnittstelle = loginSchnittstelle;
-		this.konsumentenSchnittstelle = konsumentenSchnittstelle;
+		this.zugriffsSchnittstelle = zugriffsSchnittstelle;
 		initialize();
 		frame.setVisible(true);
 
@@ -64,6 +64,7 @@ public class MainWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		//if (this.zugriffsSchnittstelle == null){ System.out.println("ttttt");}
 		frame = new JFrame();
 		frame.setBounds(100, 100, 331, 613);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

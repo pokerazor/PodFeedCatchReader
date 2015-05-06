@@ -35,6 +35,7 @@ public class PanelUserAdministration extends PanelWithCardLayout {
 
 	
 	protected void initialize(){
+		//if (this.zugriffsSchnittstelle == null){ System.out.println("ttttt");}
 		panelAssignUserToGroup = new PanelAssignUserToGroup(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
 		panelCreateGroup = new PanelCreateGroup(super.currentLicenseState, super.produzentenSchnitstelle, super.konsumentenSchnittstelle, super.loginSchnittstelle, super.zugriffsSchnittstelle, super.session);
 		

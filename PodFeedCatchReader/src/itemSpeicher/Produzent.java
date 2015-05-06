@@ -57,6 +57,7 @@ public class Produzent implements ProduzentenSchnittstelleUni, ProduzentenSchnit
 		for(int i = 0; i < verzeichnis.getChannels().size(); ++i){
 			if(verzeichnis.getChannels().get(i).getId() == ChannelID){
 				c = verzeichnis.getChannels().get(i);
+				channelExistiert =  true;
 			}
 		}
 		
@@ -71,11 +72,11 @@ public class Produzent implements ProduzentenSchnittstelleUni, ProduzentenSchnit
 			if(gruppeExistiert == false){
 				return false;
 			}else{
-
-				for(int i = 0; i < g.getNutzer().size(); ++i){
-					g.getNutzer().get(i).setChannel(c);
-				}
-				
+				g.setChannel(c);
+//				for(int i = 0; i < g.getNutzer().size(); ++i){
+//					g.getNutzer().get(i).setChannel(c);
+//				}
+				System.out.println("Channel zu Gruppe hinzugefügt: Channel-ID: " + ChannelID + " Gruppen-ID: " + gruppeID);
 				return true;
 			}
 			

@@ -44,6 +44,7 @@ public class Nutzer {
 	}
 
 	public void setChannel(Channel channel) {
+		System.out.println("Channel abonniert: Nutzer-ID: " + nutzerID + " Channel: " + channel.getName());
 		abonnierteChannels.add(channel);
 	}
 
@@ -55,6 +56,9 @@ public class Nutzer {
 		abonnierteURLs.add(channel);
 	}
 	
+	public String toString() {
+		return name;
+	}
 	
 
 }
